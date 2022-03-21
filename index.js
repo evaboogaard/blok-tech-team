@@ -1,1 +1,1 @@
-nog niks
+ja man
