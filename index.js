@@ -26,8 +26,9 @@ app.use("/static", express.static("static"));
 
 app.get('/', async (req, res) => {
     try {
-        const data = await restaurant.find({ name: "test" })
-            console.log(data);
+        const data = await restaurant.findOne({ voorkeur: "" }).lean().exec()
+        res.render("home", { data: data });
+        console.log(data);
     } catch {
         console.log("error");
     }
