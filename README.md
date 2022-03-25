@@ -1,6 +1,6 @@
 # :fork_and_knife:Dinder
 
-Dinder, the app where Tinder and Dinner come together! Dinder is a matching application where users can match with restaurants. Users can create an account, fill in their preferences and set filters. Then the app shows a list of restaurants that meet the user's wishes and the user can start swiping the cards left and right. All restaurants that the user swiped to the right will appear in the favorites list, where the user can chat with the restaurant or place a reservation immediately.
+Dinder, the app where Tinder and Dinner come together! Dinder is a matching application where users can match with restaurants. Users can create an account, fill in their preferences and set filters.The app will show a list of restaurants that meet the user's wishes and the user can start swiping the cards left or right. All restaurants that the user swiped right will appear in the favorites list, where the user can find the contact information or place a reservation immediately.
 
 ## :sparkles:Features
 
@@ -35,13 +35,13 @@ MONGO_URI=Link to your own database
 
 You have now linked Dinder to your own database! All you have to do now is fill the database with restaurants.
 
-The only thing left to do is run the application with:
+The only thing left to do is run the application with the following command:
 
 ```
 npm start
 ```
 
-Congrats, you are now all set! Go to localhost:3000 in your browser and enjoy using Dinder!
+Congrats, you are all set now! Go to localhost:3000 in your browser and enjoy using Dinder!
 
 ## :busts_in_silhouette:Contribute
 
