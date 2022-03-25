@@ -53,7 +53,7 @@ For further documentation, see the [wiki](https://github.com/evaboogaard/blok-te
 
 ## :technologist:Authors
 
-This project is designed and created by [Anneke Steller](https://github.com/annekesteller), [Daniël Vink](), [Eva Boogaard](https://github.com/evaboogaard), [Max van Liempdt](https://github.com/maxvl3) and [Pip Harsveld](https://github.com/PipHarsveld).
+This project is designed and created by [Anneke Steller](https://github.com/annekesteller), [Daniël Vink](https://github.com/Davi9898), [Eva Boogaard](https://github.com/evaboogaard), [Max van Liempdt](https://github.com/maxvl3) and [Pip Harsveld](https://github.com/PipHarsveld).
 
 ## :page_facing_up:License
 
