@@ -1,14 +1,15 @@
 <main>
+    {{#each data}}
     <article>
-        <h2></h2> <!--Name restaurant -->
+        <h2>{{this.name}}</h2> <!--Name restaurant -->
         <img src="" alt="Picture of the restaurant">
         <section> <!--Location -->
             <img src="../../static/images/location.png" alt="Location icon">
-            <p></p> 
+            <p>{{this.adres}}</p> 
         </section>
         <section> <!--Opening/closing time -->
             <img src="../../static/images/time.png" alt="Time icon">
-            <p></p> 
+            <p>{{this.time}}</p> 
         </section>
         <section> <!--Reviewscore -->
             <img src="../../static/images/star.png" alt="Star icon">
@@ -22,4 +23,5 @@
             </form>
         </section>
     </article>
+    {{/each}}
 </main>
