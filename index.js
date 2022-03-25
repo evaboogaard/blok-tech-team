@@ -26,10 +26,33 @@ app.use("/static", express.static("static"));
 
 app.get('/', async (req, res) => {
     try {
-        const data = await restaurant.find({ name: "test" })
-            console.log(data);
+        const data = await restaurant.findOne({ preference: "" }).lean().exec()
+        res.render("home", { data: data });
+        console.log(data);
     } catch {
         console.log("error");
+    }
+});
+
+// User liked restaurant
+app.post("/like", async (req, res) => {
+    try {
+        await restaurant.findOneAndUpdate({preference: ""}, {preference: "like"}).lean().exec();
+        const data = await restaurant.findOne({preference: ""}).lean().exec();
+        res.render("home", { data: data });
+    } catch {
+        console.log("fout bij liken");
+    }
+});
+
+// User disliked restaurant
+app.post("/dislike", async (req, res) => {
+    try {
+        await restaurant.findOneAndUpdate({ preference: "" }, { preference: "dislike" }).lean().exec();
+        const data = await restaurant.findOne({ preference: "" }).lean().exec();
+        res.render("home", { data: data });
+    } catch {
+        console.log("fout bij disliken");
     }
 });
 
