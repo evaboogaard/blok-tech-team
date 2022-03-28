@@ -37,8 +37,8 @@ app.get('/', async (req, res) => {
 // User liked restaurant
 app.post("/like", async (req, res) => {
     try {
-        await restaurant.findOneAndUpdate({preference: ""}, {preference: "like"}).lean().exec();
-        const data = await restaurant.findOne({preference: ""}).lean().exec();
+        await restaurant.findOneAndUpdate({ preference: ""}, { preference: "like" }).lean().exec();
+        const data = await restaurant.findOne({ preference: "" }).lean().exec();
         res.render("home", { data: data });
     } catch {
         console.log("fout bij liken");
