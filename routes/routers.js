@@ -28,3 +28,6 @@ router.get('/overviewaccount', (req, res) => res.render('overviewaccount'));
 // Likes
 
 router.get('/likes', (req, res) => res.render('likes'));
+
+
+module.exports = router;
