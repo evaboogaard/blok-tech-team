@@ -1,4 +1,3 @@
-
 // Express setup
 const express = require("express");
 const app = express();
@@ -14,18 +13,13 @@ db();
 
 // BodyParser
 const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
 
 // Handlebars
 const { engine } = require("express-handlebars");
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
-
-// bcrypt 
-const bcrypt = require("bcrypt"); 
-
 
 // Static
 app.use("/static", express.static("static"));
@@ -39,8 +33,6 @@ app.get('/', async (req, res) => {
         console.log("error");
     }
 });
-
-
 
 // User liked restaurant
 app.post("/like", async (req, res) => {
@@ -64,30 +56,9 @@ app.post("/dislike", async (req, res) => {
     }
 });
 
-// Toont filter pagina !!moet nog veranderd worden!!
-app.get('/filter', async (req, res) => {
-    res.render("filter");
-});
-
-// Filter functie !!toont nu de data in console, moet nog veranderd worden!!
-app.post("/filteroutput", async (req, res) => {
-    try {
-        const { distance, stars, price } = req.body;
-        console.log(req.body);
-        const data = await restaurant.find({
-                distance: { $lte: distance},
-                stars: { $gte: stars},
-                price: price
-        });
-        console.log(data);
-        res.redirect("filter");
-    } catch {
-        console.log("oeps filter stuk");
-    }
-});
-
 // PORT
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
-}); 
+});
 
+// Comment
