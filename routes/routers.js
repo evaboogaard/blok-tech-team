@@ -12,7 +12,6 @@ router.get('/login', (req, res) => res.render('login'));
 
 router.get('/signup', (req, res) => res.render('signup'));
 
-
 // Register page
 
 router.get('/createaccount', (req, res) => res.render('createaccount'));
