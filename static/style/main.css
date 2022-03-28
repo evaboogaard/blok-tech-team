@@ -1,3 +1,7 @@
+header {
+  width: 100%;
+}
+
 *,
 *::after,
 *::before {
@@ -18,4 +22,3 @@ body {
   background-image: var(--background);
 }
 /*# sourceMappingURL=main.css.map */
-
