@@ -20,6 +20,7 @@ $light-shadow-color: rgba(0, 0, 0, 0.356);
 $primary-font-color: #637C98;
 $emphasized-font-color: #304D6E;
 $secondary-font-color: #707070;
+$button-shadow: 0 .2em .5em var(--light-shadow-color);
 
 
 
@@ -35,11 +36,13 @@ $secondary-font-color: #707070;
     --primary-font-color: #{$primary-font-color};
     --emphasized-font-color: #{$emphasized-font-color};
     --secondary-font-color: #{$secondary-font-color};
+    --button-shadow: #{$button-shadow};
 }
 
 body {
     background-image: var(--background);
-    height: 100%;
+    height: 60em;
+    overflow: hidden;
 }
 
 /*
@@ -82,11 +85,13 @@ h1,
 h2,
 h3,
 h4,
-p {
+p,
+button,
+a {
     font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
 
 
 
-@import 'account', 'card', 'forms', 'header', 'likes', 'nav';
+@import 'welcome', 'account', 'card', 'forms', 'header', 'likes', 'nav';

@@ -22,11 +22,13 @@
   --primary-font-color: #637C98;
   --emphasized-font-color: #304D6E;
   --secondary-font-color: #707070;
+  --button-shadow: 0 0.2em 0.5em var(--light-shadow-color);
 }
 
 body {
   background-image: var(--background);
-  height: 100%;
+  height: 60em;
+  overflow: hidden;
 }
 
 /*
@@ -68,8 +70,107 @@ h1,
 h2,
 h3,
 h4,
-p {
+p,
+button,
+a {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.welcome * {
+  position: absolute;
+}
+
+.welcome img {
+  width: 80%;
+  left: 10%;
+  top: 25%;
+}
+
+.welcome button {
+  width: 60%;
+  height: 3.5em;
+  left: 20%;
+  top: 25%;
+  margin-top: 60%;
+  border-radius: 2em;
+  border: none;
+  background-color: var(--like-dislike-buttons);
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
+  font-weight: 300;
+  font-size: 1.2em;
+  color: var(--primary-font-color);
+}
+
+.welcome img.hide,
+.welcome button.hide {
+  -webkit-animation: hide 3s;
+          animation: hide 3s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.welcome div.gettingstarted {
+  opacity: 0%;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transition-delay: 2s;
+          transition-delay: 2s;
+}
+
+.welcome div.gettingstarted.show {
+  opacity: 100%;
+}
+
+.welcome a {
+  text-decoration: none;
+  height: 3.5em;
+  width: 15em;
+  padding: 1em 3em 1em 3em;
+  background-color: var(--button-color);
+  left: 3.3em;
+  border-radius: 2em;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: 300;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
+}
+
+.welcome a:first-of-type {
+  top: 16em;
+  background-color: var(--like-dislike-buttons);
+  color: var(--button-color);
+}
+
+.welcome a:last-of-type {
+  top: 23em;
+  color: var(--like-dislike-buttons);
+  background-color: var(--button-color);
+}
+
+@-webkit-keyframes hide {
+  0% {
+    top: 25%;
+  }
+  5% {
+    top: 28%;
+  }
+  100% {
+    top: -60%;
+  }
+}
+
+@keyframes hide {
+  0% {
+    top: 25%;
+  }
+  5% {
+    top: 28%;
+  }
+  100% {
+    top: -60%;
+  }
 }
 
 .card {
@@ -210,10 +311,15 @@ nav ul {
 
 nav ul li {
   list-style: none;
+  opacity: 50%;
 }
 
 nav ul li img {
   margin-top: 1.3em;
   height: 3.2em;
+}
+
+nav ul li.active {
+  opacity: 100%;
 }
 /*# sourceMappingURL=main.css.map */
