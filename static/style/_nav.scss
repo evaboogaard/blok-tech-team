@@ -18,6 +18,11 @@ nav{
             img{
                 margin-top: 1.3em;
                 height: 3.2em;
+                opacity: 50%;
+            }
+
+            img.active{
+                opacity: 100%;
             }
         }
         }
