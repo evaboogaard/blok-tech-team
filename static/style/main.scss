@@ -11,16 +11,69 @@
 
 $background: linear-gradient(#DFE9F2, #97A8BB);
 $nav-color: #CCD8E6;
+$button-color: #637C98;
+$input-color: white;
+$light-color: white;
+$like-dislike-buttons: #EFF2F5;
 
-:root{
+
+:root {
     --background: #{$background};
     --nav-color: #{$nav-color};
+    --button-color: #{$button-color};
+    --input-color: #{$input-color};
+    --light-color: #{$light-color};
+    --like-dislike-buttons: #{$like-dislike-buttons};
 }
 
 body {
     background-image: var(--background);
+    height: 100%;
 }
 
+/*
+###############
+          LOADING FONT
+###############
+*/
+
+@font-face {
+    font-family: Poppins;
+    font-weight: 100;
+    src: url(../assets/Poppins-ExtraLight.ttf);
+}
+
+@font-face {
+    font-family: Poppins;
+    font-weight: 200;
+    src: url(../assets/Poppins-Light.ttf);
+}
+
+@font-face {
+    font-family: Poppins;
+    font-weight: 300;
+    src: url(../assets/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: Poppins;
+    font-weight: 400;
+    src: url(../assets/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: Poppins;
+    font-weight: 500;
+    src: url(../assets/Poppins-ExtraBold.ttf);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
 
 
 
