@@ -1,0 +1,29 @@
+<body id="likes">
+    {{>header}}
+
+    <section>
+        <h1>Likes</h1>
+        <img src="../static/images/filter.png" alt="Filter">
+    </section>
+
+    {{#each data}}
+    <article>
+        <img src="" alt="Picture of the restaurant">
+        <h2>{{this.name}}</h2> <!--Name restaurant -->
+        <section> <!--Location -->
+            <img src="../static/images/location.png" alt="Location icon">
+            <p>{{this.address}}</p> 
+        </section>
+        <section> <!--Reviewscore -->
+            <img src="../static/images/star.png" alt="Star icon">
+        </section>
+        <section> <!--Price -->
+            <p>{{this.price}}</p>
+        </section>
+        <section> <!--Opening/closing time -->
+            <img src="../static/images/time.png" alt="Time icon">
+            <p>{{this.time}}</p> 
+        </section>
+    </article>
+    {{/each}}
+</main>

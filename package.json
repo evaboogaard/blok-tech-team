@@ -1,0 +1,33 @@
+{
+  "name": "blok-tech-team",
+  "version": "1.0.0",
+  "description": "Restaurant matching app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evaboogaard/blok-tech-team.git"
+  },
+  "author": "team-5",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evaboogaard/blok-tech-team/issues"
+  },
+  "homepage": "https://github.com/evaboogaard/blok-tech-team#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "mongoose": "^6.2.7",
+    "nodemailer": "^6.7.3",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0"
+  }
+}
