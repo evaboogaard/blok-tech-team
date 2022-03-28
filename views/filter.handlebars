@@ -1,0 +1,19 @@
+<form action="/filteroutput" , method="POST">
+    <div>
+        <label for="distance">Max. distance (km)</label><br>
+        <input type="range" name="distance" min="0" max="5" value="5" oninput="this.nextElementSibling.value = this.value" required>
+        <output>5</output>
+    </div>
+    <div>
+        <label for="stars">Min. stars</label><br>
+        <input type="range" name="stars" min="0" max="5" value="0" oninput="this.nextElementSibling.value = this.value" required>
+        <output>0</output>
+    </div>
+    <div>
+        <label for="price">Price</label><br>
+        <input type="radio" name="price" value="€" required>€<br>
+        <input type="radio" name="price" value="€€" required>€€<br>
+        <input type="radio" name="price" value="€€€" required>€€€<br>
+    </div>
+    <button type="submit">Filter</button>
+</form>
