@@ -12,6 +12,10 @@ require('dotenv').config();
 const db = require("./config/db");
 db();
 
+const router = require("./routes/routers");
+app.use("/", router);
+
+
 // BodyParser
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -22,6 +26,7 @@ const { engine } = require("express-handlebars");
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
+
 
 // bcrypt 
 const bcrypt = require("bcrypt"); 
@@ -90,4 +95,3 @@ app.post("/filteroutput", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
 }); 
-
