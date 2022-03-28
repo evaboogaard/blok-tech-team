@@ -1,5 +1,3 @@
-@import 'account', 'card', 'forms', 'header', 'likes', 'nav';
-
 *,
 *::after,
 *::before {
@@ -11,11 +9,20 @@
     padding: 0;
 }
 
-:root{
-    --background: linear-gradient(#DFE9F2, #97A8BB);
+$background: linear-gradient(#DFE9F2, #97A8BB);
+$nav-color: #CCD8E6;
 
+:root{
+    --background: #{$background};
+    --nav-color: #{$nav-color};
 }
 
 body {
     background-image: var(--background);
 }
+
+
+
+
+
+@import 'account', 'card', 'forms', 'header', 'likes', 'nav';
