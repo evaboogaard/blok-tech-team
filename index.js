@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 // Models
 const restaurant = require("./models/restaurant");
+const User = require("./models/user")
 
 // Database
 require('dotenv').config();
@@ -22,9 +23,8 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
-// bcrypt 
+// Bcrypt 
 const bcrypt = require("bcrypt"); 
-
 
 // Static
 app.use("/static", express.static("static"));
@@ -38,6 +38,18 @@ app.get('/', async (req, res) => {
         console.log("error");
     }
 });
+
+// User filled and submitted the form
+app.post("/createaccount", async (req, res) =>{
+    const hashedPasword = await bcrypt.hash(req.body.password)
+    const user = new User ({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email, 
+        password: hashedPasword
+    })
+
+})
 
 
 
