@@ -1,8 +1,8 @@
 console.log("waddup");
 
-const homeButton = document.querySelector("nav img:nth-of-type(1)");
-const likeButton = document.querySelector("nav img:nth-of-type(2)");
-const accountButton = document.querySelector("nav img:nth-of-type(3)");
+const homeButton = document.querySelector("nav ul li:nth-of-type(1)");
+const likeButton = document.querySelector("nav ul li:nth-of-type(2)");
+const accountButton = document.querySelector("nav ul li:nth-of-type(3)");
 
 homeButton.addEventListener("click", () => {
     homeButton.classList.add("active");

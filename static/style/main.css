@@ -210,15 +210,15 @@ nav ul {
 
 nav ul li {
   list-style: none;
+  opacity: 50%;
 }
 
 nav ul li img {
   margin-top: 1.3em;
   height: 3.2em;
-  opacity: 50%;
 }
 
-nav ul li img.active {
+nav ul li.active {
   opacity: 100%;
 }
 /*# sourceMappingURL=main.css.map */
