@@ -2,17 +2,18 @@
     <article class="card">
         <h2>{{data.name}}</h2> <!--Name restaurant -->
         <img src="../../static/images/{{data.img}}.jpg" alt="Picture of the restaurant">
-        <section> <!--Location -->
+        <div class="shadow"></div>
+        <section class="location"> <!--Location -->
             <img src="../../static/images/location.png" alt="Location icon">
             <p>{{data.address}}</p> 
         </section>
-        <section> <!--Opening/closing time -->
+        <section class="time"> <!--Opening/closing time -->
             <img src="../../static/images/time.png" alt="Time icon">
             <p>{{data.time}}</p> 
         </section>
-        <section> <!--Reviewscore -->
+        {{!-- <section class="stars"> <!--Reviewscore -->
             <img src="../../static/images/star.png" alt="Star icon">
-        </section>
+        </section> --}}
         <section> <!--Like/dislike buttons -->
             <form action="/dislike" method="POST">
                 <input type="image" src="../../static/images/dislike.png" alt="Dislike button">

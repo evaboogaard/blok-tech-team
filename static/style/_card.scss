@@ -1,19 +1,90 @@
 .card{
-    width: 100%;
+    margin: 20% 0 20% 0;
+    width: 86%;
+    margin-left: 7%;
+    background-color: var(--light-color);
+    height: 35em;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 .7em .7em var(--light-shadow-color);
 
-    img{
-        width: 80%;
+    h2{
+        position: absolute;
+        color: var(--light-color);
+        z-index: 100;
+        font-weight: 300;
+        text-align: center;
+        transform: translateX(-50%);
+        left: 50%;
+        top: -6%;
+    }
+
+    >img, 
+    .shadow{
+        width: 18em;
+        height: 23em;
+        object-fit: cover;
         margin-left: 10%;
+        position: absolute;
+        top: -10%;
+        border-radius: 1em;
+    }
+
+    .shadow{
+        box-shadow: inset 0 5em 3em var(--dark-shadow-color);
     }
 
     section{
+        position: relative;
         img{
-            width: 1em;
-            margin-left: 10%;
+            position: absolute;
+            height: 1em;
+        }
+        p{
+            font-weight: 200;
+            font-size: .9em;
+            color: var(--secondary-font-color);
+        }
+    }
+
+    .location{
+        top: 60%;
+        img{
+            left: 2.5em;
         }
 
-        form input{
-            width: 7em;
+        p{
+            position: absolute;
+            left: 4em;
         }
+    }
+
+    .time{
+        top: 66%;
+        img{
+        left: 2.3em;
+        }
+
+        p{
+            position: absolute;
+            left: 4.3em;
+        }
+    }
+
+    form{
+        position: absolute;
+        margin-top: 130%;
+
+        input{
+            height: 5em;
+        }
+    }
+
+    form:first-of-type{
+        left: 8%;
+    }
+
+    form:last-of-type{
+        right: 8%;
     }
 }
