@@ -116,10 +116,12 @@ a {
   transition: 1s;
   -webkit-transition-delay: 2s;
           transition-delay: 2s;
+  pointer-events: none;
 }
 
 .welcome div.gettingstarted.show {
   opacity: 100%;
+  pointer-events: all;
 }
 
 .welcome a {

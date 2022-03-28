@@ -10,7 +10,7 @@
         top: 25%;
     }
 
-    button {
+    button{
         width: 60%;
         height: 3.5em;
         left: 20%;
@@ -26,7 +26,7 @@
     }
 
     img.hide,
-    button.hide {
+    button.hide{
         animation: hide 3s;
         animation-fill-mode: forwards
     }
@@ -35,10 +35,12 @@
         opacity: 0%;
         transition: 1s;
         transition-delay: 2s;
+        pointer-events: none;
     }
 
     div.gettingstarted.show {
         opacity: 100%;
+        pointer-events: all;
     }
 
     a {
@@ -55,13 +57,13 @@
         box-shadow: var(--button-shadow);
     }
 
-    a:first-of-type {
+    a:first-of-type{
         top: 16em;
         background-color: var(--like-dislike-buttons);
         color: var(--button-color);
     }
 
-    a:last-of-type {
+    a:last-of-type{
         top: 23em;
         color: var(--like-dislike-buttons);
         background-color: var(--button-color);
