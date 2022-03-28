@@ -1,0 +1,21 @@
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background: linear-gradient(#DFE9F2, #97A8BB);
+}
+
+body {
+  background-image: var(--background);
+}
+/*# sourceMappingURL=main.css.map */
+
