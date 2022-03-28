@@ -1,3 +1,4 @@
+
 // Express setup
 const express = require("express");
 const app = express();
@@ -21,6 +22,10 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
+// bcrypt 
+const bcrypt = require("bcrypt"); 
+
+
 // Static
 app.use("/static", express.static("static"));
 
@@ -33,6 +38,8 @@ app.get('/', async (req, res) => {
         console.log("error");
     }
 });
+
+
 
 // User liked restaurant
 app.post("/like", async (req, res) => {
@@ -59,4 +66,5 @@ app.post("/dislike", async (req, res) => {
 // PORT
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
-});
+}); 
+
