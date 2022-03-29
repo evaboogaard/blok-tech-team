@@ -71,7 +71,7 @@ app.post("/dislike", async (req, res) => {
 });
 
 // Show list with liked restaurants
-app.post("/likes", async (req, res) => {
+app.get("/likes", async (req, res) => {
     try {
         const data = await restaurant.find({ preference: "like" }).lean().exec();
         res.render("likes", { data: data });

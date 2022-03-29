@@ -33,11 +33,7 @@ router.get('/overviewaccount', (req, res) => {
     res.render('overviewaccount', {'title': 'Account'});
 });
 
-// Likes
 
-router.get('/likes', (req, res) => {
-    res.render('likes', {'title': 'Likes'});
-});
 
 // Filter
 
