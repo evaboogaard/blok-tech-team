@@ -38,6 +38,31 @@ router.post("/createaccount", async (req, res) => {
 });
 
 
+
+router.post('/login', async (req, res) => {
+    try {
+        const getUser = await User.findOne({ email: req.body.email });
+        if (getUser) {
+          const comparePassword = await bcrypt.compare(req.body.password, getUser.password);
+          if (comparePassword) {
+            console.log("It's a great success!");
+            return res.status(200).redirect('/overviewaccount');
+          } else {
+            console.error("Wrong e-mail or password!");
+            return res.status(404).redirect('/login');
+          }
+        } else {
+            console.error("Wrong e-mail or password!!");
+            return res.status(404).redirect('/login');
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).redirect('/login');
+    }
+});
+
+
+
 router.post('/delete', (req, res) => {
     User.findOneAndDelete({id: req.body._id }).then(
         res.render('welcome')
