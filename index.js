@@ -12,12 +12,13 @@ require('dotenv').config();
 const db = require("./config/db");
 db();
 
+// Router
 const router = require("./routes/routers");
 app.use("/", router);
 
 // Users
 const usersRouter = require("./routes/users");
-app.use("/users", usersRouter);
+app.use("/", usersRouter);
 
 // BodyParser
 const bodyParser = require('body-parser');
@@ -96,5 +97,3 @@ app.post("/filteroutput", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
 }); 
-
-module.exports = router;

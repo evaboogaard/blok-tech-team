@@ -1,16 +1,15 @@
 const express = require("express");
-const app = express();
 const router = express.Router();
 const User = require("../models/user");
 const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt")
+
+const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-let session;
+// let session;
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+router.use(bodyParser.urlencoded({extended: true}));
+
 
 router.post("/createaccount", async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -18,7 +17,7 @@ router.post("/createaccount", async (req, res) => {
         fname: req.body.fname,
         lname: req.body.lname,
         email: req.body.email,
-        password: hashedPassword,
+        password: hashedPassword
     });
 
     user.save((error) => {
@@ -27,16 +26,26 @@ router.post("/createaccount", async (req, res) => {
             return res.status(500).redirect('createaccount');
         } else {
             console.log("Account aangemaakt!")
-            session = req.session;
-            session.email = req.body.email;
+            // session = req.session;
+            // session.email = req.body.email;
             return res.render("overviewaccount", {
                 fname: user.fname,
                 lname: user.lname,
-                email: user.email,
+                email: user.email
             });
         }
     });
 });
 
+
+router.post('/delete', (req, res) => {
+    User.findOneAndDelete({id: req.body._id }).then(
+        res.render('welcome')
+    ).catch((error) => {
+        res.status(400).json({
+            error: error
+        });
+    })
+});
 
 module.exports = router;
