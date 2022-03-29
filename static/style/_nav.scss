@@ -14,6 +14,7 @@ nav{
 
         li{
             list-style: none;
+            opacity: 50%;
 
             img{
                 margin-top: 1.3em;
@@ -21,4 +22,8 @@ nav{
             }
         }
         }
+}
+
+nav ul li.active{
+    opacity: 100%;
 }

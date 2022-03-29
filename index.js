@@ -11,6 +11,10 @@ require('dotenv').config();
 const db = require("./config/db");
 db();
 
+const router = require("./routes/routers");
+app.use("/", router);
+
+
 // BodyParser
 const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: true });
@@ -20,6 +24,11 @@ const { engine } = require("express-handlebars");
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
+
+
+// bcrypt 
+const bcrypt = require("bcrypt"); 
+
 
 // Static
 app.use("/static", express.static("static"));
@@ -59,6 +68,4 @@ app.post("/dislike", async (req, res) => {
 // PORT
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
-});
-
-// Comment
+}); 
