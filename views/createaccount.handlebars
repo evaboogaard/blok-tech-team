@@ -1,1 +1,72 @@
 {{>header}}
+
+
+        
+      <h1>Create Account</h1>
+        
+
+        
+      <form action="/users/register" method="POST">
+        <fieldset>
+          <label for="firstname">First name</label>
+          <input
+            type="firstname"
+            id="firstname"
+            name="firstname"
+            placeholder="Enter Name"
+            value=""
+          />
+        </fieldset>
+
+        <fieldset>
+          <label for="lastname">Last name</label>
+          <input
+            type="lastname"
+            id="lastname"
+            name="lastname"
+            placeholder="Enter Name"
+            value=""
+          />
+        </fieldset>
+
+
+        <fieldset>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter Email"
+            value=""
+          />
+        </fieldset>
+        <fieldset>
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Create Password"
+            value=""
+          />
+        </fieldset>
+        <fieldset>
+          <label for="password2">Confirm Password</label>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            placeholder="Confirm Password"
+            value=""
+          />
+        </fieldset>
+        
+        <button type="submit" >
+          Register
+        </button>
+        
+      </form>
+        
+      <a href="login.handlebars">Back</a>  
+
+{{>nav}}

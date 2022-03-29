@@ -29,7 +29,7 @@ app.set("views", "./views");
 
 
 // bcrypt 
-const bcrypt = require("bcrypt"); 
+// const bcrypt = require("bcrypt"); 
 
 
 // Static

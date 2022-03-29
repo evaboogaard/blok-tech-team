@@ -1,4 +1,15 @@
 {{>header}}
 
+<h1>Account</h1>
+
+<ul>
+    <li>{{name}}</li>
+    <li>{{email}}</li>
+    <li>{{discipline}}</li>
+</ul>
+
+<form method='POST' action="/delete" id="delete">
+    <button type="submit" name="deleteId" value="{{this._id}}">Delete Account</button>
+</form>
 
 {{>nav}}
