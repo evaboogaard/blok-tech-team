@@ -26,11 +26,6 @@ router.get('/createaccount', (req, res) => {
     res.render('createaccount', {'title': 'Create Account'});
 });
 
-//Home
-
-router.get('/home', (req, res) => {
-    res.render('home', {'title': 'Home'});
-});
 
 // Overviewaccount
 

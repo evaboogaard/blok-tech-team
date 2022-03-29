@@ -35,7 +35,7 @@ app.set("views", "./views");
 // Static
 app.use("/static", express.static("static"));
 
-app.get('/', async (req, res) => {
+app.get('/home', async (req, res) => {
     try {
         const data = await restaurant.findOne({ preference: "" }).lean().exec()
         res.render("home", { data: data });
@@ -102,4 +102,4 @@ app.post("/removefilter", async (req, res) => {
 // PORT
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
-}); 
+});
