@@ -12,9 +12,13 @@ require('dotenv').config();
 const db = require("./config/db");
 db();
 
+// Router
 const router = require("./routes/routers");
 app.use("/", router);
 
+// Users
+const usersRouter = require("./routes/users");
+app.use("/", usersRouter);
 
 // BodyParser
 const bodyParser = require('body-parser');
@@ -28,8 +32,6 @@ app.set("view engine", "handlebars");
 app.set("views", "./views");
 
 
-// bcrypt 
-// const bcrypt = require("bcrypt"); 
 
 
 // Static
