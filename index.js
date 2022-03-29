@@ -69,12 +69,7 @@ app.post("/dislike", async (req, res) => {
     }
 });
 
-// Toont filter pagina !!moet nog veranderd worden!!
-app.get('/filter', async (req, res) => {
-    res.render("filter");
-});
-
-// Filter functie !!toont nu de data in console, moet nog veranderd worden!!
+// Filter functie
 app.post("/filteroutput", async (req, res) => {
     try {
         const { distance, stars, price } = req.body;
@@ -83,11 +78,24 @@ app.post("/filteroutput", async (req, res) => {
                 distance: { $lte: distance},
                 stars: { $gte: stars},
                 price: price
-        });
+        }).lean();
         console.log(data);
-        res.redirect("filter");
+        res.render("likes", { data: data });
     } catch {
         console.log("oeps filter stuk");
+    }
+});
+
+// Remove filters and show all liked restaurants
+app.post("/removefilter", async (req, res) => {
+    try {
+        const { distance, stars, price } = req.body;
+        console.log(req.body);
+        const data = await restaurant.find().lean();
+        console.log(data);
+        res.render("likes", { data: data });
+    } catch {
+        console.log("oeps remove knop werkt niet");
     }
 });
 
