@@ -48,7 +48,6 @@ app.get('/home', async (req, res) => {
 });
 
 
-
 // User liked restaurant
 app.post("/like", async (req, res) => {
     try {
@@ -71,7 +70,18 @@ app.post("/dislike", async (req, res) => {
     }
 });
 
-// Filter functie
+// Show list with liked restaurants
+app.post("/likes", async (req, res) => {
+    try {
+        const data = await restaurant.find({ preference: "like" }).lean().exec();
+        res.render("likes", { data: data });
+    } catch {
+        console.log("fout bij laden favorieten");
+    }
+});
+
+
+// Filter function
 app.post("/filteroutput", async (req, res) => {
     try {
         const { distance, stars, price } = req.body;
