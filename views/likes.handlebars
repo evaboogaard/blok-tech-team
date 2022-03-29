@@ -3,16 +3,16 @@
 
     <section>
         <h1>Likes</h1>
-        <img src="../static/images/filter.png" alt="Filter">
+        <a href="filter"><img src="../static/images/filter.png" alt="Filter"></a>
     </section>
 
     {{#each data}}
     <article>
-        <img src="" alt="Picture of the restaurant">
+        <img src="../../static/images/{{this.img}}.jpg" alt="Picture of the restaurant">
         <h2>{{this.name}}</h2> <!--Name restaurant -->
         <section> <!--Location -->
             <img src="../static/images/location.png" alt="Location icon">
-            <p>{{this.address}}</p> 
+            <p>{{this.distance}} km away</p> 
         </section>
         <section> <!--Reviewscore -->
             <img src="../static/images/star.png" alt="Star icon">
@@ -27,4 +27,4 @@
     </article>
     {{/each}}
     {{>nav}}
-</main>
+</body>

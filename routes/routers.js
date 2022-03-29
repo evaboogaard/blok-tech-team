@@ -44,5 +44,10 @@ router.get('/likes', (req, res) => {
     res.render('likes', {'title': 'Likes'});
 });
 
+// Filter
+
+router.get('/filter', (req, res) => {
+    res.render('filter', {'title': 'Filter'});
+});
 
 module.exports = router;
