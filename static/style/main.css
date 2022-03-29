@@ -2,7 +2,7 @@
 *::after,
 *::before {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
@@ -11,16 +11,16 @@
 }
 
 :root {
-  --background: linear-gradient(#DFE9F2, #97A8BB);
-  --nav-color: #CCD8E6;
-  --button-color: #637C98;
+  --background: linear-gradient(#dfe9f2, #97a8bb);
+  --nav-color: #ccd8e6;
+  --button-color: #637c98;
   --input-color: white;
   --light-color: white;
-  --like-dislike-buttons: #EFF2F5;
+  --like-dislike-buttons: #eff2f5;
   --dark-shadow-color: rgba(0, 0, 0, 0.589);
   --light-shadow-color: rgba(0, 0, 0, 0.356);
-  --primary-font-color: #637C98;
-  --emphasized-font-color: #304D6E;
+  --primary-font-color: #637c98;
+  --emphasized-font-color: #304d6e;
   --secondary-font-color: #707070;
   --button-shadow: 0 0.2em 0.5em var(--light-shadow-color);
 }
@@ -96,7 +96,7 @@ a {
   border: none;
   background-color: var(--like-dislike-buttons);
   -webkit-box-shadow: var(--button-shadow);
-          box-shadow: var(--button-shadow);
+  box-shadow: var(--button-shadow);
   font-weight: 300;
   font-size: 1.2em;
   color: var(--primary-font-color);
@@ -105,9 +105,9 @@ a {
 .welcome img.hide,
 .welcome button.hide {
   -webkit-animation: hide 3s;
-          animation: hide 3s;
+  animation: hide 3s;
   -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 
 .welcome div.gettingstarted {
@@ -115,7 +115,7 @@ a {
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transition-delay: 2s;
-          transition-delay: 2s;
+  transition-delay: 2s;
   pointer-events: none;
 }
 
@@ -136,7 +136,7 @@ a {
   text-align: center;
   font-weight: 300;
   -webkit-box-shadow: var(--button-shadow);
-          box-shadow: var(--button-shadow);
+  box-shadow: var(--button-shadow);
 }
 
 .welcome a:first-of-type {
@@ -184,7 +184,7 @@ a {
   position: relative;
   border-radius: 1em;
   -webkit-box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
-          box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
+  box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
 }
 
 .card h2 {
@@ -194,7 +194,7 @@ a {
   font-weight: 300;
   text-align: center;
   -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   left: 50%;
   top: -6%;
 }
@@ -204,7 +204,7 @@ a {
   width: 18em;
   height: 23em;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-left: 10%;
   position: absolute;
   top: -10%;
@@ -213,7 +213,7 @@ a {
 
 .card .shadow {
   -webkit-box-shadow: inset 0 5em 3em var(--dark-shadow-color);
-          box-shadow: inset 0 5em 3em var(--dark-shadow-color);
+  box-shadow: inset 0 5em 3em var(--dark-shadow-color);
 }
 
 .card section {
@@ -227,7 +227,7 @@ a {
 
 .card section p {
   font-weight: 200;
-  font-size: .9em;
+  font-size: 0.9em;
   color: var(--secondary-font-color);
 }
 
@@ -283,7 +283,7 @@ header img {
   height: 3em;
   position: absolute;
   -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   left: 50%;
   top: 5%;
 }
@@ -302,13 +302,13 @@ nav ul {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-align: space-evenly;
-      -ms-flex-align: space-evenly;
-          align-items: space-evenly;
+  -ms-flex-align: space-evenly;
+  align-items: space-evenly;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
 }
 
 nav ul li {
