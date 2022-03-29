@@ -37,3 +37,6 @@ router.post("/createaccount", async (req, res) => {
         }
     });
 });
+
+
+module.exports = router;

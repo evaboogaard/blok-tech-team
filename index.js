@@ -15,6 +15,9 @@ db();
 const router = require("./routes/routers");
 app.use("/", router);
 
+// Users
+const usersRouter = require("./routes/users");
+app.use("/users", usersRouter);
 
 // BodyParser
 const bodyParser = require('body-parser');
@@ -28,8 +31,6 @@ app.set("view engine", "handlebars");
 app.set("views", "./views");
 
 
-// bcrypt 
-// const bcrypt = require("bcrypt"); 
 
 
 // Static
@@ -95,3 +96,5 @@ app.post("/filteroutput", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
 }); 
+
+module.exports = router;
