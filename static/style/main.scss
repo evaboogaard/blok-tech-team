@@ -13,7 +13,7 @@ $background: linear-gradient(#dfe9f2, #97a8bb);
 $nav-color: #ccd8e6;
 $button-color: #637c98;
 $input-color: white;
-$light-color: white;
+$light-color: rgba(255, 255, 255, .3);
 $like-dislike-buttons: #eff2f5;
 $dark-shadow-color: rgba(0, 0, 0, 0.589);
 $light-shadow-color: rgba(0, 0, 0, 0.356);
@@ -85,7 +85,8 @@ h3,
 h4,
 p,
 button,
-a {
+a,
+label{
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 

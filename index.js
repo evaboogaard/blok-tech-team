@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 3000;
 
 // Models
 const restaurant = require("./models/restaurant");
+const User = require("./models/user")
 
 // Database
 require("dotenv").config();
@@ -80,7 +81,6 @@ app.get("/likes", async (req, res) => {
     console.log("fout bij laden favorieten");
   }
 });
-
 
 // Filter function
 app.post("/filteroutput", async (req, res) => {

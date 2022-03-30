@@ -9,8 +9,11 @@
         "_forms.scss",
         "_header.scss",
         "_likes.scss",
+
+        "_nav.scss",
         "_nav.scss",
         "_filter.scss"
+
     ],
     "names": [],
     "file": "main.css"
