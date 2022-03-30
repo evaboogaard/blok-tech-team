@@ -81,7 +81,7 @@ app.get("/likes", async (req, res) => {
 });
 
 
-// Filter function
+// The Filter function
 app.post("/filteroutput", async (req, res) => {
     try {
         const { distance, stars, price } = req.body;
