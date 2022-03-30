@@ -1,29 +1,33 @@
 <body id="likes">
     {{>header}}
 
-    <section>
+    <section id="head">
         <h1>Likes</h1>
         <a href="filter"><img src="../static/images/filter.png" alt="Filter"></a>
     </section>
 
     {{#each data}}
     <article>
-        <img src="../../static/images/{{this.img}}.jpg" alt="Picture of the restaurant">
-        <h2>{{this.name}}</h2> <!--Name restaurant -->
-        <section> <!--Location -->
-            <img src="../static/images/location.png" alt="Location icon">
-            <p>{{this.distance}} km away</p> 
-        </section>
-        <section> <!--Reviewscore -->
-            <img src="../static/images/star.png" alt="Star icon">
-        </section>
-        <section> <!--Price -->
-            <p>{{this.price}}</p>
-        </section>
-        <section> <!--Opening/closing time -->
-            <img src="../static/images/time.png" alt="Time icon">
-            <p>{{this.time}}</p> 
-        </section>
+        <div>
+            <img src="../../static/images/{{this.img}}.jpg" alt="Picture of the restaurant">
+        </div>
+        <div>
+            <h2>{{this.name}}</h2> <!--Name restaurant -->
+            <section> <!--Location -->
+                <img src="../static/images/location.png" alt="Location icon">
+                <p>{{this.distance}} km away</p> 
+            </section>
+            <section> <!--Reviewscore -->
+                <img src="../static/images/star.png" alt="Star icon">
+            </section>
+            <section> <!--Price -->
+                <p>{{this.price}}</p>
+            </section>
+            <section> <!--Opening/closing time -->
+                <img src="../static/images/time.png" alt="Time icon">
+                <p>{{this.time}}</p> 
+            </section>
+        </div>
     </article>
     {{/each}}
 
