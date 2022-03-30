@@ -13,9 +13,18 @@ require('dotenv').config();
 const db = require("./config/db");
 db();
 
+// Router
+const router = require("./routes/routers");
+app.use("/", router);
+
+// Users
+const usersRouter = require("./routes/users");
+app.use("/", usersRouter);
+
 // BodyParser
 const bodyParser = require('body-parser');
-const urlencodedParser = bodyParser.urlencoded({ extended: true });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Handlebars
 const { engine } = require("express-handlebars");
@@ -23,13 +32,10 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
-// Bcrypt 
-const bcrypt = require("bcrypt"); 
-
 // Static
 app.use("/static", express.static("static"));
 
-app.get('/', async (req, res) => {
+app.get('/home', async (req, res) => {
     try {
         const data = await restaurant.findOne({ preference: "" }).lean().exec()
         res.render("home", { data: data });
@@ -39,25 +45,11 @@ app.get('/', async (req, res) => {
     }
 });
 
-// User filled and submitted the form
-app.post("/createaccount", async (req, res) =>{
-    const hashedPasword = await bcrypt.hash(req.body.password)
-    const user = new User ({
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        email: req.body.email, 
-        password: hashedPasword
-    })
-
-})
-
-
-
 // User liked restaurant
 app.post("/like", async (req, res) => {
     try {
-        await restaurant.findOneAndUpdate({preference: ""}, {preference: "like"}).lean().exec();
-        const data = await restaurant.findOne({preference: ""}).lean().exec();
+        await restaurant.findOneAndUpdate({ preference: ""}, { preference: "like" }).lean().exec();
+        const data = await restaurant.findOne({ preference: "" }).lean().exec();
         res.render("home", { data: data });
     } catch {
         console.log("fout bij liken");
@@ -75,8 +67,47 @@ app.post("/dislike", async (req, res) => {
     }
 });
 
+// Show list with liked restaurants
+app.get("/likes", async (req, res) => {
+    try {
+        const data = await restaurant.find({ preference: "like" }).lean().exec();
+        res.render("likes", { data: data });
+    } catch {
+        console.log("fout bij laden favorieten");
+    }
+});
+
+// Filter function
+app.post("/filteroutput", async (req, res) => {
+    try {
+        const { distance, stars, price } = req.body;
+        console.log(req.body);
+        const data = await restaurant.find({
+                distance: { $lte: distance},
+                stars: { $gte: stars},
+                price: price
+        }).lean();
+        console.log(data);
+        res.render("likes", { data: data });
+    } catch {
+        console.log("oeps filter stuk");
+    }
+});
+
+// Remove filters and show all liked restaurants
+app.post("/removefilter", async (req, res) => {
+    try {
+        const { distance, stars, price } = req.body;
+        console.log(req.body);
+        const data = await restaurant.find().lean();
+        console.log(data);
+        res.render("likes", { data: data });
+    } catch {
+        console.log("oeps remove knop werkt niet");
+    }
+});
+
 // PORT
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
-}); 
-
+});

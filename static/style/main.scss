@@ -1,19 +1,93 @@
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-:root{
-    --background: linear-gradient(#DFE9F2, #97A8BB);
+$background: linear-gradient(#dfe9f2, #97a8bb);
+$nav-color: #ccd8e6;
+$button-color: #637c98;
+$input-color: white;
+$light-color: rgba(255, 255, 255, .3);
+$like-dislike-buttons: #eff2f5;
+$dark-shadow-color: rgba(0, 0, 0, 0.589);
+$light-shadow-color: rgba(0, 0, 0, 0.356);
+$primary-font-color: #637c98;
+$emphasized-font-color: #304d6e;
+$secondary-font-color: #707070;
+$button-shadow: 0 0.2em 0.5em var(--light-shadow-color);
 
+:root {
+  --background: #{$background};
+  --nav-color: #{$nav-color};
+  --button-color: #{$button-color};
+  --input-color: #{$input-color};
+  --light-color: #{$light-color};
+  --like-dislike-buttons: #{$like-dislike-buttons};
+  --dark-shadow-color: #{$dark-shadow-color};
+  --light-shadow-color: #{$light-shadow-color};
+  --primary-font-color: #{$primary-font-color};
+  --emphasized-font-color: #{$emphasized-font-color};
+  --secondary-font-color: #{$secondary-font-color};
+  --button-shadow: #{$button-shadow};
 }
 
 body {
-    background-image: var(--background);
+  background-image: var(--background);
+  height: 60em;
+  overflow: hidden;
 }
+
+/*
+###############
+          LOADING FONT
+###############
+*/
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 100;
+  src: url(../assets/Poppins-ExtraLight.ttf);
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 200;
+  src: url(../assets/Poppins-Light.ttf);
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 300;
+  src: url(../assets/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 400;
+  src: url(../assets/Poppins-Bold.ttf);
+}
+
+@font-face {
+  font-family: Poppins;
+  font-weight: 500;
+  src: url(../assets/Poppins-ExtraBold.ttf);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+a,
+label{
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+@import "welcome", "account", "card", "forms", "header", "likes", "nav";

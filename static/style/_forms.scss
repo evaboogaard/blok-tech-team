@@ -1,0 +1,78 @@
+.forms{
+    body{
+        position: relative;
+        font-family: Poppins;
+    }
+    
+    a img{
+        position: absolute;
+        width: 35px; 
+
+        top: 3.5%;
+        left: 10%; 
+        
+    }
+
+    h1{
+        padding: 0.5em;
+        background-color: var( --light-color);
+        font-size: 1.5em;
+        font-weight: 300; 
+        color: var(--button-color);
+        text-align: center;
+
+
+    }
+    form{
+        margin: 20px 10px;
+        padding: 1.7em .7em;  
+        background-color: var( --light-color);
+        border-radius: 1em;
+    }
+
+    form fieldset{
+        display: flex;
+        flex-direction: column;
+        margin: 0 0 15px; 
+        border:none; 
+
+
+    }
+    form label{
+        margin: 0 0 5px;
+        font-size: 16px;
+        font-weight: 300; 
+        color: var(--button-color);
+    }
+
+    form fieldset input{
+        padding: 1.4em;
+        border: none; 
+        border-radius: .8em;
+        box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
+    }
+    button{
+        position: absolute;
+
+        height: 3em;
+        width: 12em;
+
+        transform: translate(-50%, -50%);
+        left: 50%;
+        bottom: 7%;
+       
+        background-color: var(--like-dislike-buttons);
+        border-radius: 2em;
+        border: none; 
+        box-shadow: var(--button-shadow);
+    
+        font-size: 1.2em;
+        text-decoration: none;
+        text-align: center;
+        font-weight: 300;
+        color: var(--button-color);
+    
+    }
+
+}
+
