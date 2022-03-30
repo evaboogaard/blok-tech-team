@@ -377,6 +377,62 @@ header section p {
   font-size: .8em;
 }
 
+#likes #head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1em;
+  background-color: var(--nav-color);
+  margin-bottom: 1em;
+  color: var(--primary-font-color);
+}
+
+#likes #head a img {
+  width: 3em;
+}
+
+#likes article {
+  background-color: var(--input-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+  margin: 1em 1em 2em 1em;
+  border-radius: 1em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1em;
+  -webkit-box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
+          box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
+}
+
+#likes article img {
+  width: 10em;
+  border-radius: 1em;
+}
+
+#likes article section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5em;
+}
+
+#likes article section img {
+  width: 2em;
+}
+
+#likes article h2 {
+  font-size: 1em;
+}
+
 nav {
   position: fixed;
   width: 100%;
