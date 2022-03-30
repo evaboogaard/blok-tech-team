@@ -41,7 +41,6 @@ app.get('/home', async (req, res) => {
     try {
         const data = await restaurant.findOne({ preference: "" }).lean().exec()
         res.render("home", { data: data });
-        console.log(data);
     } catch {
         console.log("error");
     }
@@ -91,7 +90,6 @@ app.post("/filteroutput", async (req, res) => {
                 stars: { $gte: stars},
                 price: price
         }).lean();
-        console.log(data);
         res.render("likes", { data: data });
     } catch {
         console.log("oeps filter stuk");
@@ -104,7 +102,6 @@ app.post("/removefilter", async (req, res) => {
         const { distance, stars, price } = req.body;
         console.log(req.body);
         const data = await restaurant.find().lean();
-        console.log(data);
         res.render("likes", { data: data });
     } catch {
         console.log("oeps remove knop werkt niet");
