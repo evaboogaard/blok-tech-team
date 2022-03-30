@@ -33,14 +33,14 @@ app.set("views", "./views");
 // Static
 app.use("/static", express.static("static"));
 
-app.get("/home", async (req, res) => {
-  try {
-    const data = await restaurant.findOne({ preference: "" }).lean().exec();
-    res.render("home", { data: data });
-    console.log(data);
-  } catch {
-    console.log("error");
-  }
+
+app.get('/home', async (req, res) => {
+    try {
+        const data = await restaurant.findOne({ preference: "" }).lean().exec()
+        res.render("home", { data: data });
+    } catch {
+        console.log("error");
+    }
 });
 
 // User liked restaurant
