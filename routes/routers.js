@@ -26,11 +26,6 @@ router.get('/createaccount', (req, res) => {
     res.render('createaccount', {'title': 'Create Account'});
 });
 
-//Home
-
-router.get('/home', (req, res) => {
-    res.render('home', {'title': 'Home'});
-});
 
 // Overviewaccount
 
@@ -38,11 +33,12 @@ router.get('/overviewaccount', (req, res) => {
     res.render('overviewaccount', {'title': 'Account'});
 });
 
-// Likes
 
-router.get('/likes', (req, res) => {
-    res.render('likes', {'title': 'Likes'});
+
+// Filter
+
+router.get('/filter', (req, res) => {
+    res.render('filter', {'title': 'Filter'});
 });
-
 
 module.exports = router;

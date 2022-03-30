@@ -1,29 +1,25 @@
 {{>header}}
-
-
         
-      <h1>Register</h1>
+      <h1>Create Account</h1>
         
-
-        
-      <form action="/users/register" method="POST">
+      <form action="/createaccount" id="register" method="POST">
         <fieldset>
-          <label for="firstname">First name</label>
+          <label for="fname">First name</label>
           <input
-            type="firstname"
-            id="firstname"
-            name="firstname"
+            type="fname"
+            id="fname"
+            name="fname"
             placeholder="Enter Name"
             value=""
           />
         </fieldset>
 
         <fieldset>
-          <label for="lastname">Last name</label>
+          <label for="lname">Last name</label>
           <input
-            type="lastname"
-            id="lastname"
-            name="lastname"
+            type="lname"
+            id="lname"
+            name="lname"
             placeholder="Enter Name"
             value=""
           />
@@ -61,12 +57,10 @@
           />
         </fieldset>
         
-        <button type="submit" >
+        <button type="submit" form="register">
           Register
         </button>
         
       </form>
         
-      <a href="login.handlebars">Back</a>  
-
-{{>nav}}
+      <a href="login">Back</a>  

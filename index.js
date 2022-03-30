@@ -12,9 +12,13 @@ require('dotenv').config();
 const db = require("./config/db");
 db();
 
+// Router
 const router = require("./routes/routers");
 app.use("/", router);
 
+// Users
+const usersRouter = require("./routes/users");
+app.use("/", usersRouter);
 
 // BodyParser
 const bodyParser = require('body-parser');
@@ -28,14 +32,12 @@ app.set("view engine", "handlebars");
 app.set("views", "./views");
 
 
-// bcrypt 
-const bcrypt = require("bcrypt"); 
 
 
 // Static
 app.use("/static", express.static("static"));
 
-app.get('/', async (req, res) => {
+app.get('/home', async (req, res) => {
     try {
         const data = await restaurant.findOne({ preference: "" }).lean().exec()
         res.render("home", { data: data });
@@ -44,7 +46,6 @@ app.get('/', async (req, res) => {
         console.log("error");
     }
 });
-
 
 
 // User liked restaurant
@@ -69,12 +70,18 @@ app.post("/dislike", async (req, res) => {
     }
 });
 
-// Toont filter pagina !!moet nog veranderd worden!!
-app.get('/filter', async (req, res) => {
-    res.render("filter");
+// Show list with liked restaurants
+app.get("/likes", async (req, res) => {
+    try {
+        const data = await restaurant.find({ preference: "like" }).lean().exec();
+        res.render("likes", { data: data });
+    } catch {
+        console.log("fout bij laden favorieten");
+    }
 });
 
-// Filter functie !!toont nu de data in console, moet nog veranderd worden!!
+
+// Filter function
 app.post("/filteroutput", async (req, res) => {
     try {
         const { distance, stars, price } = req.body;
@@ -83,15 +90,28 @@ app.post("/filteroutput", async (req, res) => {
                 distance: { $lte: distance},
                 stars: { $gte: stars},
                 price: price
-        });
+        }).lean();
         console.log(data);
-        res.redirect("filter");
+        res.render("likes", { data: data });
     } catch {
         console.log("oeps filter stuk");
+    }
+});
+
+// Remove filters and show all liked restaurants
+app.post("/removefilter", async (req, res) => {
+    try {
+        const { distance, stars, price } = req.body;
+        console.log(req.body);
+        const data = await restaurant.find().lean();
+        console.log(data);
+        res.render("likes", { data: data });
+    } catch {
+        console.log("oeps remove knop werkt niet");
     }
 });
 
 // PORT
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
-}); 
+});
