@@ -111,6 +111,31 @@ app.post("/removefilter", async (req, res) => {
   } catch {
     console.log("oeps remove knop werkt niet");
   }
+    try {
+        const { distance, stars, price } = req.body;
+        console.log(req.body);
+        const data = await restaurant.find({
+                distance: { $lte: distance},
+                stars: { $gte: stars},
+                price: price,
+                preference: "like"
+        }).lean().exec();
+        console.log(data);
+        res.render("likes", { data: data });
+    } catch {
+        console.log("oeps filter stuk");
+    }
+});
+
+// Remove filters and show all liked restaurants
+app.post("/clearfilter", async (req, res) => {
+    try {
+        const data = await restaurant.find({ preference: "like" }).lean().exec();
+        console.log(data);
+        res.render("likes", { data: data });
+    } catch {
+        console.log("clear filter button error");
+    }
 });
 
 // PORT
