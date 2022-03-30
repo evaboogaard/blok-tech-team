@@ -6,9 +6,30 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-// let session;
+const nodemailer = require("nodemailer");
 
 router.use(bodyParser.urlencoded({extended: true}));
+
+
+async function mail() {
+    let transporter = nodemailer.createTransport({
+      service: "hotmail",
+      auth: {
+        user: "dinder.co@hotmail.com",
+        pass: "dinder420",
+      },
+    });
+  
+    let info = await transporter.sendMail({
+      from: '"Dinder 🍽" <dinder.co@hotmail.com>', // sender
+      to: "evaboogaard@hotmail.com", // receiver
+      subject: "Welcome", // subject
+      text: "Hello world?", // body
+    });
+  
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  }
 
 
 router.post("/createaccount", async (req, res) => {
@@ -26,13 +47,13 @@ router.post("/createaccount", async (req, res) => {
             return res.status(500).redirect('createaccount');
         } else {
             console.log("Account aangemaakt!")
-            // session = req.session;
-            // session.email = req.body.email;
+            mail().catch(console.error);
             return res.render("overviewaccount", {
                 fname: user.fname,
                 lname: user.lname,
                 email: user.email
             });
+            
         }
     });
 });
