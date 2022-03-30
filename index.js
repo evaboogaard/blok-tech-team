@@ -84,34 +84,6 @@ app.get("/likes", async (req, res) => {
 
 // Filter function
 app.post("/filteroutput", async (req, res) => {
-  try {
-    const { distance, stars, price } = req.body;
-    console.log(req.body);
-    const data = await restaurant
-      .find({
-        distance: { $lte: distance },
-        stars: { $gte: stars },
-        price: price,
-      })
-      .lean();
-    console.log(data);
-    res.render("likes", { data: data });
-  } catch {
-    console.log("oeps filter stuk");
-  }
-});
-
-// Remove filters and show all liked restaurants
-app.post("/removefilter", async (req, res) => {
-  try {
-    const { distance, stars, price } = req.body;
-    console.log(req.body);
-    const data = await restaurant.find().lean();
-    console.log(data);
-    res.render("likes", { data: data });
-  } catch {
-    console.log("oeps remove knop werkt niet");
-  }
     try {
         const { distance, stars, price } = req.body;
         console.log(req.body);
