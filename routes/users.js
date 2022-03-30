@@ -35,15 +35,12 @@ router.post("/createaccount", async (req, res) => {
                 },
               });
             
-              let info = transporter.sendMail({
-                from: '"Dinder 🍽" <dinder.co@hotmail.com>', // sender
+              transporter.sendMail({
+                from: '"Dinder" <dinder.co@hotmail.com>', // sender
                 to: user.email, // receiver
-                subject: "Welcome", // subject
-                text: "Hello world?", // body
+                subject: "Welcome to Dinder🍽!", // subject
+                text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
               });
-            
-              console.log("Message sent: %s", info.messageId);
-              console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
             return res.render("overviewaccount", {
                 fname: user.fname,
