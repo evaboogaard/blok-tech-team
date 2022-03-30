@@ -11,27 +11,6 @@ const nodemailer = require("nodemailer");
 router.use(bodyParser.urlencoded({extended: true}));
 
 
-async function mail() {
-    let transporter = nodemailer.createTransport({
-      service: "hotmail",
-      auth: {
-        user: "dinder.co@hotmail.com",
-        pass: "dinder420",
-      },
-    });
-  
-    let info = await transporter.sendMail({
-      from: '"Dinder 🍽" <dinder.co@hotmail.com>', // sender
-      to: "evaboogaard@hotmail.com", // receiver
-      subject: "Welcome", // subject
-      text: "Hello world?", // body
-    });
-  
-    console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  }
-
-
 router.post("/createaccount", async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
     const user = new User({
@@ -47,7 +26,25 @@ router.post("/createaccount", async (req, res) => {
             return res.status(500).redirect('createaccount');
         } else {
             console.log("Account aangemaakt!")
-            mail().catch(console.error);
+
+            let transporter = nodemailer.createTransport({
+                service: "hotmail",
+                auth: {
+                  user: "dinder.co@hotmail.com",
+                  pass: "dinder420",
+                },
+              });
+            
+              let info = transporter.sendMail({
+                from: '"Dinder 🍽" <dinder.co@hotmail.com>', // sender
+                to: user.email, // receiver
+                subject: "Welcome", // subject
+                text: "Hello world?", // body
+              });
+            
+              console.log("Message sent: %s", info.messageId);
+              console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+
             return res.render("overviewaccount", {
                 fname: user.fname,
                 lname: user.lname,
