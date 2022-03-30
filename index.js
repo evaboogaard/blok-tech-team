@@ -1,4 +1,3 @@
-
 // Express setup
 const express = require("express");
 const app = express();
@@ -24,9 +23,10 @@ app.use(passport.session());
 
 // Models
 const restaurant = require("./models/restaurant");
+const User = require("./models/user")
 
 // Database
-require('dotenv').config();
+require("dotenv").config();
 const db = require("./config/db");
 db();
 
@@ -39,7 +39,7 @@ const usersRouter = require("./routes/users");
 app.use("/", usersRouter);
 
 // BodyParser
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -49,55 +49,56 @@ app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
 
-
-
-
 // Static
 app.use("/static", express.static("static"));
+
 
 app.get('/home', async (req, res) => {
     try {
         const data = await restaurant.findOne({ preference: "" }).lean().exec()
         res.render("home", { data: data });
-        console.log(data);
     } catch {
         console.log("error");
     }
 });
 
-
 // User liked restaurant
 app.post("/like", async (req, res) => {
-    try {
-        await restaurant.findOneAndUpdate({ preference: ""}, { preference: "like" }).lean().exec();
-        const data = await restaurant.findOne({ preference: "" }).lean().exec();
-        res.render("home", { data: data });
-    } catch {
-        console.log("fout bij liken");
-    }
+  try {
+    await restaurant
+      .findOneAndUpdate({ preference: "" }, { preference: "like" })
+      .lean()
+      .exec();
+    const data = await restaurant.findOne({ preference: "" }).lean().exec();
+    res.render("home", { data: data });
+  } catch {
+    console.log("fout bij liken");
+  }
 });
 
 // User disliked restaurant
 app.post("/dislike", async (req, res) => {
-    try {
-        await restaurant.findOneAndUpdate({ preference: "" }, { preference: "dislike" }).lean().exec();
-        const data = await restaurant.findOne({ preference: "" }).lean().exec();
-        res.render("home", { data: data });
-    } catch {
-        console.log("fout bij disliken");
-    }
+  try {
+    await restaurant
+      .findOneAndUpdate({ preference: "" }, { preference: "dislike" })
+      .lean()
+      .exec();
+    const data = await restaurant.findOne({ preference: "" }).lean().exec();
+    res.render("home", { data: data });
+  } catch {
+    console.log("fout bij disliken");
+  }
 });
 
 // Show list with liked restaurants
 app.get("/likes", async (req, res) => {
-    try {
-        const data = await restaurant.find({ preference: "like" }).lean().exec();
-        res.render("likes", { data: data });
-    } catch {
-        console.log("fout bij laden favorieten");
-    }
+  try {
+    const data = await restaurant.find({ preference: "like" }).lean().exec();
+    res.render("likes", { data: data });
+  } catch {
+    console.log("fout bij laden favorieten");
+  }
 });
-
 
 // Filter function
 app.post("/filteroutput", async (req, res) => {
@@ -107,8 +108,9 @@ app.post("/filteroutput", async (req, res) => {
         const data = await restaurant.find({
                 distance: { $lte: distance},
                 stars: { $gte: stars},
-                price: price
-        }).lean();
+                price: price,
+                preference: "like"
+        }).lean().exec();
         console.log(data);
         res.render("likes", { data: data });
     } catch {
@@ -117,19 +119,17 @@ app.post("/filteroutput", async (req, res) => {
 });
 
 // Remove filters and show all liked restaurants
-app.post("/removefilter", async (req, res) => {
+app.post("/clearfilter", async (req, res) => {
     try {
-        const { distance, stars, price } = req.body;
-        console.log(req.body);
-        const data = await restaurant.find().lean();
+        const data = await restaurant.find({ preference: "like" }).lean().exec();
         console.log(data);
         res.render("likes", { data: data });
     } catch {
-        console.log("oeps remove knop werkt niet");
+        console.log("clear filter button error");
     }
 });
 
 // PORT
 app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`);
+  console.log(`App listening on port ${PORT}`);
 });

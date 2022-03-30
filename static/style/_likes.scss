@@ -1,0 +1,45 @@
+#likes{
+
+    #head{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em;
+        background-color: var(--nav-color);
+        margin-bottom: 1em;
+        color: var(--primary-font-color);
+
+        a img{
+            width: 3em;
+        }
+    }
+
+    article{
+        background-color: var(--input-color);
+        display: flex;
+        padding: 1em;
+        margin: 1em 1em 2em 1em;
+        border-radius: 1em;
+        align-items: center;
+        gap: 1em;
+        box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
+
+        img{
+            width: 10em;
+            border-radius: 1em;
+        }
+        
+        section{
+            display: flex;
+            gap: 0.5em;
+        }
+
+        section img{
+            width: 2em;
+        }
+
+        h2{
+            font-size: 1em;
+        }
+    }
+}

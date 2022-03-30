@@ -10,35 +10,27 @@ const passport = require('passport');
 
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
-// let session;
+const nodemailer = require("nodemailer");
 
-router.use(bodyParser.urlencoded({extended: true}));
-
+router.use(bodyParser.urlencoded({ extended: true }));
 
 router.post("/createaccount", async (req, res) => {
-    const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-    const user = new User({
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-        password: hashedPassword
-    });
+  const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+  const user = new User({
+    fname: req.body.fname,
+    lname: req.body.lname,
+    email: req.body.email,
+    password: hashedPassword,
+  });
 
-    user.save((error) => {
-        if (error) {
-            console.error(error);
-            return res.status(500).redirect('createaccount');
-        } else {
-            console.log("Account aangemaakt!")
-            // session = req.session;
-            // session.email = req.body.email;
-            return res.render("overviewaccount", {
-                fname: user.fname,
-                lname: user.lname,
-                email: user.email
-            });
-        }
-    });
+  user.save((error) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).redirect("createaccount");
+    } else {
+      console.log("Account aangemaakt!");
+    }
+})
 });
 
 router.get('/overviewaccount', ensureAuthenticated, (req, res) =>
@@ -72,6 +64,41 @@ router.post('/delete', (req, res) => {
             error: error
         });
     })
-});
+      
+    let transporter = nodemailer.createTransport({
+        service: "hotmail",
+        auth: {
+          user: "dinder.co@hotmail.com",
+          pass: "dinder420",
+        },
+      });
+
+      transporter.sendMail({
+        from: '"Dinder" <dinder.co@hotmail.com>', // sender
+        to: user.email, // receiver
+        subject: "Welcome to Dinder🍽!", // subject
+        text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
+      });
+
+      return res.render("overviewaccount", {
+        fname: user.fname,
+        lname: user.lname,
+        email: user.email,
+      });
+    
+  });
+
+
+
+
+// router.post("/delete", (req, res) => {
+//   User.findOneAndDelete({ id: req.body._id })
+//     .then(res.render("welcome"))
+//     .catch((error) => {
+//       res.status(400).json({
+//         error: error,
+//       });
+//     });
+// });
 
 module.exports = router;
