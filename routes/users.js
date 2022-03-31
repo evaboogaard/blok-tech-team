@@ -7,7 +7,6 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const passport = require('passport');
 
-
 const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 const nodemailer = require("nodemailer");
@@ -100,5 +99,6 @@ router.post('/delete', (req, res) => {
 //       });
 //     });
 // });
+
 
 module.exports = router;
