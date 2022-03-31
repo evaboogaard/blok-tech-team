@@ -1,22 +1,32 @@
 #likes{
 
     #head{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1em;
+        padding: 2.2em;
         background-color: var(--nav-color);
         margin-bottom: 1em;
         color: var(--primary-font-color);
 
+        * {
+            position: absolute;
+        }
+
+        h1 {
+            transform: translate(-50%, -50%);
+            left: 50%;
+            font-weight: 300;
+        }
+
         a img{
-            width: 3em;
+            width: 2.9em;
+            left: 19em;
+            top: -1.2em;
         }
     }
 
     article{
         background-color: var(--input-color);
         display: flex;
+        position: relative;
         padding: 1em;
         margin: 1em 1em 2em 1em;
         border-radius: 1em;
@@ -24,9 +34,16 @@
         gap: 1em;
         box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
 
-        img{
-            width: 10em;
+        div>img{
+            width: 8em;
             border-radius: 1em;
+        }
+
+        h2{
+            font-size: 1.2em;
+            top: 1em;
+            font-weight: 300;
+            color: var(--primary-font-color);
         }
         
         section{
@@ -34,12 +51,60 @@
             gap: 0.5em;
         }
 
-        section img{
-            width: 2em;
+        div:last-of-type{
+            *{
+                position: absolute;
+            }
         }
 
-        h2{
-            font-size: 1em;
+        .location{
+            top: 3.2em;
+            width: 100%;
+            img{
+                height: 1.3em;
+            }
+
+            p{
+                top: -.1em;
+                left: 1.5em;
+                font-weight: 200;
+                font-size: .9em;
+                color: var(--secondary-font-color);
+            }
+        }
+
+        .time{
+            bottom: 2.2em;
+            width: 100%;
+            left: 16.4em;
+            img{
+                width: 1em;
+            }
+
+            p{
+                top: -.15em;
+                font-weight: 300;
+                font-size: .9em;
+                color: var(--secondary-font-color);
+                left: 1.7em;
+            }
+        }
+
+        .review{
+            width: 100%;
+            img{
+                width: 1.3em;
+            }
+        }
+
+
+        .price{
+            width: 100%;
+            top: 7em;
+            p{
+                color: var(--secondary-font-color);
+                font-weight: 200;
+            }
         }
     }
 }

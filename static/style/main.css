@@ -365,36 +365,40 @@ header img {
 
 header section img {
   position: absolute;
-  left: 3em;
+  left: 23em;
   top: 2.5em;
 }
 
 header section p {
   position: absolute;
   top: 4em;
-  left: 2em;
+  right: 2em;
   font-weight: 300;
   font-size: .8em;
 }
 
 #likes #head {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 1em;
+  padding: 2.2em;
   background-color: var(--nav-color);
   margin-bottom: 1em;
   color: var(--primary-font-color);
 }
 
+#likes #head * {
+  position: absolute;
+}
+
+#likes #head h1 {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  font-weight: 300;
+}
+
 #likes #head a img {
-  width: 3em;
+  width: 2.9em;
+  left: 19em;
+  top: -1.2em;
 }
 
 #likes article {
@@ -402,6 +406,7 @@ header section p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   padding: 1em;
   margin: 1em 1em 2em 1em;
   border-radius: 1em;
@@ -413,9 +418,16 @@ header section p {
           box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
 }
 
-#likes article img {
-  width: 10em;
+#likes article div > img {
+  width: 8em;
   border-radius: 1em;
+}
+
+#likes article h2 {
+  font-size: 1.2em;
+  top: 1em;
+  font-weight: 300;
+  color: var(--primary-font-color);
 }
 
 #likes article section {
@@ -425,12 +437,61 @@ header section p {
   gap: 0.5em;
 }
 
-#likes article section img {
-  width: 2em;
+#likes article div:last-of-type * {
+  position: absolute;
 }
 
-#likes article h2 {
-  font-size: 1em;
+#likes article .location {
+  top: 3.2em;
+  width: 100%;
+}
+
+#likes article .location img {
+  height: 1.3em;
+}
+
+#likes article .location p {
+  top: -.1em;
+  left: 1.5em;
+  font-weight: 200;
+  font-size: .9em;
+  color: var(--secondary-font-color);
+}
+
+#likes article .time {
+  bottom: 2.2em;
+  width: 100%;
+  left: 16.4em;
+}
+
+#likes article .time img {
+  width: 1em;
+}
+
+#likes article .time p {
+  top: -.15em;
+  font-weight: 300;
+  font-size: .9em;
+  color: var(--secondary-font-color);
+  left: 1.7em;
+}
+
+#likes article .review {
+  width: 100%;
+}
+
+#likes article .review img {
+  width: 1.3em;
+}
+
+#likes article .price {
+  width: 100%;
+  top: 7em;
+}
+
+#likes article .price p {
+  color: var(--secondary-font-color);
+  font-weight: 200;
 }
 
 nav {
@@ -527,5 +588,4 @@ nav ul li.active {
   border: solid 0.25em;
   border-color: var(--button-color);
 }
-
 /*# sourceMappingURL=main.css.map */
