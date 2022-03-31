@@ -1,5 +1,3 @@
-console.log("swipes");
-
 const likeForm = document.getElementById("like");
 const dislikeForm = document.getElementById("dislike");
 const card = document.querySelector(".card");

@@ -23,6 +23,7 @@
   --emphasized-font-color: #304d6e;
   --secondary-font-color: #707070;
   --button-shadow: 0 0.2em 0.5em var(--light-shadow-color);
+  --shake: shake 0.2s ease-in-out 0s 2;
 }
 
 body {
@@ -73,7 +74,8 @@ h4,
 p,
 button,
 a,
-label {
+label,
+#error {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
@@ -415,6 +417,64 @@ label {
   color: var(--input-color);
   -webkit-box-shadow: var(--button-shadow);
           box-shadow: var(--button-shadow);
+}
+
+#error {
+  position: absolute;
+  bottom: -2%;
+  left: 48%;
+  height: 2.5em;
+  padding: 0.5em 1em 0.5em 2em;
+  margin-bottom: 2em;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border: 0.1em solid #b30000;
+  border-radius: .5em;
+  background-color: #b30000;
+  display: none;
+  font-weight: 200;
+}
+
+.emptyinput {
+  display: unset !important;
+}
+
+.wronginput {
+  outline: 0.2em solid #b30000 !important;
+  -webkit-box-shadow: 0 0 2em #b30000;
+          box-shadow: 0 0 2em #b30000;
+  -webkit-animation: var(--shake);
+          animation: var(--shake);
+}
+
+@-webkit-keyframes shake {
+  0% {
+    margin-left: 0em;
+  }
+  25% {
+    margin-left: 0.5em;
+  }
+  75% {
+    margin-left: -0.5em;
+  }
+  100% {
+    margin-left: 0em;
+  }
+}
+
+@keyframes shake {
+  0% {
+    margin-left: 0em;
+  }
+  25% {
+    margin-left: 0.5em;
+  }
+  75% {
+    margin-left: -0.5em;
+  }
+  100% {
+    margin-left: 0em;
+  }
 }
 
 header {

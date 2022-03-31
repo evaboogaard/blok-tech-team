@@ -76,18 +76,6 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
-// router.post('/delete', (req, res) => {
-//     User.findOneAndDelete({id: req.body._id }).then(
-//         res.render('welcome')
-//     ).catch((error) => {
-//         res.status(400).json({
-//             error: error
-//         });
-//     })
-    
-//   });
-
-
 
 //  deleting the users account
 router.post("/delete", (req, res) => {
