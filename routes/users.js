@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const passport = require('passport');
+
+const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
 
 const nodemailer = require("nodemailer");
 
@@ -25,8 +28,43 @@ router.post("/createaccount", async (req, res) => {
       return res.status(500).redirect("createaccount");
     } else {
       console.log("Account aangemaakt!");
+    }
+})
+});
 
-      let transporter = nodemailer.createTransport({
+router.get('/overviewaccount', ensureAuthenticated, (req, res) =>
+  User.find( { }, (error, users) => {
+    res.render('overviewaccount', {
+      fname: req.user.fname,
+      lname: req.user.lname,
+      email: req.user.email
+    })
+  })  
+);
+
+//Login
+router.get('/login', forwardAuthenticated, (req, res) => {
+    res.render('login', {'title': 'Log In'});
+});
+
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+      successRedirect: '/overviewaccount',
+      failureRedirect: '/login',
+      failureFlash: true
+    })(req, res, next);
+  });
+
+router.post('/delete', (req, res) => {
+    User.findOneAndDelete({id: req.body._id }).then(
+        res.render('welcome')
+    ).catch((error) => {
+        res.status(400).json({
+            error: error
+        });
+    })
+      
+    let transporter = nodemailer.createTransport({
         service: "hotmail",
         auth: {
           user: "dinder.co@hotmail.com",
@@ -46,34 +84,10 @@ router.post("/createaccount", async (req, res) => {
         lname: user.lname,
         email: user.email,
       });
-    }
+    
   });
-});
 
-router.post("/login", async (req, res) => {
-  try {
-    const getUser = await User.findOne({ email: req.body.email });
-    if (getUser) {
-      const comparePassword = await bcrypt.compare(
-        req.body.password,
-        getUser.password
-      );
-      if (comparePassword) {
-        console.log("It's a great success!");
-        return res.status(200).redirect("/overviewaccount");
-      } else {
-        console.error("Wrong e-mail or password!");
-        return res.status(404).redirect("/login");
-      }
-    } else {
-      console.error("Wrong e-mail or password!!");
-      return res.status(404).redirect("/login");
-    }
-  } catch (error) {
-    console.error(error);
-    return res.status(500).redirect("/login");
-  }
-});
+
 
 //  deleting the users account
 router.post("/delete", (req, res) => {
@@ -85,6 +99,7 @@ router.post("/delete", (req, res) => {
       });
     });
 });
+
 
 // updating the users account
 router.post("/update", (req, res) => {
