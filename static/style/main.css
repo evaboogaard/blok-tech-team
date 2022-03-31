@@ -107,8 +107,8 @@ label,
 
 .welcome img.hide,
 .welcome button.hide {
-  -webkit-animation: hide 3s ease-in;
-          animation: hide 3s ease-in;
+  -webkit-animation: hide 3s ease;
+          animation: hide 3s ease;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
@@ -506,7 +506,6 @@ header section p {
 }
 
 #likes {
-  height: 100%;
   overflow: scroll;
 }
 
@@ -628,8 +627,15 @@ header section p {
   font-weight: 200;
 }
 
-#likes article:last-of-type {
-  margin-bottom: 30em;
+/* Cool Javascript scroll animation */
+.animate {
+  opacity: 0;
+  -webkit-transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in;
+}
+
+.animate.fade {
+  opacity: 1;
 }
 
 nav {
