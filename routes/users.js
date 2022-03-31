@@ -89,16 +89,25 @@ router.post('/delete', (req, res) => {
 
 
 
+//  deleting the users account
+router.post("/delete", (req, res) => {
+  User.findOneAndDelete({ id: req.body._id })
+    .then(res.render("welcome"))
+    .catch((error) => {
+      res.status(400).json({
+        error: error,
+      });
+    });
+});
 
-// router.post("/delete", (req, res) => {
-//   User.findOneAndDelete({ id: req.body._id })
-//     .then(res.render("welcome"))
-//     .catch((error) => {
-//       res.status(400).json({
-//         error: error,
-//       });
-//     });
-// });
+
+// updating the users account
+router.post("/update", (req, res) => {
+  User.findOneAndUpdate({ id: req.body_id })
+  
+}); 
+
+
 
 
 module.exports = router;
