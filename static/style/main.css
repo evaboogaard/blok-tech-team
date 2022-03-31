@@ -329,16 +329,15 @@ label {
           box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
 }
 
+.forms a,
 .forms button {
   position: absolute;
-  height: 3em;
-  width: 12em;
+  padding: 1em 0 1em 0;
+  width: 14em;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   left: 50%;
-  bottom: 7%;
-  background-color: var(--like-dislike-buttons);
-  border-radius: 2em;
+  border-radius: 4em;
   border: none;
   -webkit-box-shadow: var(--button-shadow);
           box-shadow: var(--button-shadow);
@@ -347,6 +346,18 @@ label {
   text-align: center;
   font-weight: 300;
   color: var(--button-color);
+}
+
+.forms a {
+  background-color: var(--like-dislike-buttons);
+  bottom: 10em;
+}
+
+.forms button {
+  position: absolute;
+  background-color: var(--button-color);
+  bottom: 15em;
+  color: var(--input-color);
 }
 
 header {

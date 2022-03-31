@@ -51,18 +51,18 @@
         border-radius: .8em;
         box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
     }
+    a,
     button{
         position: absolute;
 
-        height: 3em;
-        width: 12em;
+        padding: 1em 0 1em 0;
+
+        width: 14em;
 
         transform: translate(-50%, -50%);
         left: 50%;
-        bottom: 7%;
        
-        background-color: var(--like-dislike-buttons);
-        border-radius: 2em;
+        border-radius: 4em;
         border: none; 
         box-shadow: var(--button-shadow);
     
@@ -71,7 +71,18 @@
         text-align: center;
         font-weight: 300;
         color: var(--button-color);
-    
+    }
+
+    a{
+        background-color: var(--like-dislike-buttons);
+        bottom: 10em;
+    }
+
+    button{
+        position: absolute;
+        background-color: var(--button-color);
+        bottom: 15em;
+        color: var(--input-color);
     }
 
 }

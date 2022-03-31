@@ -1,10 +1,12 @@
+<body class="forms">
+     
 {{>header}}
 
 <main>
       <h1> Login </h1>
 
+      <form action="/login" id="login" method="POST">
       <fieldset>
-      <form action="/login" method="POST">
           <label for="email">Email</label>
           <input
             type="email"
@@ -25,8 +27,11 @@
             placeholder="Enter Password"
           />
         </fieldset> 
-        <button type="submit" >Login</button>
       </form>
+
+        <button type="submit" form="login">Login</button>
       
       <a href="createaccount">Register</a>
 </main>
+
+</body>
