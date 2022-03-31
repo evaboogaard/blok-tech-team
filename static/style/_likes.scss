@@ -5,6 +5,8 @@
         background-color: var(--nav-color);
         margin-bottom: 1em;
         color: var(--primary-font-color);
+        position: relative;
+
 
         * {
             position: absolute;
@@ -26,6 +28,7 @@
     article{
         background-color: var(--input-color);
         display: flex;
+        height: 10em;
         position: relative;
         padding: 1em;
         margin: 1em 1em 2em 1em;
@@ -36,7 +39,9 @@
 
         div>img{
             width: 8em;
+            height: 8em;
             border-radius: 1em;
+            object-fit: cover;
         }
 
         h2{
@@ -93,7 +98,7 @@
         .review{
             width: 100%;
             img{
-                width: 1.3em;
+                height: 1.3em;
             }
         }
 

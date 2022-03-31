@@ -181,7 +181,7 @@ label {
   width: 86%;
   height: 35em;
   margin: 20% 0 20% 7%;
-  background-color: var(--light-color);
+  background-color: var(--input-color);
   border-radius: 1em;
   -webkit-box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
           box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
@@ -194,7 +194,7 @@ label {
           transform: translateX(-50%);
   left: 50%;
   top: -6%;
-  color: var(--light-color);
+  color: var(--input-color);
   font-weight: 300;
   text-align: center;
 }
@@ -255,6 +255,12 @@ label {
 .card .time p {
   position: absolute;
   left: 4.3em;
+}
+
+.card .stars img {
+  height: 2em;
+  top: 25em;
+  left: 6em;
 }
 
 .card form {
@@ -393,6 +399,7 @@ header section p {
   background-color: var(--nav-color);
   margin-bottom: 1em;
   color: var(--primary-font-color);
+  position: relative;
 }
 
 #likes #head * {
@@ -417,6 +424,7 @@ header section p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 10em;
   position: relative;
   padding: 1em;
   margin: 1em 1em 2em 1em;
@@ -431,7 +439,10 @@ header section p {
 
 #likes article div > img {
   width: 8em;
+  height: 8em;
   border-radius: 1em;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #likes article h2 {
@@ -492,7 +503,7 @@ header section p {
 }
 
 #likes article .review img {
-  width: 1.3em;
+  height: 1.3em;
 }
 
 #likes article .price {
