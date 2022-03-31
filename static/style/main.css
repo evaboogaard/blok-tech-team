@@ -280,6 +280,29 @@ label {
   right: 8%;
 }
 
+.card.swipe {
+  -webkit-animation: swipe 3s once;
+          animation: swipe 3s once;
+}
+
+@-webkit-keyframes swipe {
+  0% {
+    left: 0;
+  }
+  100% {
+    right: -20em;
+  }
+}
+
+@keyframes swipe {
+  0% {
+    left: 0;
+  }
+  100% {
+    right: -20em;
+  }
+}
+
 .forms body {
   position: relative;
   font-family: Poppins;
@@ -408,7 +431,8 @@ header section p {
 }
 
 #likes {
-  height: 50em;
+  height: 100%;
+  overflow: scroll;
 }
 
 #likes #head {
@@ -527,6 +551,10 @@ header section p {
 #likes article .price p {
   color: var(--secondary-font-color);
   font-weight: 200;
+}
+
+#likes article:last-of-type {
+  margin-bottom: 10em;
 }
 
 nav {

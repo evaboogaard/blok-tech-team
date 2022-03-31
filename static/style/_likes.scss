@@ -1,5 +1,7 @@
 #likes{
-    height: 50em;
+    height: 100%;
+    overflow: scroll;
+
 
     #head{
         padding: 2.2em;
@@ -111,5 +113,8 @@
                 font-weight: 200;
             }
         }
+    }
+    article:last-of-type{
+        margin-bottom: 10em;
     }
 }

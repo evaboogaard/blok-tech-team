@@ -104,3 +104,17 @@
     right: 8%;
   }
 }
+
+.card.swipe{
+  animation: swipe 3s once;
+}
+
+@keyframes swipe{
+  0%{
+    left: 0;
+  }
+
+  100%{
+    right: -20em;
+  }
+}
