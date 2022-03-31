@@ -23,7 +23,6 @@ app.use(passport.session());
 
 // Models
 const restaurant = require("./models/restaurant");
-const User = require("./models/user")
 
 // Database
 require("dotenv").config();
@@ -63,8 +62,9 @@ app.get('/home', async (req, res) => {
 });
 
 // User liked restaurant
-app.post("/like", async (req, res) => {
+app.post("/like", async (req, res, next) => {
   try {
+    {setTimeout(next,10000)}
     await restaurant
       .findOneAndUpdate({ preference: "" }, { preference: "like" })
       .lean()
