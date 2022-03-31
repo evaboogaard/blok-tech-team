@@ -34,11 +34,23 @@ router.get('/overviewaccount', (req, res) => {
 });
 
 
-
 // Filter
 
 router.get('/filter', (req, res) => {
     res.render('filter', {'title': 'Filter'});
 });
+
+// Delete page 
+
+router.get('/delete', (req, res) => {
+    res.render('delete', {'title': 'Delete'}); 
+
+}); 
+
+// Update page 
+
+router.get('/update', (req, res) =>{
+    res.render('update', {'title': 'Update'});
+}); 
 
 module.exports = router;

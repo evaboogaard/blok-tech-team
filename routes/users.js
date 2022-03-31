@@ -75,6 +75,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+//  deleting the users account
 router.post("/delete", (req, res) => {
   User.findOneAndDelete({ id: req.body._id })
     .then(res.render("welcome"))
@@ -84,5 +85,14 @@ router.post("/delete", (req, res) => {
       });
     });
 });
+
+// updating the users account
+router.post("/update", (req, res) => {
+  User.findOneAndUpdate({ id: req.body_id })
+  
+}); 
+
+
+
 
 module.exports = router;
