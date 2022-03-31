@@ -280,26 +280,41 @@ label {
   right: 8%;
 }
 
-.card.swipe {
-  -webkit-animation: swipe 3s once;
-          animation: swipe 3s once;
+.card.like {
+  -webkit-animation: like 2s;
+          animation: like 2s;
 }
 
-@-webkit-keyframes swipe {
-  0% {
-    left: 0;
-  }
-  100% {
-    right: -20em;
+@-webkit-keyframes like {
+  to {
+    -webkit-transform: rotate(20deg) translateX(30em) translateY(-20em);
+            transform: rotate(20deg) translateX(30em) translateY(-20em);
   }
 }
 
-@keyframes swipe {
-  0% {
-    left: 0;
+@keyframes like {
+  to {
+    -webkit-transform: rotate(20deg) translateX(30em) translateY(-20em);
+            transform: rotate(20deg) translateX(30em) translateY(-20em);
   }
-  100% {
-    right: -20em;
+}
+
+.card.dislike {
+  -webkit-animation: dislike 2s;
+          animation: dislike 2s;
+}
+
+@-webkit-keyframes dislike {
+  to {
+    -webkit-transform: rotate(-20deg) translateX(-30em) translateY(-20em);
+            transform: rotate(-20deg) translateX(-30em) translateY(-20em);
+  }
+}
+
+@keyframes dislike {
+  to {
+    -webkit-transform: rotate(-20deg) translateX(-30em) translateY(-20em);
+            transform: rotate(-20deg) translateX(-30em) translateY(-20em);
   }
 }
 
