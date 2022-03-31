@@ -105,16 +105,22 @@
   }
 }
 
-.card.swipe{
-  animation: swipe 3s once;
+.card.like{
+  animation: like 2s;
 }
 
-@keyframes swipe{
-  0%{
-    left: 0;
+@keyframes like{
+  to {
+    transform: rotate(20deg) translateX(30em) translateY(-20em);
   }
+}
 
-  100%{
-    right: -20em;
+.card.dislike{
+  animation: dislike 2s;
+}
+
+@keyframes dislike{
+  to {
+    transform: rotate(-20deg) translateX(-30em) translateY(-20em);
   }
 }

@@ -1,9 +1,23 @@
 console.log("swipes");
 
-const likeButton = document.getElementById("likebutton");
-// const dislikeButton = document.getElementById("dislikebutton");
+const likeForm = document.getElementById("like");
+const dislikeForm = document.getElementById("dislike");
 const card = document.querySelector(".card");
 
-likeButton.addEventListener("click", () => {
-    card.classList.add("swipe")
+likeForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  card.classList.add("like");
+
+  card.addEventListener("animationend", () => {
+    likeForm.submit();
+  });
+});
+
+dislikeForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    card.classList.add("dislike");
+  
+    card.addEventListener("animationend", () => {
+      dislikeForm.submit();
+    });
   });
