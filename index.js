@@ -2,6 +2,24 @@
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const flash = require('connect-flash');
+const session = require('express-session');
+
+const passport = require('passport')
+require('./config/passport')(passport);
+
+app.use(flash());
+
+//Express session
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Models
 const restaurant = require("./models/restaurant");
