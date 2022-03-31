@@ -1,10 +1,13 @@
 #likes{
+    height: 50em;
 
     #head{
         padding: 2.2em;
         background-color: var(--nav-color);
         margin-bottom: 1em;
         color: var(--primary-font-color);
+        position: relative;
+
 
         * {
             position: absolute;
@@ -26,6 +29,7 @@
     article{
         background-color: var(--input-color);
         display: flex;
+        height: 10em;
         position: relative;
         padding: 1em;
         margin: 1em 1em 2em 1em;
@@ -36,7 +40,9 @@
 
         div>img{
             width: 8em;
+            height: 8em;
             border-radius: 1em;
+            object-fit: cover;
         }
 
         h2{
@@ -59,7 +65,7 @@
 
         .location{
             top: 3.2em;
-            width: 100%;
+            width: 10em;
             img{
                 height: 1.3em;
             }
@@ -75,8 +81,8 @@
 
         .time{
             bottom: 2.2em;
-            width: 100%;
-            left: 16.4em;
+            right: 0;
+            width: 8em;
             img{
                 width: 1em;
             }
@@ -91,16 +97,15 @@
         }
 
         .review{
-            width: 100%;
             img{
-                width: 1.3em;
+                height: 1.3em;
             }
         }
 
 
         .price{
-            width: 100%;
             top: 7em;
+            width: 8em;
             p{
                 color: var(--secondary-font-color);
                 font-weight: 200;

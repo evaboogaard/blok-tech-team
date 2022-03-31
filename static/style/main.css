@@ -181,7 +181,7 @@ label {
   width: 86%;
   height: 35em;
   margin: 20% 0 20% 7%;
-  background-color: var(--light-color);
+  background-color: var(--input-color);
   border-radius: 1em;
   -webkit-box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
           box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
@@ -194,7 +194,7 @@ label {
           transform: translateX(-50%);
   left: 50%;
   top: -6%;
-  color: var(--light-color);
+  color: var(--input-color);
   font-weight: 300;
   text-align: center;
 }
@@ -255,6 +255,12 @@ label {
 .card .time p {
   position: absolute;
   left: 4.3em;
+}
+
+.card .stars img {
+  height: 2em;
+  top: 25em;
+  left: 6em;
 }
 
 .card form {
@@ -339,8 +345,6 @@ label {
   left: 50%;
   border-radius: 4em;
   border: none;
-  -webkit-box-shadow: var(--button-shadow);
-          box-shadow: var(--button-shadow);
   font-size: 1.2em;
   text-decoration: none;
   text-align: center;
@@ -348,16 +352,31 @@ label {
   color: var(--button-color);
 }
 
-.forms a {
-  background-color: var(--like-dislike-buttons);
-  bottom: 10em;
+.create button {
+  bottom: 3em;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
 }
 
-.forms button {
+.create a {
+  left: 8em;
+  top: 3em;
+}
+
+.login a {
+  background-color: var(--like-dislike-buttons);
+  bottom: 10em;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
+}
+
+.login button {
   position: absolute;
   background-color: var(--button-color);
   bottom: 15em;
   color: var(--input-color);
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
 }
 
 header {
@@ -388,11 +407,16 @@ header section p {
   font-size: .8em;
 }
 
+#likes {
+  height: 50em;
+}
+
 #likes #head {
   padding: 2.2em;
   background-color: var(--nav-color);
   margin-bottom: 1em;
   color: var(--primary-font-color);
+  position: relative;
 }
 
 #likes #head * {
@@ -417,6 +441,7 @@ header section p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 10em;
   position: relative;
   padding: 1em;
   margin: 1em 1em 2em 1em;
@@ -431,7 +456,10 @@ header section p {
 
 #likes article div > img {
   width: 8em;
+  height: 8em;
   border-radius: 1em;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #likes article h2 {
@@ -454,7 +482,7 @@ header section p {
 
 #likes article .location {
   top: 3.2em;
-  width: 100%;
+  width: 10em;
 }
 
 #likes article .location img {
@@ -471,8 +499,8 @@ header section p {
 
 #likes article .time {
   bottom: 2.2em;
-  width: 100%;
-  left: 16.4em;
+  right: 0;
+  width: 8em;
 }
 
 #likes article .time img {
@@ -487,17 +515,13 @@ header section p {
   left: 1.7em;
 }
 
-#likes article .review {
-  width: 100%;
-}
-
 #likes article .review img {
-  width: 1.3em;
+  height: 1.3em;
 }
 
 #likes article .price {
-  width: 100%;
   top: 7em;
+  width: 8em;
 }
 
 #likes article .price p {
