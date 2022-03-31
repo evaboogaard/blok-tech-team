@@ -17,9 +17,9 @@
       <img src="../../static/images/time.png" alt="Time icon" />
       <p>{{data.time}}</p>
     </section>
-    {{! <section class="stars"> <!--Reviewscore -->
-            <img src="../../static/images/star.png" alt="Star icon">
-        </section> }}
+    <!--Reviewscore -->
+    <section class="stars"> 
+      <img src="../../static/images/{{data.stars}}.png" alt="Review stars">
     <section>
       <!--Like/dislike buttons -->
       <form action="/dislike" method="POST">
