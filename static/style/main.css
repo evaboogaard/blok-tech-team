@@ -345,8 +345,6 @@ label {
   left: 50%;
   border-radius: 4em;
   border: none;
-  -webkit-box-shadow: var(--button-shadow);
-          box-shadow: var(--button-shadow);
   font-size: 1.2em;
   text-decoration: none;
   text-align: center;
@@ -354,16 +352,31 @@ label {
   color: var(--button-color);
 }
 
-.forms a {
-  background-color: var(--like-dislike-buttons);
-  bottom: 10em;
+.create button {
+  bottom: 3em;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
 }
 
-.forms button {
+.create a {
+  left: 8em;
+  top: 3em;
+}
+
+.login a {
+  background-color: var(--like-dislike-buttons);
+  bottom: 10em;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
+}
+
+.login button {
   position: absolute;
   background-color: var(--button-color);
   bottom: 15em;
   color: var(--input-color);
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
 }
 
 header {
@@ -392,6 +405,10 @@ header section p {
   right: 2em;
   font-weight: 300;
   font-size: .8em;
+}
+
+#likes {
+  height: 50em;
 }
 
 #likes #head {
@@ -465,7 +482,7 @@ header section p {
 
 #likes article .location {
   top: 3.2em;
-  width: 100%;
+  width: 10em;
 }
 
 #likes article .location img {
@@ -482,8 +499,8 @@ header section p {
 
 #likes article .time {
   bottom: 2.2em;
-  width: 100%;
-  left: 16.4em;
+  right: 0;
+  width: 8em;
 }
 
 #likes article .time img {
@@ -498,17 +515,13 @@ header section p {
   left: 1.7em;
 }
 
-#likes article .review {
-  width: 100%;
-}
-
 #likes article .review img {
   height: 1.3em;
 }
 
 #likes article .price {
-  width: 100%;
   top: 7em;
+  width: 8em;
 }
 
 #likes article .price p {

@@ -64,7 +64,6 @@
        
         border-radius: 4em;
         border: none; 
-        box-shadow: var(--button-shadow);
     
         font-size: 1.2em;
         text-decoration: none;
@@ -73,17 +72,29 @@
         color: var(--button-color);
     }
 
-    a{
-        background-color: var(--like-dislike-buttons);
-        bottom: 10em;
-    }
+}
 
-    button{
-        position: absolute;
-        background-color: var(--button-color);
-        bottom: 15em;
-        color: var(--input-color);
-    }
+.create button{
+    bottom: 3em;
+    box-shadow: var(--button-shadow);
+}
+
+.create a{
+    left: 8em;
+    top: 3em;
+}
+
+.login a{
+    background-color: var(--like-dislike-buttons);
+    bottom: 10em;
+    box-shadow: var(--button-shadow);
 
 }
 
+.login button{
+    position: absolute;
+    background-color: var(--button-color);
+    bottom: 15em;
+    color: var(--input-color);
+    box-shadow: var(--button-shadow);
+}

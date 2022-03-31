@@ -1,4 +1,5 @@
 #likes{
+    height: 50em;
 
     #head{
         padding: 2.2em;
@@ -64,7 +65,7 @@
 
         .location{
             top: 3.2em;
-            width: 100%;
+            width: 10em;
             img{
                 height: 1.3em;
             }
@@ -80,8 +81,8 @@
 
         .time{
             bottom: 2.2em;
-            width: 100%;
-            left: 16.4em;
+            right: 0;
+            width: 8em;
             img{
                 width: 1em;
             }
@@ -96,7 +97,6 @@
         }
 
         .review{
-            width: 100%;
             img{
                 height: 1.3em;
             }
@@ -104,8 +104,8 @@
 
 
         .price{
-            width: 100%;
             top: 7em;
+            width: 8em;
             p{
                 color: var(--secondary-font-color);
                 font-weight: 200;
