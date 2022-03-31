@@ -63,15 +63,14 @@ app.get('/home', async (req, res) => {
 
 // User liked restaurant
 app.post("/like", async (req, res) => {
+  PORT.timeout = 10000;
   try {
     await restaurant
       .findOneAndUpdate({ preference: "" }, { preference: "like" })
       .lean()
       .exec();
     const data = await restaurant.findOne({ preference: "" }).lean().exec();
-    setTimeout(() => {
-      res.render("home", { data: data });
-    }, 1000);
+    res.render("home", { data: data });
   } catch {
     console.log("fout bij liken");
   }
@@ -85,9 +84,7 @@ app.post("/dislike", async (req, res) => {
       .lean()
       .exec();
     const data = await restaurant.findOne({ preference: "" }).lean().exec();
-    setTimeout(() => {
-      res.render("home", { data: data });
-    }, 1000);
+    res.render("home", { data: data });
   } catch {
     console.log("fout bij disliken");
   }
