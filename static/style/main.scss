@@ -22,6 +22,7 @@ $emphasized-font-color: #304d6e;
 $secondary-font-color: #707070;
 $button-shadow: 0 0.2em 0.5em var(--light-shadow-color);
 $shake: shake 0.2s ease-in-out 0s 2;
+$err-color: rgb(179, 0, 0);
 
 
 :root {
@@ -38,6 +39,7 @@ $shake: shake 0.2s ease-in-out 0s 2;
   --secondary-font-color: #{$secondary-font-color};
   --button-shadow: #{$button-shadow};
   --shake: #{$shake};
+  --err-color: #{$err-color};
 }
 
 body {
@@ -94,4 +96,4 @@ label,
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
-@import "welcome", "account", "card", "forms", "header", "likes", "nav", "filter";
+@import "welcome", "account", "card", "forms", "header", "likes", "nav", "filter", "delete";
