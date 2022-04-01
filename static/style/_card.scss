@@ -107,6 +107,7 @@
 
 .card.like{
   animation: like 2s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes like{
@@ -117,6 +118,7 @@
 
 .card.dislike{
   animation: dislike 2s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes dislike{

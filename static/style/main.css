@@ -285,6 +285,8 @@ label,
 .card.like {
   -webkit-animation: like 2s;
           animation: like 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes like {
@@ -304,6 +306,8 @@ label,
 .card.dislike {
   -webkit-animation: dislike 2s;
           animation: dislike 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes dislike {
