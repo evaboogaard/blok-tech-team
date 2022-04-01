@@ -63,7 +63,6 @@ app.get('/home', async (req, res) => {
 
 // User liked restaurant
 app.post("/like", async (req, res) => {
-  PORT.timeout = 10000;
   try {
     await restaurant
       .findOneAndUpdate({ preference: "" }, { preference: "like" })

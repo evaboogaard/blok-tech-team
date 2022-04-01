@@ -8,62 +8,30 @@
       <form action="/createaccount" id="register" method="POST">
         <fieldset>
           <label for="fname">First name</label>
-          <input
-            type="fname"
-            id="fname"
-            name="fname"
-            placeholder="Enter Name"
-            value=""
-            required
-          />
+          <input type="fname" id="fname" name="fname" placeholder="Enter Name" value="" required>
         </fieldset>
 
         <fieldset>
           <label for="lname">Last name</label>
-          <input
-            type="lname"
-            id="lname"
-            name="lname"
-            placeholder="Enter Name"
-            value=""
-            required
-          />
+          <input type="lname" id="lname" name="lname" placeholder="Enter Name" value="" required>
         </fieldset>
-
 
         <fieldset>
           <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter Email"
-            value=""
-            required
-          />
+          <input type="email" id="email" name="email" placeholder="Enter Email" value="" required>   
         </fieldset>
+
         <fieldset>
           <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Create Password"
-            value=""
-            required
-          />
+          <input type="password" id="password" name="password" placeholder="Create Password" value="" required>
         </fieldset>
+
         <fieldset>
           <label for="password2">Confirm Password</label>
-          <input
-            type="password"
-            id="password2"
-            name="password2"
-            placeholder="Confirm Password"
-            value=""
-            required
-          />
+          <input type="password" id="password2" name="password2" placeholder="Confirm Password" value="" required>
         </fieldset>
+
+        <div id="error"></div>
         
         <button type="submit" form="register">
           Create Account
@@ -71,6 +39,8 @@
         
       </form>
 </main>     
+
+<script src="static/javascript/forms.js"></script>
   
 </body>
  

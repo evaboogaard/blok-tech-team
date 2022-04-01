@@ -21,6 +21,8 @@ $primary-font-color: #637c98;
 $emphasized-font-color: #304d6e;
 $secondary-font-color: #707070;
 $button-shadow: 0 0.2em 0.5em var(--light-shadow-color);
+$shake: shake 0.2s ease-in-out 0s 2;
+
 
 :root {
   --background: #{$background};
@@ -35,6 +37,7 @@ $button-shadow: 0 0.2em 0.5em var(--light-shadow-color);
   --emphasized-font-color: #{$emphasized-font-color};
   --secondary-font-color: #{$secondary-font-color};
   --button-shadow: #{$button-shadow};
+  --shake: #{$shake};
 }
 
 body {
@@ -86,7 +89,8 @@ h4,
 p,
 button,
 a,
-label{
+label,
+#error{
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
 
