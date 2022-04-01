@@ -42,6 +42,7 @@
       height: 8em;
       border-radius: 1em;
       object-fit: cover;
+      transition: 1s;
     }
 
     h2 {
@@ -79,6 +80,8 @@
     }
 
     .time {
+      transition: 1s;
+      opacity: 100%;
       bottom: 2.2em;
       right: 0;
       width: 8em;
@@ -109,6 +112,19 @@
         font-weight: 200;
       }
     }
+
+    button {
+      right: 1.5em;
+      bottom: 1.2em;
+      background-color: var(--err-color);
+      border: none;
+      padding: 1em 3em 1em 3em;
+      border-radius: 2em;
+      color: var(--input-color);
+      font-weight: 200;
+      opacity: 0%;
+      transition: 1s;
+    }
   }
   // article:last-of-type{
   //     margin-bottom: 30em;
@@ -125,75 +141,16 @@
   opacity: 1;
 }
 
-#likes article.unlike{
-        div > img {
-          width: 4em;
-        }
-    
-        h2 {
-          font-size: 1.2em;
-          top: 1em;
-          font-weight: 300;
-          color: var(--primary-font-color);
-        }
-    
-        section {
-          display: flex;
-          gap: 0.5em;
-        }
-    
-        div:last-of-type {
-          * {
-            position: absolute;
-          }
-        }
-    
-        .location {
-          top: 3.2em;
-          width: 10em;
-          img {
-            height: 1.3em;
-          }
-    
-          p {
-            top: -0.1em;
-            left: 1.5em;
-            font-weight: 200;
-            font-size: 0.9em;
-            color: var(--secondary-font-color);
-          }
-        }
-    
-        .time {
-          bottom: 2.2em;
-          right: 0;
-          width: 8em;
-          img {
-            width: 1em;
-          }
-    
-          p {
-            top: -0.15em;
-            font-weight: 300;
-            font-size: 0.9em;
-            color: var(--secondary-font-color);
-            left: 1.7em;
-          }
-        }
-    
-        .review {
-          img {
-            height: 1.3em;
-          }
-        }
-    
-        .price {
-          top: 7em;
-          width: 8em;
-          p {
-            color: var(--secondary-font-color);
-            font-weight: 200;
-          }
-        }
+#likes article.unlike {
+  div > img {
+    width: 2em;
+  }
 
+  .time {
+    opacity: 0;
+  }
+
+  button {
+    opacity: 100%;
+  }
 }

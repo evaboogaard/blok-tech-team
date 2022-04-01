@@ -24,6 +24,7 @@
   --secondary-font-color: #707070;
   --button-shadow: 0 0.2em 0.5em var(--light-shadow-color);
   --shake: shake 0.2s ease-in-out 0s 2;
+  --err-color: #b30000;
 }
 
 body {
@@ -562,6 +563,8 @@ header section p {
   border-radius: 1em;
   -o-object-fit: cover;
      object-fit: cover;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
 #likes article h2 {
@@ -600,6 +603,9 @@ header section p {
 }
 
 #likes article .time {
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 100%;
   bottom: 2.2em;
   right: 0;
   width: 8em;
@@ -631,6 +637,20 @@ header section p {
   font-weight: 200;
 }
 
+#likes article button {
+  right: 1.5em;
+  bottom: 1.2em;
+  background-color: var(--err-color);
+  border: none;
+  padding: 1em 3em 1em 3em;
+  border-radius: 2em;
+  color: var(--input-color);
+  font-weight: 200;
+  opacity: 0%;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
 /* Cool Javascript scroll animation */
 .animate {
   opacity: 0;
@@ -643,74 +663,15 @@ header section p {
 }
 
 #likes article.unlike div > img {
-  width: 4em;
-}
-
-#likes article.unlike h2 {
-  font-size: 1.2em;
-  top: 1em;
-  font-weight: 300;
-  color: var(--primary-font-color);
-}
-
-#likes article.unlike section {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 0.5em;
-}
-
-#likes article.unlike div:last-of-type * {
-  position: absolute;
-}
-
-#likes article.unlike .location {
-  top: 3.2em;
-  width: 10em;
-}
-
-#likes article.unlike .location img {
-  height: 1.3em;
-}
-
-#likes article.unlike .location p {
-  top: -0.1em;
-  left: 1.5em;
-  font-weight: 200;
-  font-size: 0.9em;
-  color: var(--secondary-font-color);
+  width: 2em;
 }
 
 #likes article.unlike .time {
-  bottom: 2.2em;
-  right: 0;
-  width: 8em;
+  opacity: 0;
 }
 
-#likes article.unlike .time img {
-  width: 1em;
-}
-
-#likes article.unlike .time p {
-  top: -0.15em;
-  font-weight: 300;
-  font-size: 0.9em;
-  color: var(--secondary-font-color);
-  left: 1.7em;
-}
-
-#likes article.unlike .review img {
-  height: 1.3em;
-}
-
-#likes article.unlike .price {
-  top: 7em;
-  width: 8em;
-}
-
-#likes article.unlike .price p {
-  color: var(--secondary-font-color);
-  font-weight: 200;
+#likes article.unlike button {
+  opacity: 100%;
 }
 
 nav {
