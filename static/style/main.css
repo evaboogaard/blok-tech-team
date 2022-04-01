@@ -396,6 +396,10 @@ label,
   color: var(--button-color);
 }
 
+.forms #update {
+  bottom: 12%;
+}
+
 .create button {
   bottom: 3em;
   -webkit-box-shadow: var(--button-shadow);
