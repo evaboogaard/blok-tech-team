@@ -10,7 +10,8 @@
         "_header.scss",
         "_likes.scss",
         "_nav.scss",
-        "_filter.scss"
+        "_filter.scss",
+        "_delete.scss"
     ],
     "names": [],
     "file": "main.css"
