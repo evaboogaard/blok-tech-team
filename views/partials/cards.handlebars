@@ -22,14 +22,14 @@
       <img src="../../static/images/{{data.stars}}.png" alt="Review stars">
     <section>
       <!--Like/dislike buttons -->
-      <form action="/dislike" method="POST">
+      <form id="dislike" action="/dislike" method="POST">
         <input
           type="image"
           src="../../static/images/dislike.png"
           alt="Dislike button"
         />
       </form>
-      <form action="/like" method="POST">
+      <form id="like" action="/like" method="POST">
         <input
           type="image"
           src="../../static/images/likes.png"
@@ -39,3 +39,5 @@
     </section>
   </article>
 </main>
+
+<script src="static/javascript/swipe.js"></script>

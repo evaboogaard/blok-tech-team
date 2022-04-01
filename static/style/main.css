@@ -280,6 +280,44 @@ label {
   right: 8%;
 }
 
+.card.like {
+  -webkit-animation: like 2s;
+          animation: like 2s;
+}
+
+@-webkit-keyframes like {
+  to {
+    -webkit-transform: rotate(20deg) translateX(30em) translateY(-20em);
+            transform: rotate(20deg) translateX(30em) translateY(-20em);
+  }
+}
+
+@keyframes like {
+  to {
+    -webkit-transform: rotate(20deg) translateX(30em) translateY(-20em);
+            transform: rotate(20deg) translateX(30em) translateY(-20em);
+  }
+}
+
+.card.dislike {
+  -webkit-animation: dislike 2s;
+          animation: dislike 2s;
+}
+
+@-webkit-keyframes dislike {
+  to {
+    -webkit-transform: rotate(-20deg) translateX(-30em) translateY(-20em);
+            transform: rotate(-20deg) translateX(-30em) translateY(-20em);
+  }
+}
+
+@keyframes dislike {
+  to {
+    -webkit-transform: rotate(-20deg) translateX(-30em) translateY(-20em);
+            transform: rotate(-20deg) translateX(-30em) translateY(-20em);
+  }
+}
+
 .forms body {
   position: relative;
   font-family: Poppins;
@@ -408,7 +446,8 @@ header section p {
 }
 
 #likes {
-  height: 50em;
+  height: 100%;
+  overflow: scroll;
 }
 
 #likes #head {
@@ -527,6 +566,10 @@ header section p {
 #likes article .price p {
   color: var(--secondary-font-color);
   font-weight: 200;
+}
+
+#likes article:last-of-type {
+  margin-bottom: 30em;
 }
 
 nav {

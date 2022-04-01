@@ -104,3 +104,23 @@
     right: 8%;
   }
 }
+
+.card.like{
+  animation: like 2s;
+}
+
+@keyframes like{
+  to {
+    transform: rotate(20deg) translateX(30em) translateY(-20em);
+  }
+}
+
+.card.dislike{
+  animation: dislike 2s;
+}
+
+@keyframes dislike{
+  to {
+    transform: rotate(-20deg) translateX(-30em) translateY(-20em);
+  }
+}

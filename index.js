@@ -23,7 +23,6 @@ app.use(passport.session());
 
 // Models
 const restaurant = require("./models/restaurant");
-const User = require("./models/user")
 
 // Database
 require("dotenv").config();
@@ -77,6 +76,7 @@ app.get('/home', async (req, res) => {
 // });
 
 app.post("/like", async (req, res) => {
+  PORT.timeout = 10000;
   try {
     // await restaurant
     //   .findOneAndUpdate({ name: "The Breakfast Club" }, {$push: {likedby: ["mij"]}})
