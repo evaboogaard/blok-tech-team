@@ -76,7 +76,6 @@ app.get('/home', async (req, res) => {
 // });
 
 app.post("/like", async (req, res) => {
-  PORT.timeout = 10000;
   try {
     // await restaurant
     //   .findOneAndUpdate({ name: "The Breakfast Club" }, {$push: {likedby: ["mij"]}})

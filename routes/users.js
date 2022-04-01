@@ -5,11 +5,11 @@ const bodyParser = require("body-parser");
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const passport = require('passport');
+const passport = require("passport");
 
-const { ensureAuthenticated, forwardAuthenticated } = require('../config/auth');
+const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 
@@ -29,20 +29,21 @@ router.post("/createaccount", async (req, res) => {
     } else {
       console.log("Account aangemaakt!");
 
-      let transporter = nodemailer.createTransport({
-        service: "hotmail",
-        auth: {
-          user: "dinder.co@hotmail.com",
-          pass: "dinder420",
-        },
-      });
+      // laat dit ff in comments want ik kreeg een melding dat ik spam veroorzaakte HAHAHHAHAH
+      // let transporter = nodemailer.createTransport({
+      //   service: "hotmail",
+      //   auth: {
+      //     user: "dinder.co@hotmail.com",
+      //     pass: "dinder420",
+      //   },
+      // });
 
-      transporter.sendMail({
-        from: '"Dinder" <dinder.co@hotmail.com>', // sender
-        to: user.email, // receiver
-        subject: "Welcome to Dinder🍽!", // subject
-        text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
-      });
+      // transporter.sendMail({
+      //   from: '"Dinder" <dinder.co@hotmail.com>', // sender
+      //   to: user.email, // receiver
+      //   subject: "Welcome to Dinder🍽!", // subject
+      //   text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
+      // });
 
       return res.render("overviewaccount", {
         fname: user.fname,
@@ -50,49 +51,36 @@ router.post("/createaccount", async (req, res) => {
         email: user.email,
       });
     }
-})
+  });
 });
 
-router.get('/overviewaccount', ensureAuthenticated, (req, res) =>
-  User.find( { }, (error, users) => {
-    res.render('overviewaccount', {
+router.get("/overviewaccount", ensureAuthenticated, (req, res) =>
+  User.find({}, (error, users) => {
+    res.render("overviewaccount", {
       fname: req.user.fname,
       lname: req.user.lname,
-      email: req.user.email
-    })
-  })  
+      email: req.user.email,
+    });
+  })
 );
 
 //Login
-router.get('/login', forwardAuthenticated, (req, res) => {
-    res.render('login', {'title': 'Log In'});
+router.get("/login", forwardAuthenticated, (req, res) => {
+  res.render("login", { title: "Log In" });
 });
 
-router.post('/login', (req, res, next) => {
-    passport.authenticate('local', {
-      successRedirect: '/overviewaccount',
-      failureRedirect: '/login',
-      failureFlash: true
-    })(req, res, next);
-  });
-
-// router.post('/delete', (req, res) => {
-//     User.findOneAndDelete({id: req.body._id }).then(
-//         res.render('welcome')
-//     ).catch((error) => {
-//         res.status(400).json({
-//             error: error
-//         });
-//     })
-    
-//   });
-
-
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", {
+    successRedirect: "/overviewaccount",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })(req, res, next);
+});
 
 //  deleting the users account
 router.post("/delete", (req, res) => {
   User.findOneAndDelete({ id: req.body._id })
-    .then(res.render("welcome"))
+    .then(console.log("deleted account, yay!"), res.redirect("/"))
     .catch((error) => {
       res.status(400).json({
         error: error,
@@ -100,14 +88,10 @@ router.post("/delete", (req, res) => {
     });
 });
 
-
 // updating the users account
-router.post("/update", (req, res) => {
-  User.findOneAndUpdate({ id: req.body_id })
-  
-}); 
+// router.post("/update", (req, res) => {
+//   User.findOneAndUpdate({ id: req.body_id })
 
-
-
+// });
 
 module.exports = router;

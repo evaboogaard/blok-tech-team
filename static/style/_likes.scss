@@ -1,8 +1,6 @@
 #likes{
-    height: 100%;
     overflow: scroll;
-
-
+    
     #head{
         padding: 2.2em;
         background-color: var(--nav-color);
@@ -114,7 +112,17 @@
             }
         }
     }
-    article:last-of-type{
-        margin-bottom: 30em;
-    }
+    // article:last-of-type{
+    //     margin-bottom: 30em;
+    // }
 }
+
+/* Cool Javascript scroll animation */
+.animate {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+  }
+  
+  .animate.fade {
+    opacity: 1;
+  }
