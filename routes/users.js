@@ -28,6 +28,7 @@ router.post("/createaccount", async (req, res) => {
       return res.status(500).redirect("createaccount");
     } else {
       console.log("Account aangemaakt!");
+      console.log(req.body);
 
       // laat dit ff in comments want ik kreeg een melding dat ik spam veroorzaakte HAHAHHAHAH
       // let transporter = nodemailer.createTransport({
@@ -48,18 +49,18 @@ router.post("/createaccount", async (req, res) => {
       return res.render("overviewaccount", {
         fname: user.fname,
         lname: user.lname,
-        email: user.email,
+        email: user.email
       });
     }
   });
 });
 
 router.get("/overviewaccount", ensureAuthenticated, (req, res) =>
-  User.find({}, (error, users) => {
+  User.find({}, () => {
     res.render("overviewaccount", {
       fname: req.user.fname,
       lname: req.user.lname,
-      email: req.user.email,
+      email: req.user.email
     });
   })
 );
@@ -79,8 +80,8 @@ router.post("/login", (req, res, next) => {
 
 //  deleting the users account
 router.post("/delete", (req, res) => {
-  User.findOneAndDelete({ id: req.body._id })
-    .then(console.log("deleted account, yay!"), res.redirect("/"))
+    User.findByIdAndDelete({ id: req.body._id })
+    .then(res.redirect("/"))
     .catch((error) => {
       res.status(400).json({
         error: error,
