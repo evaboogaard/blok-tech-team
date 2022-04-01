@@ -396,6 +396,10 @@ label,
   color: var(--button-color);
 }
 
+.forms #update {
+  bottom: 12%;
+}
+
 .create button {
   bottom: 3em;
   -webkit-box-shadow: var(--button-shadow);
@@ -764,5 +768,43 @@ nav ul li.active {
   background-color: var(--nav-color);
   border: solid 0.25em;
   border-color: var(--button-color);
+}
+
+.delete {
+  height: 70%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+.delete p {
+  font-weight: 300;
+  font-size: 20px;
+  color: var(--button-color);
+}
+
+.delete a {
+  margin: 15px 0 0;
+  padding: 1em 3em 1em 3em;
+  left: 3.3em;
+  background-color: var(--button-color);
+  border-radius: 2em;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
+  text-decoration: none;
+  font-weight: 300;
+  color: var(--like-dislike-buttons);
 }
 /*# sourceMappingURL=main.css.map */
