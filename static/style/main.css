@@ -592,10 +592,10 @@ header section p {
 }
 
 #likes article .location p {
-  top: -.1em;
+  top: -0.1em;
   left: 1.5em;
   font-weight: 200;
-  font-size: .9em;
+  font-size: 0.9em;
   color: var(--secondary-font-color);
 }
 
@@ -610,9 +610,9 @@ header section p {
 }
 
 #likes article .time p {
-  top: -.15em;
+  top: -0.15em;
   font-weight: 300;
-  font-size: .9em;
+  font-size: 0.9em;
   color: var(--secondary-font-color);
   left: 1.7em;
 }
@@ -640,6 +640,77 @@ header section p {
 
 .animate.fade {
   opacity: 1;
+}
+
+#likes article.unlike div > img {
+  width: 4em;
+}
+
+#likes article.unlike h2 {
+  font-size: 1.2em;
+  top: 1em;
+  font-weight: 300;
+  color: var(--primary-font-color);
+}
+
+#likes article.unlike section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5em;
+}
+
+#likes article.unlike div:last-of-type * {
+  position: absolute;
+}
+
+#likes article.unlike .location {
+  top: 3.2em;
+  width: 10em;
+}
+
+#likes article.unlike .location img {
+  height: 1.3em;
+}
+
+#likes article.unlike .location p {
+  top: -0.1em;
+  left: 1.5em;
+  font-weight: 200;
+  font-size: 0.9em;
+  color: var(--secondary-font-color);
+}
+
+#likes article.unlike .time {
+  bottom: 2.2em;
+  right: 0;
+  width: 8em;
+}
+
+#likes article.unlike .time img {
+  width: 1em;
+}
+
+#likes article.unlike .time p {
+  top: -0.15em;
+  font-weight: 300;
+  font-size: 0.9em;
+  color: var(--secondary-font-color);
+  left: 1.7em;
+}
+
+#likes article.unlike .review img {
+  height: 1.3em;
+}
+
+#likes article.unlike .price {
+  top: 7em;
+  width: 8em;
+}
+
+#likes article.unlike .price p {
+  color: var(--secondary-font-color);
+  font-weight: 200;
 }
 
 nav {
