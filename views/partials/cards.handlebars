@@ -28,6 +28,7 @@
     <section>
       <!--Like/dislike buttons -->
       <form id="dislike" action="/dislike" method="POST">
+        <input type="hidden" name="_id" value="{{data._id}}">
         <input
           type="image"
           src="../../static/images/dislike.png"
@@ -35,6 +36,7 @@
         />
       </form>
       <form id="like" action="/like" method="POST">
+      <input type="hidden" name="_id" value="{{data._id}}">
         <input
           type="image"
           src="../../static/images/likes.png"
