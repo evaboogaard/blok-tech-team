@@ -3,9 +3,6 @@ const mongoose = require("mongoose");
 
 // userschema 
 const userSchema = new mongoose.Schema({
-    _id: {
-        type: String
-    },
     fname: {
         type: String,
         required: true

@@ -7,11 +7,14 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const passport = require("passport");
 
+let session;
+
 const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 
 // const nodemailer = require("nodemailer");
 
 router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
 
 router.post("/createaccount", async (req, res) => {
   const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -27,6 +30,8 @@ router.post("/createaccount", async (req, res) => {
       console.error(error);
       return res.status(500).redirect("createaccount");
     } else {
+      session = req.session;
+      session.email = req.body.email;
       console.log("Account aangemaakt!");
       console.log(req.body);
 
@@ -47,9 +52,9 @@ router.post("/createaccount", async (req, res) => {
       // });
 
       return res.render("overviewaccount", {
-        fname: user.fname,
-        lname: user.lname,
-        email: user.email
+        fname: req.body.fname,
+        lname: req.body.lname,
+        email: req.body.email,
       });
     }
   });
@@ -58,9 +63,9 @@ router.post("/createaccount", async (req, res) => {
 router.get("/overviewaccount", ensureAuthenticated, (req, res) =>
   User.find({}, () => {
     res.render("overviewaccount", {
-      fname: req.user.fname,
-      lname: req.user.lname,
-      email: req.user.email
+      fname: req.session.fname,
+      lname: req.session.lname,
+      email: req.session.email,
     });
   })
 );
@@ -80,8 +85,8 @@ router.post("/login", (req, res, next) => {
 
 //  deleting the users account
 router.post("/delete", (req, res) => {
-    User.findByIdAndDelete({ id: req.body._id })
-    .then(res.redirect("/"))
+  User.findOneAndDelete({ email: req.session.email })
+    .then(console.log(req.session.email), res.redirect("/delete"))
     .catch((error) => {
       res.status(400).json({
         error: error,
