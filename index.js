@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const flash = require('connect-flash');
 const session = require('express-session');
-
+const mongoose = require('mongoose');
 const passport = require('passport')
 require('./config/passport')(passport);
 
@@ -76,10 +76,20 @@ app.get('/home', async (req, res) => {
 // });
 
 app.post("/like", async (req, res) => {
+  console.log('yo')
+  console.log(req.session)
+  let restaurantId = mongoose.Types.ObjectId(req.body._id);
+
   try {
-    await restaurant.updateOne(
-      { name: "The Breakfast Club" },
-      { $push: { likedby : {user: req.body._id} } });
+    restaurant.updateOne(
+      { _id: restaurantId },
+      { $push: { likedby : { _id: `test` } }})
+      .then(succes => {
+        console.log('yay')
+      }).catch(error => {
+        console.log('nope');
+        console.log(error)
+      })
     const data = await restaurant.findOne({ preference: "" }).lean().exec();
     res.render("home", { data: data });
   } catch {
@@ -90,10 +100,9 @@ app.post("/like", async (req, res) => {
 // User disliked restaurant
 app.post("/dislike", async (req, res) => {
   try {
-    await restaurant
-      .findOneAndUpdate({ preference: "" }, { preference: "dislike" })
-      .lean()
-      .exec();
+    await restaurant.updateOne(
+      { name: req.body.name },
+      { $push: { dislikedby : {user: req.body._id} } });
     const data = await restaurant.findOne({ preference: "" }).lean().exec();
     res.render("home", { data: data });
   } catch {
