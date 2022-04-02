@@ -23,6 +23,7 @@ app.use(passport.session());
 
 // Models
 const restaurant = require("./models/restaurant");
+const user = require("./models/user");
 
 // Database
 require("dotenv").config();
@@ -63,11 +64,18 @@ app.get('/home', async (req, res) => {
 
 // User liked restaurant
 // app.post("/like", async (req, res) => {
+//   let restaurantId = mongoose.Types.ObjectId(req.body._id);
+
 //   try {
-//     await restaurant
-//       .findOneAndUpdate({ preference: "" }, { preference: "like" })
-//       .lean()
-//       .exec();
+//     restaurant.updateOne(
+//       { _id: restaurantId },
+//       { $push: { likedby : { _id: `test` } }})
+//       .then(succes => {
+//         console.log('yay')
+//       }).catch(error => {
+//         console.log('nope');
+//         console.log(error)
+//       })
 //     const data = await restaurant.findOne({ preference: "" }).lean().exec();
 //     res.render("home", { data: data });
 //   } catch {
@@ -76,16 +84,14 @@ app.get('/home', async (req, res) => {
 // });
 
 app.post("/like", async (req, res) => {
-  console.log('yo')
-  console.log(req.session)
-  let restaurantId = mongoose.Types.ObjectId(req.body._id);
-
   try {
-    restaurant.updateOne(
-      { _id: restaurantId },
-      { $push: { likedby : { _id: `test` } }})
+    // user.findOneAndUpdate(
+    //   { fname: "PipH"}, 
+    //   { preferences[0].id1: "liked"})
+    await user.findOne()
       .then(succes => {
         console.log('yay')
+        console.log(succes)
       }).catch(error => {
         console.log('nope');
         console.log(error)
