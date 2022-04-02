@@ -9,7 +9,8 @@
 </ul>
 
 <form method='POST' action="/delete" id="delete">
-    <button type="submit" name="deleteId" value="{{this._id}}">Delete</button>
+    <input type="text" {{this._id}}>
+    <button type="submit" name="deleteId">Delete</button>
 </form>
 
 <form method='POST' action="/update" id="update">

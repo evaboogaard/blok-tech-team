@@ -1,11 +1,11 @@
 console.log(`epico momento de bruh`);
 
 const allLikes = document.querySelectorAll(`.animate`);
-const restaurant = document.querySelector(`article`);
+// const restaurant = document.querySelector(`article`);
 
-restaurant.addEventListener("click", () =>{
-    restaurant.classList.toggle("unlike");
-})
+// restaurant.addEventListener("click", () =>{
+//     restaurant.classList.toggle("unlike");
+// })
 
 // De Requirements om de class er uiteindelijk op te laten zetten:
 // rootMargin -> vanaf 20px gaat JS checken

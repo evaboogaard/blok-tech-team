@@ -88,7 +88,7 @@ app.post("/like", async (req, res) => {
     // user.findOneAndUpdate(
     //   { fname: "PipH"}, 
     //   { preferences[0].id1: "liked"})
-    user.findOne()
+    await user.findOne()
       .then(succes => {
         console.log('yay')
         console.log(succes)

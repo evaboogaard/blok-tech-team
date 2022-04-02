@@ -116,16 +116,31 @@ label,
 
 .welcome div.gettingstarted {
   opacity: 0%;
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transition-delay: 2s;
-          transition-delay: 2s;
   pointer-events: none;
 }
 
 .welcome div.gettingstarted.show {
-  opacity: 100%;
+  -webkit-animation: show 2s;
+          animation: show 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
   pointer-events: all;
+}
+
+.welcome div.gettingstarted.opacitydelay {
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+
+.welcome img.delay {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
+.welcome button.delay {
+  opacity: 0%;
 }
 
 .welcome a {
@@ -176,6 +191,24 @@ label,
   }
   100% {
     top: -60%;
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
   }
 }
 
@@ -516,6 +549,7 @@ header section p {
 
 #likes {
   overflow: scroll;
+  height: 100%;
 }
 
 #likes #head {
@@ -641,18 +675,16 @@ header section p {
   font-weight: 200;
 }
 
-#likes article button {
-  right: 1.5em;
-  bottom: 1.2em;
-  background-color: var(--err-color);
-  border: none;
-  padding: 1em 3em 1em 3em;
-  border-radius: 2em;
-  color: var(--input-color);
-  font-weight: 200;
-  opacity: 0%;
-  -webkit-transition: 1s;
-  transition: 1s;
+#likes article button img {
+  position: absolute;
+  width: 2.6em;
+  left: 12em;
+  bottom: 1.8em;
+  opacity: 80%;
+}
+
+#likes article:last-of-type {
+  margin-bottom: 10em;
 }
 
 /* Cool Javascript scroll animation */
@@ -664,18 +696,6 @@ header section p {
 
 .animate.fade {
   opacity: 1;
-}
-
-#likes article.unlike div > img {
-  width: 2em;
-}
-
-#likes article.unlike .time {
-  opacity: 0;
-}
-
-#likes article.unlike button {
-  opacity: 100%;
 }
 
 nav {
