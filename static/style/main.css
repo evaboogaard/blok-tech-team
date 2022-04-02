@@ -116,16 +116,31 @@ label,
 
 .welcome div.gettingstarted {
   opacity: 0%;
-  -webkit-transition: 1s;
-  transition: 1s;
-  -webkit-transition-delay: 2s;
-          transition-delay: 2s;
   pointer-events: none;
 }
 
 .welcome div.gettingstarted.show {
-  opacity: 100%;
+  -webkit-animation: show 2s;
+          animation: show 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
   pointer-events: all;
+}
+
+.welcome div.gettingstarted.opacitydelay {
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+
+.welcome img.delay {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
+.welcome button.delay {
+  opacity: 0%;
 }
 
 .welcome a {
@@ -176,6 +191,24 @@ label,
   }
   100% {
     top: -60%;
+  }
+}
+
+@-webkit-keyframes show {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
   }
 }
 

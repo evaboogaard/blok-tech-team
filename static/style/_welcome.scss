@@ -35,14 +35,26 @@
 
   div.gettingstarted {
     opacity: 0%;
-    transition: 1s;
-    transition-delay: 2s;
     pointer-events: none;
   }
 
   div.gettingstarted.show {
-    opacity: 100%;
+    animation: show 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
     pointer-events: all;
+  }
+
+  div.gettingstarted.opacitydelay {
+    animation-delay: 5s;
+  }
+
+  img.delay{
+    animation-delay: 3s;
+  }
+
+  button.delay{
+    opacity: 0%;
   }
 
   a {
@@ -86,5 +98,15 @@
 
   100% {
     top: -60%;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
   }
 }
