@@ -23,9 +23,11 @@ router.get('/createaccount', (req, res) => {
 
 // Overviewaccount
 
+/*
 router.get('/overviewaccount', (req, res) => {
     res.render('overviewaccount', {'title': 'Account'});
 });
+*/
 
 
 
@@ -36,11 +38,11 @@ router.get('/filter', (req, res) => {
 });
 
 // Delete page 
-
+/*
 router.get('/delete', (req, res) => {
     res.render('delete', {'title': 'Delete'}); 
-
 }); 
+*/
 
 // Update page 
 

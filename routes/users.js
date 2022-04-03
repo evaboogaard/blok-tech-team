@@ -51,42 +51,63 @@ router.post("/createaccount", async (req, res) => {
       //   text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
       // });
 
+      /* Log gebruiker in of redirect naar login, maar niet zomaar view renderen
       return res.render("overviewaccount", {
         fname: req.body.fname,
         lname: req.body.lname,
         email: req.body.email,
       });
+      */
+      res.redirect('/login');
     }
   });
 });
 
-router.get("/overviewaccount", ensureAuthenticated, (req, res) =>
-  User.find({}, () => {
+router.get(
+  "/overviewaccount", 
+  ensureAuthenticated, 
+  (req, res) => {
     res.render("overviewaccount", {
-      fname: req.session.fname,
-      lname: req.session.lname,
-      email: req.session.email,
+      fname: req.user.fname,
+      lname: req.user.lname,
+      email: req.user.email,
     });
-  })
-);
+});
 
 //Login
 router.get("/login", forwardAuthenticated, (req, res) => {
   res.render("login", { title: "Log In" });
 });
 
-router.post("/login", (req, res, next) => {
+router.post(
+  "/login",
   passport.authenticate("local", {
     successRedirect: "/overviewaccount",
     failureRedirect: "/login",
     failureFlash: true,
-  })(req, res, next);
+  }),
+  (req, res, next) => {
+  //req.session.user_email = req.body.email;
+  console.log(req);
+  console.log(res);
+  console.log(next);
+});
+
+// Logout
+router.get('/users/logout', (req, res) => {
+  //https://www.passportjs.org/concepts/authentication/logout/
+  req.logout();
+  //req.flash('success_msg', 'You have been logged out');
+  res.redirect('/login');
 });
 
 //  deleting the users account
 router.post("/delete", (req, res) => {
-  User.findOneAndDelete({ email: req.session.email })
-    .then(console.log(req.session.email), res.redirect("/delete"))
+  console.log(req.user);
+  User.findOneAndDelete({ email: req.user.email })
+    .then(() => {
+      res.redirect("/")
+    })
     .catch((error) => {
       res.status(400).json({
         error: error,

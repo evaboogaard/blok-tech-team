@@ -212,6 +212,95 @@ label,
   }
 }
 
+.account section {
+  width: 100%;
+}
+
+.account h2 {
+  padding: 0.5em;
+  background-color: var(--light-color);
+  font-size: 1.5em;
+  font-weight: 300;
+  color: var(--button-color);
+  text-align: center;
+}
+
+.account article {
+  background-color: white;
+  width: 90%;
+  margin: 4em auto 0;
+  border-radius: 2rem;
+  padding-bottom: 2rem;
+}
+
+.account ul {
+  margin-left: 2rem;
+  list-style-type: none;
+}
+
+.account li {
+  font-size: 1.3rem;
+  color: #304d6e;
+  font-weight: bold;
+}
+
+.account .bold {
+  font-weight: bolder;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  font-size: 1.3rem;
+  color: var(--primary-font-color);
+}
+
+.account form {
+  width: 100%;
+}
+
+.account .account-delete {
+  display: block;
+  height: 3em;
+  width: 12em;
+  margin: 1rem auto;
+  background-color: var(--like-dislike-buttons);
+  border-radius: 2em;
+  border: none;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
+  font-size: 1.2em;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 300;
+  color: var(--button-color);
+}
+
+.account .account-logout {
+  height: 3em;
+  width: 12em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem auto;
+  background-color: var(--like-dislike-buttons);
+  border-radius: 2em;
+  border: none;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: 300;
+  color: var(--button-color);
+}
+
 .card {
   position: relative;
   width: 86%;
