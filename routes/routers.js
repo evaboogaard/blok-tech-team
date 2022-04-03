@@ -44,8 +44,9 @@ router.get('/delete', (req, res) => {
 
 // Update page 
 
-router.get('/update', (req, res) =>{
-    res.render('update', {'title': 'Update'});
-}); 
+// router.get('/update', (req, res) =>{
+//     res.render('update', {'title': 'Update'});
+// }); 
+
 
 module.exports = router;
