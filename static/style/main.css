@@ -29,7 +29,7 @@
 
 body {
   background-image: var(--background);
-  height: 60em;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -168,6 +168,32 @@ label,
   top: 23em;
   color: var(--like-dislike-buttons);
   background-color: var(--button-color);
+}
+
+@media all and (min-width: 900px) {
+  .welcome img {
+    width: 30%;
+    -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%);
+    left: 50%;
+    top: 10%;
+  }
+  .welcome button {
+    width: 30%;
+    -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%);
+    left: 50%;
+    top: 65%;
+    margin-top: 0;
+  }
+  .welcome a {
+    -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%);
+    height: 3.5em;
+    width: 30em;
+    padding: 1em 3em;
+    left: 38em;
+  }
 }
 
 @-webkit-keyframes hide {
