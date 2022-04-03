@@ -9,8 +9,7 @@ const restaurantSchema = new mongoose.Schema({
 	preference: String,
 	stars: String,
 	distance: String,
-	dislikedby: [{user: String}],
-	likedby: [{user: String}]
+	id: String
 });
 
 module.exports = mongoose.model("restaurant", restaurantSchema);
