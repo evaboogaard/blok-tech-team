@@ -53,36 +53,6 @@ app.set("views", "./views");
 app.use("/static", express.static("static"));
 
 
-// app.get('/home', async (req, res) => {
-//     try {
-//         const data = await restaurant.findOne({ preference: "" }).lean().exec()
-//         res.render("home", { data: data });
-//     } catch {
-//         console.log("error");
-//     }
-// });
-
-// app.post("/like", async (req, res) => {
-//   try {
-//     // user.updateOne(
-//     //   // { email: req.session.email}, 
-//     //   { fname: "PipH"}, 
-//     //   { $set: { "id4.$" : "like" }})
-//     //   .then(succes => {
-//     //     console.log('yay')
-//     //     console.log(succes)
-//     //   }).catch(error => {
-//     //     console.log('nope');
-//     //     console.log(error)
-//     //   })
-//     const data = await restaurant.findOne({ preference: "" }).lean().exec();
-//     res.render("home", { data: data });
-//   } catch {
-//     console.log("fout bij liken");
-//   }
-// });
-
-
 app.get('/home', async (req, res) => {
   try {
     const currentUser = await user.findOne({email: req.session.email});
