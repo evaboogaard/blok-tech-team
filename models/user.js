@@ -19,17 +19,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    preferences:{
-        id1: {type: String},
-        id2: {type: String},
-        id3: {type: String},
-        id4: {type: String},
-        id5: {type: String},
-        id6: {type: String},
-        id7: {type: String},
-        id8: {type: String},
-        id9: {type: String},
-        id10: {type: String},
+    liked:{
+        type: Array,
+        required: true
+    },
+    disliked:{
+        type: Array,
+        required: true
     }
 })
 module.exports = mongoose.model("User", userSchema)
