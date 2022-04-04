@@ -36,7 +36,15 @@
                 <p>{{this.time}}</p> 
             </section>
 
-            <button><img src="../static/images/dislike.png" alt="Delete Icon"></button>
+            <form id="remove" action="/remove" method="POST">
+                <input type="hidden" name="id" value="{{this.id}}">
+                <input
+                type="image"
+                src="../../static/images/dislike.png"
+                alt="Delete icon"
+                />
+            </form>
+            {{!-- <button><img src="../static/images/dislike.png" alt="Delete Icon"></button> --}}
         </div>
     </article>
     {{/each}}
