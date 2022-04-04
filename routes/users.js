@@ -75,12 +75,36 @@ router.get("/login", forwardAuthenticated, (req, res) => {
   res.render("login", { title: "Log In" });
 });
 
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", {
-    successRedirect: "/overviewaccount",
-    failureRedirect: "/login",
-    failureFlash: true,
-  })(req, res, next);
+// router.post("/login", (req, res, next) => {
+//   passport.authenticate("local", {
+//     successRedirect: "/overviewaccount",
+//     failureRedirect: "/login",
+//     failureFlash: true,
+//   })(req, res, next);
+// });
+
+router.post('/login', async (req, res) => {
+  try {
+      const getUser = await User.findOne({ email: req.body.email });
+      if (getUser) {
+        const comparePassword = await bcrypt.compare(req.body.password, getUser.password);
+        if (comparePassword) {
+          console.log("It's a great success!");
+          session = req.session;
+          session.email = req.body.email;
+          return res.status(200).redirect('/overviewaccount');
+        } else {
+          console.error("Wrong e-mail or password!");
+          return res.status(404).redirect('/login');
+        }
+      } else {
+          console.error("Wrong e-mail or password!!");
+          return res.status(404).redirect('/login');
+      }
+  } catch (error) {
+      console.error(error);
+      return res.status(500).redirect('/login');
+  }
 });
 
 //  deleting the users account
