@@ -85,6 +85,36 @@
     color: var(--like-dislike-buttons);
     background-color: var(--button-color);
   }
+
+  @media all and (min-width: 900px) {
+
+    img {
+      width: 30%;
+      transform: translate(-50%, 50%);
+      left: 50%;
+      top: 10%;
+    }
+  
+    button {
+      width: 30%;
+      transform: translate(-50%, 50%);
+      left: 50%;
+      top: 65%; 
+      margin-top: 0;
+    }
+  
+  
+    a {
+      transform: translate(-50%, 50%);
+      height: 3.5em;
+      width: 30em;
+   
+      padding: 1em 3em;
+      left: 38em;
+    
+    }
+
+  }
 }
 
 @keyframes hide {
@@ -110,3 +140,9 @@
     opacity: 100%;
   }
 }
+
+
+
+
+
+

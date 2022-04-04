@@ -33,6 +33,9 @@ html, body {
 
 body {
   background-image: var(--background);
+  
+  height: 100vh;
+
   overflow: hidden;
 }
 
@@ -172,6 +175,32 @@ li,
   top: 23em;
   color: var(--like-dislike-buttons);
   background-color: var(--button-color);
+}
+
+@media all and (min-width: 900px) {
+  .welcome img {
+    width: 30%;
+    -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%);
+    left: 50%;
+    top: 10%;
+  }
+  .welcome button {
+    width: 30%;
+    -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%);
+    left: 50%;
+    top: 65%;
+    margin-top: 0;
+  }
+  .welcome a {
+    -webkit-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%);
+    height: 3.5em;
+    width: 30em;
+    padding: 1em 3em;
+    left: 38em;
+  }
 }
 
 @-webkit-keyframes hide {
@@ -453,7 +482,6 @@ li,
 
 .forms body {
   position: relative;
-  font-family: Poppins;
 }
 
 .forms a img {
@@ -527,10 +555,37 @@ li,
   bottom: 12%;
 }
 
+@media all and (min-width: 900px) {
+  .forms form {
+    margin: 20px 80px;
+  }
+  .forms form fieldset {
+    margin: 0 20px 15px 20px;
+  }
+  .forms form fieldset input {
+    padding: 1.4em;
+    border: none;
+    border-radius: .8em;
+    -webkit-box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
+            box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
+  }
+  .forms #update {
+    bottom: 12%;
+  }
+}
+
 .create button {
   bottom: 3em;
   -webkit-box-shadow: var(--button-shadow);
           box-shadow: var(--button-shadow);
+}
+
+@media all and (min-width: 900px) {
+  .create button {
+    bottom: -5px;
+    -webkit-box-shadow: var(--button-shadow);
+            box-shadow: var(--button-shadow);
+  }
 }
 
 .create a {
@@ -540,7 +595,7 @@ li,
 
 .login a {
   background-color: var(--like-dislike-buttons);
-  bottom: 10em;
+  bottom: 7em;
   -webkit-box-shadow: var(--button-shadow);
           box-shadow: var(--button-shadow);
 }
@@ -548,7 +603,7 @@ li,
 .login button {
   position: absolute;
   background-color: var(--button-color);
-  bottom: 15em;
+  bottom: 14em;
   color: var(--input-color);
   -webkit-box-shadow: var(--button-shadow);
           box-shadow: var(--button-shadow);
@@ -613,6 +668,7 @@ li,
 }
 
 header {
+  position: relative;
   height: 6em;
   width: 100%;
 }
@@ -623,7 +679,7 @@ header img {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   left: 50%;
-  top: 5%;
+  top: 50%;
 }
 
 header section img {

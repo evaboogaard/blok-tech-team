@@ -1,7 +1,6 @@
 .forms{
     body{
         position: relative;
-        font-family: Poppins;
     }
     
     a img{
@@ -76,12 +75,56 @@
         bottom: 12%; 
     }
 
+
+    @media all and (min-width: 900px){
+        form{
+            margin: 20px 80px;
+        }
+    
+        form fieldset{
+          margin: 0 20px 15px 20px;
+          
+        }
+         
+    
+        form fieldset input{
+            padding: 1.4em;
+            border: none; 
+            border-radius: .8em;
+            box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
+        }
+
+    
+        #update{
+            bottom: 12%; 
+        }
+
+    }
+
 }
 
 .create button{
     bottom: 3em;
     box-shadow: var(--button-shadow);
 }
+
+
+@media all and (min-width: 900px){
+   
+    .create button{
+        bottom: -5px;
+        box-shadow: var(--button-shadow);
+    }
+    
+
+}
+
+
+
+
+
+
+
 
 .create a{
     left: 8em;
@@ -90,7 +133,7 @@
 
 .login a{
     background-color: var(--like-dislike-buttons);
-    bottom: 10em;
+    bottom: 7em;
     box-shadow: var(--button-shadow);
 
 }
@@ -98,7 +141,7 @@
 .login button{
     position: absolute;
     background-color: var(--button-color);
-    bottom: 15em;
+    bottom: 14em;
     color: var(--input-color);
     box-shadow: var(--button-shadow);
 }
@@ -147,4 +190,4 @@
     100% {
         margin-left: 0em;
     }
-}
+}  
