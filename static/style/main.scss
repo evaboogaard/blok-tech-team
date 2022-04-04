@@ -42,9 +42,12 @@ $err-color: rgb(179, 0, 0);
   --err-color: #{$err-color};
 }
 
+html, body{
+  height: 100%;
+}
+
 body {
   background-image: var(--background);
-  height: 60em;
   overflow: hidden;
 }
 
@@ -92,6 +95,7 @@ p,
 button,
 a,
 label,
+li,
 #error{
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 }

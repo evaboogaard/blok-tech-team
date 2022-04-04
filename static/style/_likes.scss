@@ -1,6 +1,5 @@
 #likes {
   overflow: scroll;
-  height: 100%;
 
   #head {
     padding: 2.2em;
@@ -127,12 +126,21 @@
     //   transition: 1s;
     // }
 
-    button img{
+    button{
         position: absolute;
         width: 2.6em;
-        left: 12em;
-        bottom: 1.8em;
+        height: 2.6em;
+        right: 2.2em;
+        bottom: 5em;
+        border: none;
+        background-color: transparent;
+    }
+
+    button img{
+        width: 2.6em;
         opacity: 80%;
+        left: 0;
+        top: 0;
     }
   }
   article:last-of-type{

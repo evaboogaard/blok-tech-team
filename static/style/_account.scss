@@ -29,10 +29,10 @@
     li {
         font-size: 1.3rem;
         color: #304d6e;
-        font-weight: bold;
+        font-weight: 400;
     }
     .bold {
-        font-weight: bolder;
+        font-weight: 300;
         margin-top: 2rem;
         padding-top: 1rem;
         font-size: 1.3rem;
@@ -51,7 +51,7 @@
 
         margin: 1rem auto;
 
-        background-color: var(--like-dislike-buttons);
+        background-color: var(--err-color);
         border-radius: 2em;
         border: none; 
         box-shadow: var(--button-shadow);
@@ -60,7 +60,7 @@
         text-decoration: none;
         text-align: center;
         font-weight: 300;
-        color: var(--button-color);
+        color: var(--input-color);
     }
 
     .account-logout {
