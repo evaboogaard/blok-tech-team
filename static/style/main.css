@@ -33,9 +33,7 @@ html, body {
 
 body {
   background-image: var(--background);
-  
   height: 100vh;
-
   overflow: hidden;
 }
 
@@ -121,12 +119,28 @@ li,
           animation-fill-mode: forwards;
 }
 
-.welcome div.gettingstarted {
+.welcome .gettingstarted {
   opacity: 0%;
   pointer-events: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 4em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.welcome div.gettingstarted.show {
+.welcome .gettingstarted.show {
   -webkit-animation: show 2s;
           animation: show 2s;
   -webkit-animation-fill-mode: forwards;
@@ -136,7 +150,7 @@ li,
   pointer-events: all;
 }
 
-.welcome div.gettingstarted.opacitydelay {
+.welcome .gettingstarted.opacitydelay {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 }
@@ -151,6 +165,7 @@ li,
 }
 
 .welcome a {
+  position: static;
   height: 3.5em;
   width: 15em;
   padding: 1em 3em 1em 3em;
@@ -177,29 +192,27 @@ li,
   background-color: var(--button-color);
 }
 
-@media all and (min-width: 900px) {
+@media (min-width: 35em) {
   .welcome img {
     width: 30%;
-    -webkit-transform: translate(-50%, 50%);
-            transform: translate(-50%, 50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     left: 50%;
-    top: 10%;
+    top: 40%;
   }
   .welcome button {
     width: 30%;
-    -webkit-transform: translate(-50%, 50%);
-            transform: translate(-50%, 50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     left: 50%;
-    top: 65%;
-    margin-top: 0;
+    top: 40%;
+    margin-top: 20%;
   }
-  .welcome a {
-    -webkit-transform: translate(-50%, 50%);
-            transform: translate(-50%, 50%);
-    height: 3.5em;
-    width: 30em;
-    padding: 1em 3em;
-    left: 38em;
+  .welcome .gettingstarted {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
 
@@ -224,6 +237,31 @@ li,
   }
   100% {
     top: -60%;
+  }
+}
+
+@media (min-width: 35em) {
+  @-webkit-keyframes hide {
+    0% {
+      top: 40%;
+    }
+    5% {
+      top: 43%;
+    }
+    100% {
+      top: -100%;
+    }
+  }
+  @keyframes hide {
+    0% {
+      top: 40%;
+    }
+    5% {
+      top: 43%;
+    }
+    100% {
+      top: -100%;
+    }
   }
 }
 
@@ -260,6 +298,7 @@ li,
 
 .account article {
   background-color: white;
+  max-width: 30em;
   width: 90%;
   margin: 4em auto 0;
   border-radius: 2rem;
@@ -337,8 +376,13 @@ li,
 .card {
   position: relative;
   width: 86%;
+  max-width: 30em;
   height: 35em;
-  margin: 20% 0 20% 7%;
+  margin: 20% 0 20% 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 50%;
+  top: 0;
   background-color: var(--input-color);
   border-radius: 1em;
   -webkit-box-shadow: 0 0.7em 0.7em var(--light-shadow-color);
@@ -362,6 +406,9 @@ li,
   position: absolute;
   width: 18em;
   height: 23em;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  left: 40%;
   margin-left: 10%;
   top: -10%;
   -o-object-fit: cover;
@@ -423,7 +470,7 @@ li,
 
 .card form {
   position: absolute;
-  margin-top: 130%;
+  margin-top: 29em;
 }
 
 .card form input {
@@ -480,6 +527,18 @@ li,
   }
 }
 
+@media (min-width: 35em) {
+  #homepage main {
+    margin-top: -10%;
+  }
+}
+
+@media (min-width: 45em) {
+  #homepage main {
+    margin-top: -15%;
+  }
+}
+
 .forms body {
   position: relative;
 }
@@ -501,8 +560,8 @@ li,
 }
 
 .forms form {
-  margin: 20px 10px;
-  padding: 1.7em .7em;
+  margin: 2em 1em 2em 1em;
+  padding: 1.7em 0.7em;
   background-color: var(--light-color);
   border-radius: 1em;
 }
@@ -515,13 +574,13 @@ li,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 0 0 15px;
+  margin: 0 0 0.75em;
   border: none;
 }
 
 .forms form label {
-  margin: 0 0 5px;
-  font-size: 16px;
+  margin: 0 0 0.5em;
+  font-size: 1em;
   font-weight: 300;
   color: var(--button-color);
 }
@@ -529,7 +588,7 @@ li,
 .forms form fieldset input {
   padding: 1.4em;
   border: none;
-  border-radius: .8em;
+  border-radius: 0.8em;
   -webkit-box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
           box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
 }
@@ -551,41 +610,26 @@ li,
   color: var(--button-color);
 }
 
-.forms #update {
-  bottom: 12%;
-}
-
-@media all and (min-width: 900px) {
-  .forms form {
-    margin: 20px 80px;
-  }
+@media (min-width: 35em) {
   .forms form fieldset {
-    margin: 0 20px 15px 20px;
+    max-width: 30em;
+    margin-left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
   .forms form fieldset input {
     padding: 1.4em;
     border: none;
-    border-radius: .8em;
+    border-radius: 0.8em;
     -webkit-box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
             box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
-  }
-  .forms #update {
-    bottom: 12%;
   }
 }
 
 .create button {
-  bottom: 3em;
+  top: 41em;
   -webkit-box-shadow: var(--button-shadow);
           box-shadow: var(--button-shadow);
-}
-
-@media all and (min-width: 900px) {
-  .create button {
-    bottom: -5px;
-    -webkit-box-shadow: var(--button-shadow);
-            box-shadow: var(--button-shadow);
-  }
 }
 
 .create a {
@@ -619,7 +663,7 @@ li,
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   border: 0.1em solid #b30000;
-  border-radius: .5em;
+  border-radius: 0.5em;
   background-color: #b30000;
   display: none;
   font-weight: 200;
@@ -696,10 +740,6 @@ header section p {
   font-size: .8em;
 }
 
-#likes {
-  overflow: scroll;
-}
-
 #likes #head {
   padding: 2.2em;
   background-color: var(--nav-color);
@@ -719,9 +759,13 @@ header section p {
   font-weight: 300;
 }
 
+#likes #head a {
+  right: 10%;
+}
+
 #likes #head a img {
   width: 2.9em;
-  left: 19em;
+  right: 50%;
   top: -1.2em;
 }
 
@@ -769,6 +813,15 @@ header section p {
 
 #likes article div:last-of-type * {
   position: absolute;
+}
+
+@media (min-width: 35em) {
+  #likes article {
+    max-width: 30em;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    left: 50%;
+  }
 }
 
 #likes article .location {
@@ -839,7 +892,12 @@ header section p {
 }
 
 #likes article:last-of-type {
-  margin-bottom: 10em;
+  margin-bottom: 3em;
+}
+
+#likes > div {
+  overflow: scroll;
+  height: 40em;
 }
 
 /* Cool Javascript scroll animation */
@@ -886,8 +944,35 @@ nav ul li img {
   margin-top: 1.3em;
 }
 
-nav ul li.active {
-  opacity: 100%;
+@media (min-width: 40em) {
+  nav {
+    left: 0;
+    bottom: 0;
+    width: auto;
+    height: 100%;
+    top: 10em;
+  }
+  nav ul {
+    height: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    gap: 1em;
+  }
+  nav li:first-of-type {
+    padding-top: 5em;
+  }
+  nav img {
+    height: 3em;
+    padding: 0 1em 0 1em;
+  }
 }
 
 #filter {
