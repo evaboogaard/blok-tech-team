@@ -127,6 +127,39 @@ app.get("/likes", async (req, res) => {
   }
 });
 
+// Remove restaurant from likes
+app.post("/remove", async (req, res) => {
+  try {
+    // Remove restaurantid from liked
+    await user.updateOne(
+      { email: req.session.email },
+      { $pull: { liked : req.body.id }}
+    );
+
+    // Add restaurantid to disliked
+    await user.updateOne(
+      { email: req.session.email },
+      { $push: { disliked : req.body.id }}
+    );
+
+    const currentUser = await user.findOne({email: req.session.email});
+    const allRestaurants = await restaurant.find().lean().exec();
+    
+    const likedRestaurants = allRestaurants.filter((restaurant) => {
+      return currentUser.liked.includes(restaurant.id);
+    });
+
+    res.render("likes", { data: likedRestaurants });
+
+      // await restaurant.findOneAndUpdate({ naam: req.body.naam },{ voorkeur: "dislike" }).exec();
+      // const data = await restaurant.find({ voorkeur: "like" }).lean().exec();
+      // res.render("favorieten", { data: data });
+  } catch {
+      console.log("fout bij verwijderen");
+  }
+});
+
+
 // Filter function
 app.post("/filteroutput", async (req, res) => {
     try {
