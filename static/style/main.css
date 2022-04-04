@@ -539,8 +539,8 @@ li,
 }
 
 .forms form {
-  margin: 20px 10px;
-  padding: 1.7em .7em;
+  margin: 2em 1em 2em 1em;
+  padding: 1.7em 0.7em;
   background-color: var(--light-color);
   border-radius: 1em;
 }
@@ -553,13 +553,13 @@ li,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 0 0 15px;
+  margin: 0 0 0.75em;
   border: none;
 }
 
 .forms form label {
-  margin: 0 0 5px;
-  font-size: 16px;
+  margin: 0 0 0.5em;
+  font-size: 1em;
   font-weight: 300;
   color: var(--button-color);
 }
@@ -567,7 +567,7 @@ li,
 .forms form fieldset input {
   padding: 1.4em;
   border: none;
-  border-radius: .8em;
+  border-radius: 0.8em;
   -webkit-box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
           box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
 }
@@ -589,41 +589,26 @@ li,
   color: var(--button-color);
 }
 
-.forms #update {
-  bottom: 12%;
-}
-
-@media all and (min-width: 900px) {
-  .forms form {
-    margin: 20px 80px;
-  }
+@media (min-width: 35em) {
   .forms form fieldset {
-    margin: 0 20px 15px 20px;
+    max-width: 30em;
+    margin-left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
   .forms form fieldset input {
     padding: 1.4em;
     border: none;
-    border-radius: .8em;
+    border-radius: 0.8em;
     -webkit-box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
             box-shadow: 0 0.1em 0.3em var(--light-shadow-color);
-  }
-  .forms #update {
-    bottom: 12%;
   }
 }
 
 .create button {
-  bottom: 3em;
+  top: 41em;
   -webkit-box-shadow: var(--button-shadow);
           box-shadow: var(--button-shadow);
-}
-
-@media all and (min-width: 900px) {
-  .create button {
-    bottom: -5px;
-    -webkit-box-shadow: var(--button-shadow);
-            box-shadow: var(--button-shadow);
-  }
 }
 
 .create a {
@@ -657,7 +642,7 @@ li,
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   border: 0.1em solid #b30000;
-  border-radius: .5em;
+  border-radius: 0.5em;
   background-color: #b30000;
   display: none;
   font-weight: 200;
