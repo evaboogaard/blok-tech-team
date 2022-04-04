@@ -74,7 +74,7 @@ router.get(
     });
 });
 
-//Login
+// login
 router.get("/login", forwardAuthenticated, (req, res) => {
   res.render("login", { title: "Log In" });
 });
@@ -102,6 +102,23 @@ router.get('/users/logout', ensureAuthenticated, (req, res) => {
   //req.flash('success_msg', 'You have been logged out');
   res.redirect('/login');
 });
+
+// logout 
+
+// hou dit even gecomment tot de login functie helemaal werkt lol
+
+// router.get("/logout", (req, res) => {
+
+//   //  this will clear the login session and remove the req.user property 
+//    req.logOut(); 
+
+//   // deletes the cookie
+//    req.session = null; 
+
+//   //  redirects the user to the homepage
+//    res.redirect('/'); 
+// }); 
+
 
 //  deleting the users account
 router.post("/delete", ensureAuthenticated, (req, res) => {
