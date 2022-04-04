@@ -106,7 +106,7 @@ router.post("/delete", (req, res) => {
   console.log(req.user);
   User.findOneAndDelete({ email: req.user.email })
     .then(() => {
-      res.redirect("/")
+      res.render("delete");
     })
     .catch((error) => {
       res.status(400).json({

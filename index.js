@@ -4,7 +4,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const flash = require('connect-flash');
 const session = require('express-session');
-const mongoose = require('mongoose');
 const passport = require('passport')
 require('./config/passport')(passport);
 
@@ -54,77 +53,111 @@ app.use("/static", express.static("static"));
 
 
 app.get('/home', async (req, res) => {
-    try {
-        const data = await restaurant.findOne({ preference: "" }).lean().exec()
-        res.render("home", { data: data });
-    } catch {
-        console.log("error");
-    }
+  try {
+    const currentUser = await user.findOne({email: req.session.email});
+    const allRestaurants = await restaurant.find().lean().exec();
+    
+    const filteredRestaurants = allRestaurants.filter((restaurant) => {
+      return !currentUser.liked.includes(restaurant.id) && !currentUser.disliked.includes(restaurant.id);
+    });
+
+    const data = filteredRestaurants[0];
+    res.render("home", { data: data });
+  } catch(err) {
+      console.error("Error loading homepage: " + err.message);
+  }
 });
-
-// User liked restaurant
-// app.post("/like", async (req, res) => {
-//   let restaurantId = mongoose.Types.ObjectId(req.body._id);
-
-//   try {
-//     restaurant.updateOne(
-//       { _id: restaurantId },
-//       { $push: { likedby : { _id: `test` } }})
-//       .then(succes => {
-//         console.log('yay')
-//       }).catch(error => {
-//         console.log('nope');
-//         console.log(error)
-//       })
-//     const data = await restaurant.findOne({ preference: "" }).lean().exec();
-//     res.render("home", { data: data });
-//   } catch {
-//     console.log("fout bij liken");
-//   }
-// });
 
 app.post("/like", async (req, res) => {
   try {
-    // user.findOneAndUpdate(
-    //   { fname: "PipH"}, 
-    //   { preferences[0].id1: "liked"})
-    await user.findOne()
-      .then(succes => {
-        console.log('yay')
-        console.log(succes)
-      }).catch(error => {
-        console.log('nope');
-        console.log(error)
-      })
-    const data = await restaurant.findOne({ preference: "" }).lean().exec();
+    await user.updateOne(
+      { email: req.session.email },
+      { $push: { liked : req.body.id }}
+    );
+
+    const currentUser = await user.findOne({email: req.session.email});
+    const allRestaurants = await restaurant.find().lean().exec();
+    
+    const filteredRestaurants = allRestaurants.filter((restaurant) => {
+      return !currentUser.liked.includes(restaurant.id) && !currentUser.disliked.includes(restaurant.id);
+    });
+    
+    const data = await filteredRestaurants[0];
     res.render("home", { data: data });
-  } catch {
-    console.log("fout bij liken");
+  } catch(err) {
+    console.error("Error like: " + err.message);
   }
 });
 
 // User disliked restaurant
 app.post("/dislike", async (req, res) => {
   try {
-    await restaurant.updateOne(
-      { name: req.body.name },
-      { $push: { dislikedby : {user: req.body._id} } });
-    const data = await restaurant.findOne({ preference: "" }).lean().exec();
+    await user.updateOne(
+      { email: req.session.email },
+      { $push: { disliked : req.body.id }}
+    );
+
+    const currentUser = await user.findOne({email: req.session.email});
+    const allRestaurants = await restaurant.find().lean().exec();
+    
+    const filteredRestaurants = allRestaurants.filter((restaurant) => {
+      return !currentUser.liked.includes(restaurant.id) && !currentUser.disliked.includes(restaurant.id);
+    });
+    
+    const data = await filteredRestaurants[0];
     res.render("home", { data: data });
-  } catch {
-    console.log("fout bij disliken");
+  } catch(err) {
+    console.error("Error dislike: " + err.message);
   }
 });
 
 // Show list with liked restaurants
 app.get("/likes", async (req, res) => {
   try {
-    const data = await restaurant.find({ preference: "like" }).lean().exec();
-    res.render("likes", { data: data });
+    const currentUser = await user.findOne({email: req.session.email});
+    const allRestaurants = await restaurant.find().lean().exec();
+    
+    const likedRestaurants = allRestaurants.filter((restaurant) => {
+      return currentUser.liked.includes(restaurant.id);
+    });
+    res.render("likes", { data: likedRestaurants });
   } catch {
     console.log("fout bij laden favorieten");
   }
 });
+
+// Remove restaurant from likes
+app.post("/remove", async (req, res) => {
+  try {
+    // Remove restaurantid from liked
+    await user.updateOne(
+      { email: req.session.email },
+      { $pull: { liked : req.body.id }}
+    );
+
+    // Add restaurantid to disliked
+    await user.updateOne(
+      { email: req.session.email },
+      { $push: { disliked : req.body.id }}
+    );
+
+    const currentUser = await user.findOne({email: req.session.email});
+    const allRestaurants = await restaurant.find().lean().exec();
+    
+    const likedRestaurants = allRestaurants.filter((restaurant) => {
+      return currentUser.liked.includes(restaurant.id);
+    });
+
+    res.render("likes", { data: likedRestaurants });
+
+      // await restaurant.findOneAndUpdate({ naam: req.body.naam },{ voorkeur: "dislike" }).exec();
+      // const data = await restaurant.find({ voorkeur: "like" }).lean().exec();
+      // res.render("favorieten", { data: data });
+  } catch {
+      console.log("fout bij verwijderen");
+  }
+});
+
 
 // Filter function
 app.post("/filteroutput", async (req, res) => {

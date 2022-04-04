@@ -27,9 +27,12 @@
   --err-color: #b30000;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   background-image: var(--background);
-  height: 60em;
   overflow: hidden;
 }
 
@@ -76,6 +79,7 @@ p,
 button,
 a,
 label,
+li,
 #error {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
 }
@@ -241,11 +245,11 @@ label,
 .account li {
   font-size: 1.3rem;
   color: #304d6e;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .account .bold {
-  font-weight: bolder;
+  font-weight: 300;
   margin-top: 2rem;
   padding-top: 1rem;
   font-size: 1.3rem;
@@ -261,7 +265,7 @@ label,
   height: 3em;
   width: 12em;
   margin: 1rem auto;
-  background-color: var(--like-dislike-buttons);
+  background-color: var(--err-color);
   border-radius: 2em;
   border: none;
   -webkit-box-shadow: var(--button-shadow);
@@ -270,7 +274,7 @@ label,
   text-decoration: none;
   text-align: center;
   font-weight: 300;
-  color: var(--button-color);
+  color: var(--input-color);
 }
 
 .account .account-logout {
@@ -638,7 +642,6 @@ header section p {
 
 #likes {
   overflow: scroll;
-  height: 100%;
 }
 
 #likes #head {
@@ -764,12 +767,19 @@ header section p {
   font-weight: 200;
 }
 
-#likes article button img {
+#likes article form {
   position: absolute;
   width: 2.6em;
-  left: 12em;
-  bottom: 1.8em;
+  height: 2.6em;
+  right: 1em;
+  bottom: 4em;
+}
+
+#likes article form input {
+  width: 2.6em;
   opacity: 80%;
+  left: 0;
+  top: 0;
 }
 
 #likes article:last-of-type {
