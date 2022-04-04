@@ -1,5 +1,6 @@
 // Express setup
 const express = require("express");
+const helmet = require('helmet');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const flash = require('connect-flash');
@@ -7,8 +8,10 @@ const session = require('express-session');
 const passport = require('passport')
 require('./config/passport')(passport);
 
-app.use(flash());
 
+
+app.use(flash());
+app.use(helmet())
 //Express session
 app.use(session({
     secret: 'secret',
@@ -161,30 +164,38 @@ app.post("/remove", async (req, res) => {
 
 // Filter function
 app.post("/filteroutput", async (req, res) => {
-    try {
-        const { distance, stars, price } = req.body;
-        console.log(req.body);
-        const data = await restaurant.find({
-                distance: { $lte: distance},
-                stars: { $gte: stars},
-                price: price,
-                preference: "like"
-        }).lean().exec();
-        console.log(data);
-        res.render("likes", { data: data });
-    } catch {
-        console.log("oeps filter stuk");
-    }
+  try {
+    const currentUser = await user.findOne({email: req.session.email});
+    const allRestaurants = await restaurant.find().lean().exec();
+    
+    const likedRestaurants = allRestaurants.filter((restaurant) => {
+      return currentUser.liked.includes(restaurant.id);
+    });
+
+    let filter_likedRestaurants = likedRestaurants.filter(function(restaurants) {
+      const { distance, stars, price } = req.body;
+      return restaurants.distance <= distance && restaurants.stars >= stars && restaurants.price == price });
+  
+    console.log(filter_likedRestaurants);
+    res.render("likes", { data: filter_likedRestaurants });
+    
+  } catch {
+    console.log("filter error");
+  }
 });
 
 // Remove filters and show all liked restaurants
 app.post("/clearfilter", async (req, res) => {
     try {
-        const data = await restaurant.find({ preference: "like" }).lean().exec();
-        console.log(data);
-        res.render("likes", { data: data });
+      const currentUser = await user.findOne({email: req.session.email});
+      const allRestaurants = await restaurant.find().lean().exec();
+      
+      const likedRestaurants = allRestaurants.filter((restaurant) => {
+        return currentUser.liked.includes(restaurant.id);
+      });
+      res.render("likes", { data: likedRestaurants });
     } catch {
-        console.log("clear filter button error");
+        console.log("clear filter error");
     }
 });
 
