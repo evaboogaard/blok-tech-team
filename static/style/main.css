@@ -33,9 +33,7 @@ html, body {
 
 body {
   background-image: var(--background);
-  
   height: 100vh;
-
   overflow: hidden;
 }
 
@@ -121,12 +119,28 @@ li,
           animation-fill-mode: forwards;
 }
 
-.welcome div.gettingstarted {
+.welcome .gettingstarted {
   opacity: 0%;
   pointer-events: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 4em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.welcome div.gettingstarted.show {
+.welcome .gettingstarted.show {
   -webkit-animation: show 2s;
           animation: show 2s;
   -webkit-animation-fill-mode: forwards;
@@ -136,7 +150,7 @@ li,
   pointer-events: all;
 }
 
-.welcome div.gettingstarted.opacitydelay {
+.welcome .gettingstarted.opacitydelay {
   -webkit-animation-delay: 5s;
           animation-delay: 5s;
 }
@@ -151,6 +165,7 @@ li,
 }
 
 .welcome a {
+  position: static;
   height: 3.5em;
   width: 15em;
   padding: 1em 3em 1em 3em;
@@ -177,29 +192,27 @@ li,
   background-color: var(--button-color);
 }
 
-@media all and (min-width: 900px) {
+@media (min-width: 35em) {
   .welcome img {
     width: 30%;
-    -webkit-transform: translate(-50%, 50%);
-            transform: translate(-50%, 50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     left: 50%;
-    top: 10%;
+    top: 40%;
   }
   .welcome button {
     width: 30%;
-    -webkit-transform: translate(-50%, 50%);
-            transform: translate(-50%, 50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     left: 50%;
-    top: 65%;
-    margin-top: 0;
+    top: 40%;
+    margin-top: 20%;
   }
-  .welcome a {
-    -webkit-transform: translate(-50%, 50%);
-            transform: translate(-50%, 50%);
-    height: 3.5em;
-    width: 30em;
-    padding: 1em 3em;
-    left: 38em;
+  .welcome .gettingstarted {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
 
@@ -224,6 +237,31 @@ li,
   }
   100% {
     top: -60%;
+  }
+}
+
+@media (min-width: 35em) {
+  @-webkit-keyframes hide {
+    0% {
+      top: 40%;
+    }
+    5% {
+      top: 43%;
+    }
+    100% {
+      top: -100%;
+    }
+  }
+  @keyframes hide {
+    0% {
+      top: 40%;
+    }
+    5% {
+      top: 43%;
+    }
+    100% {
+      top: -100%;
+    }
   }
 }
 
