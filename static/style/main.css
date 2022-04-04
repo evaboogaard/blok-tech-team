@@ -767,17 +767,15 @@ header section p {
   font-weight: 200;
 }
 
-#likes article button {
+#likes article form {
   position: absolute;
   width: 2.6em;
   height: 2.6em;
-  right: 2.2em;
-  bottom: 5em;
-  border: none;
-  background-color: transparent;
+  right: 1em;
+  bottom: 4em;
 }
 
-#likes article button img {
+#likes article form input {
   width: 2.6em;
   opacity: 80%;
   left: 0;
