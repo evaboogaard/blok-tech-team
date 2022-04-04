@@ -20,10 +20,12 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     liked:{
-        type: Array
+        type: Array,
+        required: true
     },
     disliked:{
-        type: Array
+        type: Array,
+        required: true
     }
 })
 module.exports = mongoose.model("User", userSchema)
