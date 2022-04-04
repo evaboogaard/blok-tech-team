@@ -31,7 +31,7 @@ router.post("/createaccount", async (req, res) => {
       return res.status(500).redirect("createaccount");
     } else {
       session = req.session;
-      session.email = req.body.email;
+      //session.email = req.body.email;
       console.log("Account aangemaakt!");
       console.log(req.body);
 
@@ -80,21 +80,23 @@ router.get("/login", forwardAuthenticated, (req, res) => {
 });
 
 router.post(
-  "/login",
+  "/login", // in de documentatie van password.js staat telkens /login/password vermeld.. mss gaat het daar mis
   passport.authenticate("local", {
-    successRedirect: "/overviewaccount",
+    //successRedirect: "/overviewaccount",
     failureRedirect: "/login",
     failureFlash: true,
   }),
   (req, res, next) => {
-  //req.session.user_email = req.body.email;
-  console.log(req);
-  console.log(res);
-  console.log(next);
+  // dit hier wordt niet uitgevoerd
+  //req.session.user_email = req.user.email;
+  //console.log(req.user);
+  //console.log(res);
+  //console.log(next);
+  res.redirect('/home');
 });
 
 // Logout
-router.get('/users/logout', (req, res) => {
+router.get('/users/logout', ensureAuthenticated, (req, res) => {
   //https://www.passportjs.org/concepts/authentication/logout/
   req.logout();
   //req.flash('success_msg', 'You have been logged out');
@@ -102,7 +104,7 @@ router.get('/users/logout', (req, res) => {
 });
 
 //  deleting the users account
-router.post("/delete", (req, res) => {
+router.post("/delete", ensureAuthenticated, (req, res) => {
   console.log(req.user);
   User.findOneAndDelete({ email: req.user.email })
     .then(() => {

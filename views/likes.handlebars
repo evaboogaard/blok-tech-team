@@ -3,14 +3,14 @@
 
     <section id="head">
         <h1>Likes</h1>
-        <a href="filter"><img src="../static/images/filter.png" alt="Filter"></a>
+        <a href="filter"><img src="/static/images/filter.png" alt="Filter"></a>
     </section>
 
     {{#each data}}
     <article class="animate">
         <div>
             <img 
-            src="../../static/images/{{this.img}}.jpg" 
+            src="/static/images/{{this.img}}.jpg" 
             alt="Picture of the restaurant"
             loading="lazy"
             >
@@ -18,12 +18,12 @@
         <div>
             <h2>{{this.name}}</h2> <!--Name restaurant -->
             <section class="location" > <!--Location -->
-                <img src="../static/images/location.png" alt="Location icon">
+                <img src="/static/images/location.png" alt="Location icon">
                 <p>{{this.distance}} km away</p> 
             </section>
             <section class="review" > <!--Reviewscore -->
                 <img 
-                src="../../static/images/{{this.stars}}.png" 
+                src="/static/images/{{this.stars}}.png" 
                 alt="Review stars"
                 loading="lazy"
                 >
@@ -32,7 +32,7 @@
                 <p>{{this.price}}</p>
             </section>
             <section class="time" > <!--Opening/closing time -->
-                <img src="../static/images/time.png" alt="Time icon">
+                <img src="/static/images/time.png" alt="Time icon">
                 <p>{{this.time}}</p> 
             </section>
 
@@ -40,7 +40,7 @@
                 <input type="hidden" name="id" value="{{this.id}}">
                 <input
                 type="image"
-                src="../../static/images/dislike.png"
+                src="/static/images/dislike.png"
                 alt="Delete icon"
                 />
             </form>
