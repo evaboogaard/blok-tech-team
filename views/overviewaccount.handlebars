@@ -1,21 +1,29 @@
 {{>header}}
 
-<h1>Account</h1>
+<main class="account">
 
+<section>
+    <h2>Account</h1>
+</section>
+
+<article>
 <ul>
+    <li class="bold">First name</li>
     <li>{{fname}}</li>
+    <li class="bold">Last name</li>
     <li>{{lname}}</li>
+    <li class="bold">Email</li>
     <li>{{email}}</li>
 </ul>
+</article>
+
+<a class="account-logout" href="/users/logout"><span>Logout</span></a>
+
 
 <form method='POST' action="/delete" id="delete">
-    <input type="text" {{this._id}}>
-    <button type="submit" name="deleteId">Delete</button>
+    <button class="account-delete" type="submit" name="deleteId" value="{{this._id}}">Delete Account</button>
 </form>
 
-<form method='POST' action="/update" id="update">
-    <button type="submit" name="updateId" value="{{this._id}}">Edit</button>
-</form>
-             
+</main>     
 
 {{>nav}} 
