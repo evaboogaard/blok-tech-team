@@ -298,6 +298,7 @@ li,
 
 .account article {
   background-color: white;
+  max-width: 30em;
   width: 90%;
   margin: 4em auto 0;
   border-radius: 2rem;
@@ -738,9 +739,13 @@ header section p {
   font-weight: 300;
 }
 
+#likes #head a {
+  right: 10%;
+}
+
 #likes #head a img {
   width: 2.9em;
-  left: 19em;
+  right: 50%;
   top: -1.2em;
 }
 
@@ -788,6 +793,15 @@ header section p {
 
 #likes article div:last-of-type * {
   position: absolute;
+}
+
+@media (min-width: 35em) {
+  #likes article {
+    max-width: 30em;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+    left: 50%;
+  }
 }
 
 #likes article .location {
@@ -910,8 +924,35 @@ nav ul li img {
   margin-top: 1.3em;
 }
 
-nav ul li.active {
-  opacity: 100%;
+@media (min-width: 40em) {
+  nav {
+    left: 0;
+    bottom: 0;
+    width: auto;
+    height: 100%;
+    top: 10em;
+  }
+  nav ul {
+    height: 100%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    gap: 1em;
+  }
+  nav li:first-of-type {
+    padding-top: 5em;
+  }
+  nav img {
+    height: 3em;
+    padding: 0 1em 0 1em;
+  }
 }
 
 #filter {

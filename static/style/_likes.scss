@@ -18,9 +18,13 @@
       font-weight: 300;
     }
 
+    a{
+      right: 10%;
+    }
+
     a img {
       width: 2.9em;
-      left: 19em;
+      right: 50%;
       top: -1.2em;
     }
   }
@@ -62,6 +66,12 @@
         position: absolute;
       }
     }
+
+    @media (min-width: 35em){
+      max-width: 30em;
+      transform: translateX(-50%);
+      left: 50%;
+  }
 
     .location {
       top: 3.2em;
