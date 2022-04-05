@@ -55,6 +55,10 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// validation 
+const expressValidator = require("express-validator"); 
+app.use(expressValidator()); 
+
 // Handlebars
 const { engine } = require("express-handlebars");
 const { ensureAuthenticated } = require("./config/auth");
@@ -69,6 +73,8 @@ app.use("/static", express.static("static"));
 
 // localhost:3000/home
 // www.dingendoen.nl/home
+
+
 
 app.get('/home', ensureAuthenticated, async (req, res) => { // routenaam is superverwarrend, misschien veranderen naar iets logischer zoals '/restaurants'?
   try {
