@@ -32,11 +32,11 @@ router.get('/overviewaccount', (req, res) => {
 
 
 // Filter
-
+/*
 router.get('/filter', (req, res) => {
     res.render('filter', {'title': 'Filter'});
 });
-
+*/
 // Delete page 
 /*
 router.get('/delete', (req, res) => {
