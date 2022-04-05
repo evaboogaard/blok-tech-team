@@ -1,6 +1,6 @@
 // Express setup
 const express = require("express");
-const helmet = require('helmet');
+const compression = require('compression')
 const app = express();
 const PORT = process.env.PORT || 3000;
 const flash = require('connect-flash');
@@ -8,10 +8,20 @@ const session = require('express-session');
 const passport = require('passport')
 require('./config/passport')(passport);
 
-
+app.use(compression({
+  level: 6, //Best Optimilization for Processor usage
+  threshold: 0, // Zorgt ervoor dat alles vanaf 0KB word al gecompressed
+  filter: (req, res) => {
+    if (req.headers['x-no-compression']) {
+      return false
+    }
+    return compression.filter(req, res)
+  },
+})
+)
 
 app.use(flash());
-app.use(helmet());
+
 app.use(session({ // set up the session
   name: 'sessionID' , // name of the cookie
   secret: 'secret', // secret for the cookie
