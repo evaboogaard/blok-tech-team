@@ -3,52 +3,99 @@
 
     <section id="head">
         <h1>Likes</h1>
-        <a href="filter"><img src="/static/images/filter.png" alt="Filter"></a>
+        <img src="/static/images/filter.png" alt="Filter">
     </section>
 
-<div>
+    <div>
     {{#each data}}
-    <article class="animate">
-        <div>
-            <img 
-            src="/static/images/{{this.img}}.jpg" 
-            alt="Picture of the restaurant"
-            loading="lazy"
-            >
-        </div>
-        <div>
-            <h2>{{this.name}}</h2> <!--Name restaurant -->
-            <section class="location" > <!--Location -->
-                <img src="/static/images/location.png" alt="Location icon">
-                <p>{{this.distance}} km away</p> 
-            </section>
-            <section class="review" > <!--Reviewscore -->
+        <article class="animate">
+            <div>
                 <img 
-                src="/static/images/{{this.stars}}.png" 
-                alt="Review stars"
+                src="/static/images/{{this.img}}.jpg" 
+                alt="Picture of the restaurant"
                 loading="lazy"
                 >
-            </section>
-            <section class="price" > <!--Price -->
-                <p>{{this.price}}</p>
-            </section>
-            <section class="time" > <!--Opening/closing time -->
-                <img src="/static/images/time.png" alt="Time icon">
-                <p>{{this.time}}</p> 
-            </section>
+            </div>
+            <div>
+                <h2>{{this.name}}</h2> <!--Name restaurant -->
+                <section class="location" > <!--Location -->
+                    <img src="/static/images/location.png" alt="Location icon">
+                    <p>{{this.distance}} km away</p> 
+                </section>
+                <section class="review" > <!--Reviewscore -->
+                    <img 
+                    src="/static/images/{{this.stars}}.png" 
+                    alt="Review stars"
+                    loading="lazy"
+                    >
+                </section>
+                <section class="price" > <!--Price -->
+                    <p>{{this.price}}</p>
+                </section>
+                <section class="time" > <!--Opening/closing time -->
+                    <img src="/static/images/time.png" alt="Time icon">
+                    <p>{{this.time}}</p> 
+                </section>
 
-            <form id="remove" action="/remove" method="POST">
-                <input type="hidden" name="id" value="{{this.id}}">
-                <input
-                type="image"
-                src="/static/images/dislike.png"
-                alt="Delete icon"
-                />
-            </form>
-        </div>
-    </article>
+                <form id="remove" action="/remove" method="POST">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <input
+                    type="image"
+                    src="/static/images/dislike.png"
+                    alt="Delete icon"
+                    />
+                </form>
+            </div>
+        </article>
     {{/each}}
     </div>
+
+    <section id="filter">
+        <img src="../static/images/back.png" alt="" />
+        <form action="/filteroutput" , method="POST">
+            <fieldset>
+            <label for="distance">Max. distance (km)</label><br>
+            <input
+                type="range"
+                name="distance"
+                min="1"
+                max="5"
+                value="5"
+                oninput="this.nextElementSibling.value = this.value"
+                required
+            />
+            <output>5</output>
+            </fieldset>
+            <fieldset>
+            <label for="stars">Min. stars</label><br>
+            <input
+                type="range"
+                name="stars"
+                min="1"
+                max="5"
+                value="0"
+                oninput="this.nextElementSibling.value = this.value"
+                required
+            />
+            <output>1</output>
+            </fieldset>
+            <fieldset>
+            <label for="price">Price</label>
+            <div>
+                <input type="radio" id="€" name="price" value="€" />
+                <label for="€">€</label>
+                <input type="radio" id="€€" name="price" value="€€" />
+                <label for="€€">€€</label>
+                <input type="radio" id="€€€" name="price" value="€€€" />
+                <label for="€€€">€€€</label>
+            </div>
+            </fieldset>
+            <button type="submit">Filter</button>
+        </form>
+        <form action="/clearfilter" method="POST">
+            <button id="clear">Clear filter</button>
+        </form>
+    </section>
 
     {{>nav}}
 

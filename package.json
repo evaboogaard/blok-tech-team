@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Restaurant matching app",
   "main": "index.js",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "parcel main.css"
   },
   "repository": {
     "type": "git",
@@ -20,21 +22,25 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
+    "compression": "^1.7.4",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-flash": "^0.0.2",
     "express-handlebars": "^6.0.3",
     "express-session": "^1.17.2",
+    "express-validator": "^5.3.1",
     "helmet": "^5.0.2",
     "mongoose": "^6.2.9",
     "nodemailer": "^6.7.3",
     "nodemon": "^2.0.15",
-    "parcel-plugin-handlebars": "^0.4.4",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^8.12.0",
-    "parcel": "^2.4.1"
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.49.11"
   }
 }
