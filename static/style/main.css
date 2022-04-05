@@ -975,6 +975,10 @@ nav ul li img {
   }
 }
 
+nav ul li.active {
+  opacity: 100%;
+}
+
 #filter {
   padding: 2em;
   display: -webkit-box;
