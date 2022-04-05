@@ -11,8 +11,6 @@ gulp.task("sass", () => {
 
     .pipe(gulp.dest("static/dist"))
 
-
-
 }); 
 
 gulp.task('default', gulp.series('sass')); 

@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const bodyParser = require("body-parser");
-const expressValidator = require("express-validator"); 
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -16,11 +15,11 @@ const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
-router.use(expressValidator()); 
-
 
 router.post("/createaccount", async (req, res) => {
+ 
   const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+  
   const user = new User({
     fname: req.body.fname,
     lname: req.body.lname,
@@ -28,12 +27,8 @@ router.post("/createaccount", async (req, res) => {
     password: hashedPassword,
   });
 
-  // Check validation 
-  req.check('email').
 
 
-
-  
 
   user.save((error) => {
     if (error) {
