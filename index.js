@@ -12,12 +12,22 @@ require('./config/passport')(passport);
 
 app.use(flash());
 app.use(helmet())
+app.use(session({ // set up the session
+  name: 'sessionID' , // name of the cookie
+  secret: 'secret', // secret for the cookie
+  resave: false,  // don't save the session if it hasn't changed
+  saveUninitialized: false // don't save the session if it hasn't been modified
+  // cookie: { // set the cookie
+  //   secure: false // set the cookie to be secure (https)
+  // }
+}))
 //Express session
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-}));
+// app.use(session({
+//     secret: 'secret',
+//     resave: true,
+//     saveUninitialized: false
+// }));
+
 
 // Passport middleware
 app.use(passport.initialize());
@@ -47,6 +57,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Handlebars
 const { engine } = require("express-handlebars");
+const { ensureAuthenticated } = require("./config/auth");
 app.engine("handlebars", engine());
 app.set("view engine", "handlebars");
 app.set("views", "./views");
@@ -54,31 +65,43 @@ app.set("views", "./views");
 // Static
 app.use("/static", express.static("static"));
 
+// www.dingendoen.nl --> dit noemen we de homepage, maar zit dus op de '/'-route
 
-app.get('/home', async (req, res) => {
+// localhost:3000/home
+// www.dingendoen.nl/home
+
+app.get('/home', ensureAuthenticated, async (req, res) => { // routenaam is superverwarrend, misschien veranderen naar iets logischer zoals '/restaurants'?
   try {
-    const currentUser = await user.findOne({email: req.session.email});
-    const allRestaurants = await restaurant.find().lean().exec();
+    console.log('request session object:' + req.session)
+    console.log('email waarmee gezocht wordt:' + req.user.email)
+    // --> er bestaat geen session.email, dus je zal de accountdata in de database op een of andere manier moeten kunnen koppelen aan de huidige (passport)session data.
+
+    const currentUser = await user.findOne({email: req.user.email}); // find user in database by email
+    console.log(currentUser);
+    const allRestaurants = await restaurant.find().lean().exec(); // alle restaurants in de database
     
-    const filteredRestaurants = allRestaurants.filter((restaurant) => {
-      return !currentUser.liked.includes(restaurant.id) && !currentUser.disliked.includes(restaurant.id);
+    const filteredRestaurants = allRestaurants.filter((restaurant) => { // filter restaurants op wel/niet geliked
+      // console.log('currentUser: ' + currentUser) --> is undefined, zie boven
+
+      return !currentUser.liked.includes(restaurant.id) && !currentUser.disliked.includes(restaurant.id); 
     });
 
     const data = filteredRestaurants[0];
     res.render("home", { data: data });
   } catch(err) {
-      console.error("Error loading homepage: " + err.message);
+    console.log('error message is hier:' + err)
+      console.error("Error loading homepage: dinges " + err.message);
   }
 });
 
 app.post("/like", async (req, res) => {
   try {
     await user.updateOne(
-      { email: req.session.email },
+      { email: req.user.email },
       { $push: { liked : req.body.id }}
     );
 
-    const currentUser = await user.findOne({email: req.session.email});
+    const currentUser = await user.findOne({email: req.user.email});
     const allRestaurants = await restaurant.find().lean().exec();
     
     const filteredRestaurants = allRestaurants.filter((restaurant) => {
@@ -96,11 +119,11 @@ app.post("/like", async (req, res) => {
 app.post("/dislike", async (req, res) => {
   try {
     await user.updateOne(
-      { email: req.session.email },
+      { email: req.user.email },
       { $push: { disliked : req.body.id }}
     );
 
-    const currentUser = await user.findOne({email: req.session.email});
+    const currentUser = await user.findOne({email: req.user.email});
     const allRestaurants = await restaurant.find().lean().exec();
     
     const filteredRestaurants = allRestaurants.filter((restaurant) => {
@@ -117,7 +140,7 @@ app.post("/dislike", async (req, res) => {
 // Show list with liked restaurants
 app.get("/likes", async (req, res) => {
   try {
-    const currentUser = await user.findOne({email: req.session.email});
+    const currentUser = await user.findOne({email: req.user.email});
     const allRestaurants = await restaurant.find().lean().exec();
     
     const likedRestaurants = allRestaurants.filter((restaurant) => {
@@ -134,17 +157,17 @@ app.post("/remove", async (req, res) => {
   try {
     // Remove restaurantid from liked
     await user.updateOne(
-      { email: req.session.email },
+      { email: req.user.email },
       { $pull: { liked : req.body.id }}
     );
 
     // Add restaurantid to disliked
     await user.updateOne(
-      { email: req.session.email },
+      { email: req.user.email },
       { $push: { disliked : req.body.id }}
     );
 
-    const currentUser = await user.findOne({email: req.session.email});
+    const currentUser = await user.findOne({email: req.user.email});
     const allRestaurants = await restaurant.find().lean().exec();
     
     const likedRestaurants = allRestaurants.filter((restaurant) => {
@@ -165,7 +188,7 @@ app.post("/remove", async (req, res) => {
 // Filter function
 app.post("/filteroutput", async (req, res) => {
   try {
-    const currentUser = await user.findOne({email: req.session.email});
+    const currentUser = await user.findOne({email: req.user.email});
     const allRestaurants = await restaurant.find().lean().exec();
     
     const likedRestaurants = allRestaurants.filter((restaurant) => {
@@ -187,7 +210,7 @@ app.post("/filteroutput", async (req, res) => {
 // Remove filters and show all liked restaurants
 app.post("/clearfilter", async (req, res) => {
     try {
-      const currentUser = await user.findOne({email: req.session.email});
+      const currentUser = await user.findOne({email: req.user.email});
       const allRestaurants = await restaurant.find().lean().exec();
       
       const likedRestaurants = allRestaurants.filter((restaurant) => {
