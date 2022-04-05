@@ -11,7 +11,7 @@ require('./config/passport')(passport);
 
 
 app.use(flash());
-app.use(helmet())
+app.use(helmet());
 app.use(session({ // set up the session
   name: 'sessionID' , // name of the cookie
   secret: 'secret', // secret for the cookie
@@ -55,6 +55,10 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// validation 
+const expressValidator = require("express-validator"); 
+app.use(expressValidator()); 
+
 // Handlebars
 const { engine } = require("express-handlebars");
 const { ensureAuthenticated } = require("./config/auth");
@@ -69,6 +73,8 @@ app.use("/static", express.static("static"));
 
 // localhost:3000/home
 // www.dingendoen.nl/home
+
+
 
 app.get('/home', ensureAuthenticated, async (req, res) => { // routenaam is superverwarrend, misschien veranderen naar iets logischer zoals '/restaurants'?
   try {
@@ -197,7 +203,12 @@ app.post("/filteroutput", async (req, res) => {
 
     let filter_likedRestaurants = likedRestaurants.filter(function(restaurants) {
       const { distance, stars, price } = req.body;
-      return restaurants.distance <= distance && restaurants.stars >= stars && restaurants.price == price });
+      if (req.body.price === undefined) {
+        return restaurants.distance <= distance && restaurants.stars >= stars;
+      } else {
+        return restaurants.distance <= distance && restaurants.stars >= stars && restaurants.price == price;
+      }
+      });
   
     console.log(filter_likedRestaurants);
     res.render("likes", { data: filter_likedRestaurants });

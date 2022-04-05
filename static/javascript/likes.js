@@ -1,11 +1,6 @@
 console.log(`epico momento de bruh`);
 
 const allLikes = document.querySelectorAll(`.animate`);
-// const restaurant = document.querySelector(`article`);
-
-// restaurant.addEventListener("click", () =>{
-//     restaurant.classList.toggle("unlike");
-// })
 
 // De Requirements om de class er uiteindelijk op te laten zetten:
 // rootMargin -> vanaf 20px gaat JS checken
@@ -30,3 +25,17 @@ allLikes.forEach(item => {
     // het element observeren
     observer.observe(item);
 })
+
+let openFilter = document.querySelector('#head img');
+let filter = document.querySelector('#filter');
+let backButton = document.querySelector('#filter img');
+
+openFilter.addEventListener('click', ()=>{
+  filter.classList.toggle('show');
+  filter.style.transition = "all 1s";
+});
+
+backButton.addEventListener('click', ()=>{
+  filter.classList.toggle('show');
+  filter.style.transition = "all 1s";
+});
