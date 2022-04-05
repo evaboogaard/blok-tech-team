@@ -759,14 +759,10 @@ header section p {
   font-weight: 300;
 }
 
-#likes #head a {
-  right: 10%;
-}
-
-#likes #head a img {
+#likes #head img {
   width: 2.9em;
-  right: 50%;
-  top: -1.2em;
+  right: 5%;
+  bottom: 0.75em;
 }
 
 #likes article {
@@ -911,6 +907,107 @@ header section p {
   opacity: 1;
 }
 
+#filter {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--background);
+  padding: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2em;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+#filter img {
+  width: 3em;
+}
+
+#filter form {
+  font-size: 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1em;
+  font-family: Poppins;
+  font-weight: 300;
+}
+
+#filter form fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+#filter form fieldset input[type="radio"] {
+  margin-right: 0.2em;
+  width: 1.5em;
+  height: 1.5em;
+  accent-color: var(--primary-font-color);
+}
+
+#filter form fieldset input[type="range"] {
+  -webkit-appearance: none;
+  background: var(--input-color);
+  border-radius: 1em;
+}
+
+#filter form fieldset input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: var(--primary-font-color);
+}
+
+#filter form fieldset label {
+  color: var(--emphasized-font-color);
+}
+
+#filter form fieldset div label {
+  color: var(--primary-font-color);
+}
+
+#filter form fieldset output {
+  color: var(--primary-font-color);
+}
+
+#filter form button {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 0.5em 1em;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
+  border: none;
+  border-radius: 3em;
+  background-color: var(--button-color);
+  font-size: 1em;
+  color: var(--like-dislike-buttons);
+  font-weight: 300;
+}
+
+#filter #clear {
+  background-color: var(--like-dislike-buttons);
+  color: var(--button-color);
+}
+
+#filter.show {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
 nav {
   position: fixed;
   width: 100%;
@@ -973,93 +1070,6 @@ nav ul li img {
     height: 3em;
     padding: 0 1em 0 1em;
   }
-}
-
-#filter {
-  padding: 2em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 2em;
-}
-
-#filter a img {
-  width: 3em;
-}
-
-#filter form {
-  font-size: 1.5em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 1em;
-  font-family: Poppins;
-  font-weight: 300;
-}
-
-#filter form fieldset {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-#filter form fieldset input[type="radio"] {
-  margin-right: 0.5em;
-  width: 1.5em;
-  height: 1.5em;
-  accent-color: var(--primary-font-color);
-}
-
-#filter form fieldset input[type="range"] {
-  -webkit-appearance: none;
-  background: var(--input-color);
-  border-radius: 1em;
-}
-
-#filter form fieldset input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: var(--primary-font-color);
-}
-
-#filter form fieldset label {
-  color: var(--emphasized-font-color);
-}
-
-#filter form fieldset div label {
-  color: var(--primary-font-color);
-}
-
-#filter form fieldset output {
-  color: var(--primary-font-color);
-}
-
-#filter form button {
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-  padding: 0.75em;
-  background-color: var(--button-color);
-  border-radius: 1em;
-  border: none;
-  font-size: 0.75em;
-  font-family: Poppins;
-  font-weight: 300;
-}
-
-#filter #clear {
-  background-color: var(--nav-color);
-  border: solid 0.25em;
-  border-color: var(--button-color);
 }
 
 .delete {

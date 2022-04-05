@@ -30,3 +30,17 @@ allLikes.forEach(item => {
     // het element observeren
     observer.observe(item);
 })
+
+let openFilter = document.querySelector('#head img');
+let filter = document.querySelector('#filter');
+let backButton = document.querySelector('#filter img');
+
+openFilter.addEventListener('click', ()=>{
+  filter.classList.toggle('show');
+  filter.style.transition = "all 1s";
+});
+
+backButton.addEventListener('click', ()=>{
+  filter.classList.toggle('show');
+  filter.style.transition = "all 1s";
+});

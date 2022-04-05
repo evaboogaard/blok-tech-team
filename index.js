@@ -11,7 +11,7 @@ require('./config/passport')(passport);
 
 
 app.use(flash());
-app.use(helmet())
+app.use(helmet());
 app.use(session({ // set up the session
   name: 'sessionID' , // name of the cookie
   secret: 'secret', // secret for the cookie
@@ -197,7 +197,12 @@ app.post("/filteroutput", async (req, res) => {
 
     let filter_likedRestaurants = likedRestaurants.filter(function(restaurants) {
       const { distance, stars, price } = req.body;
-      return restaurants.distance <= distance && restaurants.stars >= stars && restaurants.price == price });
+      if (req.body.price === undefined) {
+        return restaurants.distance <= distance && restaurants.stars >= stars;
+      } else {
+        return restaurants.distance <= distance && restaurants.stars >= stars && restaurants.price == price;
+      }
+      });
   
     console.log(filter_likedRestaurants);
     res.render("likes", { data: filter_likedRestaurants });
