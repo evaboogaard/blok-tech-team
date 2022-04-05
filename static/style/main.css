@@ -987,19 +987,20 @@ header section p {
 #filter form button {
   -ms-flex-item-align: start;
       align-self: flex-start;
-  padding: 0.75em;
-  background-color: var(--button-color);
-  border-radius: 1em;
+  padding: 0.5em 1em;
+  -webkit-box-shadow: var(--button-shadow);
+          box-shadow: var(--button-shadow);
   border: none;
-  font-size: 0.75em;
-  font-family: Poppins;
+  border-radius: 3em;
+  background-color: var(--button-color);
+  font-size: 1em;
+  color: var(--like-dislike-buttons);
   font-weight: 300;
 }
 
 #filter #clear {
-  background-color: var(--nav-color);
-  border: solid 0.25em;
-  border-color: var(--button-color);
+  background-color: var(--like-dislike-buttons);
+  color: var(--button-color);
 }
 
 #filter.show {
