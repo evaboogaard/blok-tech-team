@@ -1072,6 +1072,10 @@ nav ul li img {
   }
 }
 
+nav ul li.active {
+  opacity: 100%;
+}
+
 .delete {
   height: 70%;
   position: relative;
