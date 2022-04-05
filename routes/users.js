@@ -20,21 +20,50 @@ router.use(expressValidator());
 
 
 router.post("/createaccount", async (req, res) => {
-  const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-  const user = new User({
+  // 1: validate the posted data, e.g. check if the email consists of only letters and numbers and contains an @ and a . ? (NOTE: this should be done in the frontend as well)  
+  // 2: check if the email is already in use (check with the database)
+  // 3: hash the password
+  // 4: create a new user object
+  // 5: save the user object to the database
+
+  // 1. check data
+  req.check('email', 'Invalid email address').isEmail;   // TODO: validation of email address; what if it isn't right? will the user receive a message?
+
+
+
+  // 2. check email
+  // TODO: make if/else statements for the situations I've described below.
+
+  // voorbeeldje if/else statement: 
+  // let myName = techkech
+
+  // if (myName == 'Anna') {
+  //   console.log('My name is Anna')
+  // } else if (myName == 'techkech') {
+  //   console.log('My name is techkech')
+  // } else {
+  //   console.log('My name is something else, not Anna or techkech')
+  // }
+
+  // check if the user already exists in the database (HINT: just google this and see if you can find a solution that you understand )
+  // if not, create a new user (step 3, 4, 5) and add to the database
+
+  // TODO search in database for a user with the same email (req.body.email)
+  // if found, return an error message to the user that says 'sorry, email address already exists' or the like
+  // if not found, create an object with the user info and add to the database
+
+  // 3. hashing
+  const hashedPassword = await bcrypt.hash(req.body.password, saltRounds); // hash the password
+
+  // 4. user object
+  const user = new User({ // create a new user object with the user info from the form, and as the password, use the hashed password
     fname: req.body.fname,
     lname: req.body.lname,
     email: req.body.email,
     password: hashedPassword,
   });
 
-  // Check validation 
-  req.check('email', 'Invalid email address').isEmail; 
-
-
-
-  
-
+// 5. save user
   user.save((error) => {
     if (error) {
       console.error(error);
@@ -45,6 +74,8 @@ router.post("/createaccount", async (req, res) => {
       console.log("Account aangemaakt!");
       console.log(req.body);
 
+
+      // THINGS FOR TRANSPORTER FEATURE:
       // laat dit ff in comments want ik kreeg een melding dat ik spam veroorzaakte HAHAHHAHAH
       // let transporter = nodemailer.createTransport({
       //   service: "hotmail",
