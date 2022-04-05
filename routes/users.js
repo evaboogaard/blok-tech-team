@@ -29,7 +29,7 @@ router.post("/createaccount", async (req, res) => {
   });
 
   // Check validation 
-  req.check('email', 'Invalid email address').isEmail; 
+  req.check('email').
 
 
 
@@ -151,3 +151,4 @@ router.post("/delete", ensureAuthenticated, (req, res) => {
 // });
 
 module.exports = router;
+
