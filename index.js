@@ -116,6 +116,8 @@ app.get("/likes", async (req, res) => {
   try {
     const currentUser = await user.findOne({email: req.session.email});
     const allRestaurants = await restaurant.find().lean().exec();
+    console.log(currentUser);
+    console.log(req.session.email)
     
     const likedRestaurants = allRestaurants.filter((restaurant) => {
       return currentUser.liked.includes(restaurant.id);
