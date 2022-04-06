@@ -8,7 +8,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const passport = require("passport");
 
-let session;
+
 
 const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 
@@ -31,7 +31,6 @@ router.post("/createaccount", async (req, res) => {
     if (usercheck) {
       alert("Email already exists!")
     } else {
-      session = req.session;
       console.log("Account aangemaakt!");
       console.log(req.body);
       user.save();
@@ -92,9 +91,9 @@ router.get("/login", forwardAuthenticated, (req, res) => {
 
 router.post( "/login", passport.authenticate("local", {
     failureRedirect: "/login",
-    failureFlash: true,
+    
   }),
-  (req, res, next) => {
+  (req, res) => {
   try{
     res.redirect('/home');
   } catch(err) {

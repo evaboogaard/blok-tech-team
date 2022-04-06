@@ -1,34 +1,29 @@
 // Express setup
 const express = require("express");
-const compression = require('compression')
+const compression = require("compression");
 const app = express();
 const PORT = process.env.PORT || 3000;
-const flash = require('connect-flash');
-const session = require('express-session');
-const passport = require('passport')
-require('./config/passport')(passport);
 
-app.use(compression({
-  level: 6,
-  threshold: 0,
-  filter: (req, res) => {
-    if (req.headers['x-no-compression']) {
-      return false
-    }
-    return compression.filter(req, res)
-  },
-})
-)
+const session = require("express-session");
+const passport = require("passport");
+require("./config/passport")(passport);
 
-app.use(flash());
+app.use(
+  compression({
+    level: 6,
+    threshold: 0,
+  })
+);
 
 // Session
-app.use(session({
-  name: 'sessionID' ,
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: false
-}))
+app.use(
+  session({
+    name: "sessionID",
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 // Passport middleware
 app.use(passport.initialize());
@@ -66,148 +61,161 @@ app.set("views", "./views");
 // Static
 app.use("/static", express.static("static"));
 
-app.get('/home', ensureAuthenticated, async (req, res) => {
+app.get("/home", ensureAuthenticated, async (req, res) => {
   try {
-    const currentUser = await user.findOne({email: req.user.email});
+    const currentUser = await user.findOne({ email: req.user.email });
     const allRestaurants = await restaurant.find().lean().exec();
 
     const filteredRestaurants = allRestaurants.filter((restaurant) => {
-      return !currentUser.liked.includes(restaurant.id) && !currentUser.disliked.includes(restaurant.id); 
+      return (
+        !currentUser.liked.includes(restaurant.id) &&
+        !currentUser.disliked.includes(restaurant.id)
+      );
     });
 
     const data = filteredRestaurants[0];
     res.render("home", { data: data });
-  } catch(err) {
+  } catch (err) {
     console.error("Error loading homepage: " + err.message);
   }
 });
 
-app.post("/like", async (req, res) => {
+app.post("/like", ensureAuthenticated, async (req, res) => {
   try {
     await user.updateOne(
       { email: req.user.email },
-      { $push: { liked : req.body.id }}
+      { $push: { liked: req.body.id } }
     );
 
-    const currentUser = await user.findOne({email: req.user.email});
+    const currentUser = await user.findOne({ email: req.user.email });
     const allRestaurants = await restaurant.find().lean().exec();
-    
+
     const filteredRestaurants = allRestaurants.filter((restaurant) => {
-      return !currentUser.liked.includes(restaurant.id) && !currentUser.disliked.includes(restaurant.id);
+      return (
+        !currentUser.liked.includes(restaurant.id) &&
+        !currentUser.disliked.includes(restaurant.id)
+      );
     });
-    
+
     const data = await filteredRestaurants[0];
     res.render("home", { data: data });
-  } catch(err) {
+  } catch (err) {
     console.error("Error on like: " + err.message);
   }
 });
 
 // User disliked restaurant
-app.post("/dislike", async (req, res) => {
+app.post("/dislike", ensureAuthenticated, async (req, res) => {
   try {
     await user.updateOne(
       { email: req.user.email },
-      { $push: { disliked : req.body.id }}
+      { $push: { disliked: req.body.id } }
     );
 
-    const currentUser = await user.findOne({email: req.user.email});
+    const currentUser = await user.findOne({ email: req.user.email });
     const allRestaurants = await restaurant.find().lean().exec();
-    
+
     const filteredRestaurants = allRestaurants.filter((restaurant) => {
-      return !currentUser.liked.includes(restaurant.id) && !currentUser.disliked.includes(restaurant.id);
+      return (
+        !currentUser.liked.includes(restaurant.id) &&
+        !currentUser.disliked.includes(restaurant.id)
+      );
     });
-    
+
     const data = await filteredRestaurants[0];
     res.render("home", { data: data });
-  } catch(err) {
+  } catch (err) {
     console.error("Error on dislike: " + err.message);
   }
 });
 
 // Show list with liked restaurants
-app.get("/likes", async (req, res) => {
+app.get("/likes", ensureAuthenticated, async (req, res) => {
   try {
-    const currentUser = await user.findOne({email: req.user.email});
+    const currentUser = await user.findOne({ email: req.user.email });
     const allRestaurants = await restaurant.find().lean().exec();
 
     const likedRestaurants = allRestaurants.filter((restaurant) => {
       return currentUser.liked.includes(restaurant.id);
     });
     res.render("likes", { data: likedRestaurants });
-  } catch(err) {
+  } catch (err) {
     console.error("Error loading likes: " + err.message);
   }
 });
 
 // Remove restaurant from likes
-app.post("/remove", async (req, res) => {
+app.post("/remove", ensureAuthenticated, async (req, res) => {
   try {
     // Remove restaurantid from liked
     await user.updateOne(
       { email: req.user.email },
-      { $pull: { liked : req.body.id }}
+      { $pull: { liked: req.body.id } }
     );
 
     // Add restaurantid to disliked
     await user.updateOne(
       { email: req.user.email },
-      { $push: { disliked : req.body.id }}
+      { $push: { disliked: req.body.id } }
     );
 
-    const currentUser = await user.findOne({email: req.user.email});
+    const currentUser = await user.findOne({ email: req.user.email });
     const allRestaurants = await restaurant.find().lean().exec();
-    
+
     const likedRestaurants = allRestaurants.filter((restaurant) => {
       return currentUser.liked.includes(restaurant.id);
     });
 
     res.render("likes", { data: likedRestaurants });
-  } catch(err) {
+  } catch (err) {
     console.error("Error remove restaurant: " + err.message);
   }
 });
 
-
 // Filter function
-app.post("/filteroutput", async (req, res) => {
+app.post("/filteroutput", ensureAuthenticated, async (req, res) => {
   try {
-    const currentUser = await user.findOne({email: req.user.email});
+    const currentUser = await user.findOne({ email: req.user.email });
     const allRestaurants = await restaurant.find().lean().exec();
-    
+
     const likedRestaurants = allRestaurants.filter((restaurant) => {
       return currentUser.liked.includes(restaurant.id);
     });
 
-    let filter_likedRestaurants = likedRestaurants.filter(function(restaurants) {
+    let filter_likedRestaurants = likedRestaurants.filter(function (
+      restaurants
+    ) {
       const { distance, stars, price } = req.body;
       if (req.body.price === undefined) {
         return restaurants.distance <= distance && restaurants.stars >= stars;
       } else {
-        return restaurants.distance <= distance && restaurants.stars >= stars && restaurants.price == price;
+        return (
+          restaurants.distance <= distance &&
+          restaurants.stars >= stars &&
+          restaurants.price == price
+        );
       }
-      });
+    });
 
     res.render("likes", { data: filter_likedRestaurants });
-    
-  } catch(err) {
+  } catch (err) {
     console.error("Error filter results: " + err.message);
   }
 });
 
 // Remove filters and show all liked restaurants
-app.post("/clearfilter", async (req, res) => {
-    try {
-      const currentUser = await user.findOne({email: req.user.email});
-      const allRestaurants = await restaurant.find().lean().exec();
-      
-      const likedRestaurants = allRestaurants.filter((restaurant) => {
-        return currentUser.liked.includes(restaurant.id);
-      });
-      res.render("likes", { data: likedRestaurants });
-    } catch(err) {
-      console.error("Error remove filters: " + err.message);
-    }
+app.post("/clearfilter", ensureAuthenticated, async (req, res) => {
+  try {
+    const currentUser = await user.findOne({ email: req.user.email });
+    const allRestaurants = await restaurant.find().lean().exec();
+
+    const likedRestaurants = allRestaurants.filter((restaurant) => {
+      return currentUser.liked.includes(restaurant.id);
+    });
+    res.render("likes", { data: likedRestaurants });
+  } catch (err) {
+    console.error("Error remove filters: " + err.message);
+  }
 });
 
 // PORT
