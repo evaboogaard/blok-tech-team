@@ -2,13 +2,11 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const bodyParser = require("body-parser");
-const alert = require("alert"); 
- 
+const alert = require("alert");
+
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const passport = require("passport");
-
-
 
 const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 
@@ -18,7 +16,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 router.post("/createaccount", async (req, res) => {
-  try{
+  try {
     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
     const user = new User({
       fname: req.body.fname,
@@ -27,9 +25,9 @@ router.post("/createaccount", async (req, res) => {
       password: hashedPassword,
     });
 
-    const usercheck = await User.findOne({ email: req.body.email })
+    const usercheck = await User.findOne({ email: req.body.email });
     if (usercheck) {
-      alert("Email already exists!")
+      alert("Email already exists!");
     } else {
       console.log("Account aangemaakt!");
       console.log(req.body);
@@ -47,62 +45,63 @@ router.post("/createaccount", async (req, res) => {
         subject: "Welcome to Dinder🍽!", // subject
         text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
       });
-      
+
       user.save();
-      res.redirect('/login');
+      res.redirect("/login");
     }
-  } catch(err) {
+  } catch (err) {
     console.error("Error creating account: " + err.message);
   }
 });
 
 router.get("/overviewaccount", ensureAuthenticated, (req, res) => {
-  try{
+  try {
     res.render("overviewaccount", {
       fname: req.user.fname,
       lname: req.user.lname,
       email: req.user.email,
     });
-  } catch(err) {
+  } catch (err) {
     console.error("Error loading overviewaccount: " + err.message);
   }
 });
 
 // login
 router.get("/login", forwardAuthenticated, (req, res) => {
-  try{
-  res.render("login", { title: "Log In" });
-  } catch(err) {
+  try {
+    res.render("login", { title: "Log In" });
+  } catch (err) {
     console.error("Error loading login: " + err.message);
   }
 });
 
-router.post( "/login", passport.authenticate("local", {
+router.post(
+  "/login",
+  passport.authenticate("local", {
     failureRedirect: "/login",
-    
   }),
   (req, res) => {
-  try{
-    res.redirect('/home');
-  } catch(err) {
-    console.error("Error logging in: " + err.message);
+    try {
+      res.redirect("/home");
+    } catch (err) {
+      console.error("Error logging in: " + err.message);
+    }
   }
-});
+);
 
 // Logout
-router.get('/users/logout', ensureAuthenticated, (req, res) => {
-  try{
+router.get("/users/logout", ensureAuthenticated, (req, res) => {
+  try {
     req.logout();
-    res.redirect('/login');
-  } catch(err) {
+    res.redirect("/login");
+  } catch (err) {
     console.error("Error logging out: " + err.message);
   }
 });
 
-
 // deleting the users account
 router.post("/delete", ensureAuthenticated, (req, res) => {
-  try{
+  try {
     User.findOneAndDelete({ email: req.user.email })
       .then(() => {
         res.render("delete");
@@ -112,10 +111,9 @@ router.post("/delete", ensureAuthenticated, (req, res) => {
           error: error,
         });
       });
-  } catch(err) {
+  } catch (err) {
     console.error("Error deleting account: " + err.message);
   }
 });
-
 
 module.exports = router;

@@ -12,10 +12,10 @@ likeForm.addEventListener(`submit`, (event) => {
 });
 
 dislikeForm.addEventListener(`submit`, (event) => {
-    event.preventDefault();
-    card.classList.add(`dislike`);
-  
-    card.addEventListener(`animationend`, () => {
-      dislikeForm.submit();
-    });
+  event.preventDefault();
+  card.classList.add(`dislike`);
+
+  card.addEventListener(`animationend`, () => {
+    dislikeForm.submit();
   });
+});

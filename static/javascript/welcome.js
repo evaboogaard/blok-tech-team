@@ -4,10 +4,10 @@ const gettingStarted = document.querySelector(`.gettingstarted`);
 
 // PE: if JS is on, the transition still works but it's not clickable
 const ifJavascript = () => {
-	welcomeLogo.classList.remove(`delay`, `hide`);
+  welcomeLogo.classList.remove(`delay`, `hide`);
   welcomeButton.classList.remove(`delay`, `hide`);
   gettingStarted.classList.remove(`show`, `opacitydelay`);
-}
+};
 ifJavascript();
 
 // now it is clickable

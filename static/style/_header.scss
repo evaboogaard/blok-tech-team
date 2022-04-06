@@ -1,8 +1,7 @@
 header {
-  position: relative; 
+  position: relative;
   height: 6em;
   width: 100%;
-
 
   img {
     position: absolute;
@@ -12,34 +11,33 @@ header {
     top: 50%;
   }
 
-  // section{ 
+  // section{
   //   height: 50px;
-  //   position: relative; 
-  //   position: absolute;  
-  //   right: 2em; 
-  //   bottom: 1.5em; 
+  //   position: relative;
+  //   position: absolute;
+  //   right: 2em;
+  //   bottom: 1.5em;
   // }
 
-    // section  p {
-    //     bottom: 0; 
-    //     font-weight: 300;
-    //     font-size: .8em;
-    // }
+  // section  p {
+  //     bottom: 0;
+  //     font-weight: 300;
+  //     font-size: .8em;
+  // }
 
-    section {
-      img {
-          position: absolute;
-          left: 23em;
-          top: 2.5em;
-      }
-  
-      p {
-          position: absolute;
-          top: 4em;
-          right: 2em;
-          font-weight: 300;
-          font-size: .8em;
-      }
+  section {
+    img {
+      position: absolute;
+      left: 23em;
+      top: 2.5em;
     }
-  
+
+    p {
+      position: absolute;
+      top: 4em;
+      right: 2em;
+      font-weight: 300;
+      font-size: 0.8em;
+    }
+  }
 }
