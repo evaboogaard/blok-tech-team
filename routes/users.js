@@ -27,8 +27,8 @@ router.post("/createaccount", async (req, res) => {
           });
         
          
-          const user2 = await User.findOne({ email: req.body.email })
-          if (user2) {
+          const usercheck = await User.findOne({ email: req.body.email })
+          if (usercheck) {
                    alert("Email already exists!")
          } else {
         
