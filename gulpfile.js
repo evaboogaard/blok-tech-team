@@ -14,7 +14,7 @@ gulp.task("sass", () => {
     .pipe(sass({outputStyle: 'compressed'}))
 
     // stores the file in to a directory in static 
-    .pipe(gulp.dest("static/dist"))
+    .pipe(gulp.dest("static/minify"))
 
 }); 
 
