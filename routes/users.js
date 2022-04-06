@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const bodyParser = require("body-parser");
+const alert = require("alert"); 
  
-
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const passport = require("passport");
@@ -17,29 +17,28 @@ const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-
-
 router.post("/createaccount", async (req, res) => {
- 
-
- 
-   const user = await User.findOne({ email: req.body.email })
-   if (user) {
-            // Wanneer er al een gebruiker is met dit emailadres
-            return res.status(400).json({ email: 'Er is al een gebruiker met dit emailadres.' });
-  } else {
-           
-            const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-            const user = new User({
+          const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+          const user = new User({
             fname: req.body.fname,
             lname: req.body.lname,
             email: req.body.email,
             password: hashedPassword,
           });
-            user.save();
-            res.render('/login');
-        }
-  
+        
+         
+          const user2 = await User.findOne({ email: req.body.email })
+          if (user2) {
+                   alert("Email already exists!")
+         } else {
+        
+                  session = req.session;
+                  console.log("Account aangemaakt!");
+                  console.log(req.body);
+                  user.save();
+                  res.redirect('/login');
+               }
+         
 
 
 
@@ -112,22 +111,6 @@ router.get('/users/logout', ensureAuthenticated, (req, res) => {
   res.redirect('/login');
 });
 
-// logout 
-
-// hou dit even gecomment tot de login functie helemaal werkt lol
-
-// router.get("/logout", (req, res) => {
-
-//   //  this will clear the login session and remove the req.user property 
-//    req.logOut(); 
-
-//   // deletes the cookie
-//    req.session = null; 
-
-//   //  redirects the user to the homepage
-//    res.redirect('/'); 
-// }); 
-
 
 //  deleting the users account
 router.post("/delete", ensureAuthenticated, (req, res) => {
@@ -143,10 +126,5 @@ router.post("/delete", ensureAuthenticated, (req, res) => {
     });
 });
 
-// updating the users account
-// router.post("/update", (req, res) => {
-//   User.findOneAndUpdate({ id: req.body_id })
-
-// });
 
 module.exports = router;
