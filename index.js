@@ -65,10 +65,6 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// validation 
-const expressValidator = require("express-validator"); 
-app.use(expressValidator()); 
-
 // Handlebars
 const { engine } = require("express-handlebars");
 const { ensureAuthenticated } = require("./config/auth");
