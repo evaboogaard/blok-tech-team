@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const bodyParser = require("body-parser");
+ 
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -16,56 +17,59 @@ const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
+
+
 router.post("/createaccount", async (req, res) => {
- 
-  const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-  
-  const user = new User({
-    fname: req.body.fname,
-    lname: req.body.lname,
-    email: req.body.email,
-    password: hashedPassword,
-  });
+
+  try {
+    User.findOne({ email: req.body.email }).then((user) => {
+        if (user) {
+            // Wanneer er al een gebruiker is met dit emailadres
+            return res.status(400).json({ email: 'Er is al een gebruiker met dit emailadres.' });
+        } else {
+            const hashedPassword = bcrypt.hash(req.body.password, saltRounds);
+            const user = new User({
+            fname: req.body.fname,
+            lname: req.body.lname,
+            email: req.body.email,
+            password: hashedPassword,
+          });
+            user.save();
+            return res.redirect('/login');
+        }
+    });
+} catch (error) {
+    throw new Error(error);
+}
 
 
 
+  //     // laat dit ff in comments want ik kreeg een melding dat ik spam veroorzaakte HAHAHHAHAH
+  //     // let transporter = nodemailer.createTransport({
+  //     //   service: "hotmail",
+  //     //   auth: {
+  //     //     user: "dinder.co@hotmail.com",
+  //     //     pass: "dinder420",
+  //     //   },
+  //     // });
 
-  user.save((error) => {
-    if (error) {
-      console.error(error);
-      return res.status(500).redirect("createaccount");
-    } else {
-      session = req.session;
-      //session.email = req.body.email;
-      console.log("Account aangemaakt!");
-      console.log(req.body);
+  //     // transporter.sendMail({
+  //     //   from: '"Dinder" <dinder.co@hotmail.com>', // sender
+  //     //   to: user.email, // receiver
+  //     //   subject: "Welcome to Dinder🍽!", // subject
+  //     //   text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
+  //     // });
 
-      // laat dit ff in comments want ik kreeg een melding dat ik spam veroorzaakte HAHAHHAHAH
-      // let transporter = nodemailer.createTransport({
-      //   service: "hotmail",
-      //   auth: {
-      //     user: "dinder.co@hotmail.com",
-      //     pass: "dinder420",
-      //   },
-      // });
-
-      // transporter.sendMail({
-      //   from: '"Dinder" <dinder.co@hotmail.com>', // sender
-      //   to: user.email, // receiver
-      //   subject: "Welcome to Dinder🍽!", // subject
-      //   text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
-      // });
-
-      /* Log gebruiker in of redirect naar login, maar niet zomaar view renderen
-      return res.render("overviewaccount", {
-        fname: req.body.fname,
-        lname: req.body.lname,
-        email: req.body.email,
-      });
-      */
-      res.redirect('/login');
-    }
-  });
+  //     /* Log gebruiker in of redirect naar login, maar niet zomaar view renderen
+  //     return res.render("overviewaccount", {
+  //       fname: req.body.fname,
+  //       lname: req.body.lname,
+  //       email: req.body.email,
+  //     });
+  //     */
+  //     res.redirect('/login');
+  //   }
+  // });
 });
 
 router.get(
@@ -146,4 +150,3 @@ router.post("/delete", ensureAuthenticated, (req, res) => {
 // });
 
 module.exports = router;
-
