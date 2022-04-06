@@ -1,34 +1,30 @@
-.delete{
-    height: 70%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.delete {
+  height: 70%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-    text-align: center;
+  text-align: center;
 
-    p{
-        font-weight: 300;
-        font-size: 20px; 
-        color: var(--button-color); 
-    }
+  p {
+    font-weight: 300;
+    font-size: 20px;
+    color: var(--button-color);
+  }
 
-    a{
-        margin: 15px 0 0 ; 
-        padding: 1em 3em 1em 3em;
-        left: 3.3em;
-    
-        background-color: var(--button-color);
-        border-radius: 2em;
-        box-shadow: var(--button-shadow);
+  a {
+    margin: 15px 0 0;
+    padding: 1em 3em 1em 3em;
+    left: 3.3em;
 
-        text-decoration: none;
-        font-weight: 300;
-        color: var(--like-dislike-buttons);
-       
+    background-color: var(--button-color);
+    border-radius: 2em;
+    box-shadow: var(--button-shadow);
 
-        
-
-    }
+    text-decoration: none;
+    font-weight: 300;
+    color: var(--like-dislike-buttons);
+  }
 }

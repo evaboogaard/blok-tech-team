@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    minLength: [2, "Email is too short!"]
+    minLength: [2, "Email is too short!"],
   },
   password: {
     type: String,

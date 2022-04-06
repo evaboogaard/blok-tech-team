@@ -1,95 +1,92 @@
 .account {
+  section {
+    width: 100%;
+  }
 
-    section {
-        width: 100%;
-    }
+  h2 {
+    padding: 0.5em;
+    background-color: var(--light-color);
+    font-size: 1.5em;
+    font-weight: 300;
+    color: var(--button-color);
+    text-align: center;
+  }
 
-    h2{ 
-        padding: 0.5em;
-        background-color: var( --light-color);
-        font-size: 1.5em;
-        font-weight: 300; 
-        color: var(--button-color);
-        text-align: center;
-    }
+  article {
+    background-color: white;
+    max-width: 30em;
+    width: 90%;
+    margin: 4em auto 0;
+    border-radius: 2rem;
+    padding-bottom: 2rem;
+  }
 
-    article {
-        background-color: white;
-        max-width: 30em;
-        width: 90%;
-        margin: 4em auto 0;
-        border-radius: 2rem;
-        padding-bottom: 2rem;
-    }
+  ul {
+    margin-left: 2rem;
+    list-style-type: none;
+  }
 
-    ul {
-        margin-left: 2rem;
-        list-style-type: none;
-    }
+  li {
+    font-size: 1.3rem;
+    color: #304d6e;
+    font-weight: 400;
+  }
+  .bold {
+    font-weight: 300;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    font-size: 1.3rem;
+    color: var(--primary-font-color);
+  }
 
-    li {
-        font-size: 1.3rem;
-        color: #304d6e;
-        font-weight: 400;
-    }
-    .bold {
-        font-weight: 300;
-        margin-top: 2rem;
-        padding-top: 1rem;
-        font-size: 1.3rem;
-        color: var(--primary-font-color);
-    }
+  form {
+    width: 100%;
+  }
 
-    form {
-        width: 100%;
-    }
+  .account-delete {
+    display: block;
 
-    .account-delete {
-        display: block;
+    height: 3em;
+    width: 12em;
 
-        height: 3em;
-        width: 12em;
+    margin: 1rem auto;
 
-        margin: 1rem auto;
+    background-color: var(--err-color);
+    border-radius: 2em;
+    border: none;
+    box-shadow: var(--button-shadow);
 
-        background-color: var(--err-color);
-        border-radius: 2em;
-        border: none; 
-        box-shadow: var(--button-shadow);
+    font-size: 1.2em;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 300;
+    color: var(--input-color);
+  }
 
-        font-size: 1.2em;
-        text-decoration: none;
-        text-align: center;
-        font-weight: 300;
-        color: var(--input-color);
-    }
+  .account-logout {
+    //position: absolute;
+    height: 3em;
+    width: 12em;
 
-    .account-logout {
-        //position: absolute;
-        height: 3em;
-        width: 12em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    margin: 1rem auto;
 
-        margin: 1rem auto;
+    //transform: translate(-50%, -50%);
+    //left: 50%;
+    //bottom: 25%;
 
-        //transform: translate(-50%, -50%);
-        //left: 50%;
-        //bottom: 25%;
+    background-color: var(--like-dislike-buttons);
+    border-radius: 2em;
+    border: none;
+    box-shadow: var(--button-shadow);
 
-        background-color: var(--like-dislike-buttons);
-        border-radius: 2em;
-        border: none;
-        box-shadow: var(--button-shadow);
-
-        font-size: 1.2rem;
-        text-decoration: none;
-        font-weight: 300;
-        color: var(--button-color);
-    }
-
-
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: 300;
+    color: var(--button-color);
+  }
 }

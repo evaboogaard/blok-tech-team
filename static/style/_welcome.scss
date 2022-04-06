@@ -95,26 +95,26 @@
   }
 
   @media (min-width: 35em) {
-      img {
-        width: 30%;
-        transform: translate(-50%, -50%);
-        left: 50%;
-        top: 40%;
-      }
+    img {
+      width: 30%;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 40%;
+    }
 
-      button {
-        width: 30%;
-        transform: translate(-50%, -50%);
-        left: 50%;
-        top: 40%;
-        margin-top: 20%;
-      }
+    button {
+      width: 30%;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 40%;
+      margin-top: 20%;
+    }
 
-      .gettingstarted {
-        flex-direction: row;
-      }
+    .gettingstarted {
+      flex-direction: row;
     }
   }
+}
 
 @keyframes hide {
   0% {

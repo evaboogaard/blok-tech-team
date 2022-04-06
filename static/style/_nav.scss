@@ -22,14 +22,14 @@ nav {
     }
   }
 
-  @media (min-width: 40em){
+  @media (min-width: 40em) {
     left: 0;
     bottom: 0;
     width: auto;
     height: 100%;
     top: 10em;
 
-    ul{
+    ul {
       height: 100%;
       flex-direction: column;
       align-items: center;
@@ -37,7 +37,7 @@ nav {
       gap: 1em;
     }
 
-    li:first-of-type{
+    li:first-of-type {
       padding-top: 5em;
     }
 

@@ -1,5 +1,5 @@
 #likes {
-//   overflow: scroll;
+  //   overflow: scroll;
 
   #head {
     padding: 2.2em;
@@ -63,11 +63,11 @@
       }
     }
 
-    @media (min-width: 35em){
+    @media (min-width: 35em) {
       max-width: 30em;
       transform: translateX(-50%);
       left: 50%;
-  }
+    }
 
     .location {
       top: 3.2em;
@@ -132,29 +132,29 @@
     //   transition: 1s;
     // }
 
-    form{
-        position: absolute;
-        width: 2.6em;
-        height: 2.6em;
-        right: 1em;
-        bottom: 4em;
+    form {
+      position: absolute;
+      width: 2.6em;
+      height: 2.6em;
+      right: 1em;
+      bottom: 4em;
     }
 
-    form input{
-        width: 2.6em;
-        opacity: 80%;
-        left: 0;
-        top: 0;
+    form input {
+      width: 2.6em;
+      opacity: 80%;
+      left: 0;
+      top: 0;
     }
   }
-  article:last-of-type{
-      margin-bottom: 3em;
+  article:last-of-type {
+    margin-bottom: 3em;
   }
 }
 
-#likes>div{
-    overflow: scroll;
-    height: 40em;
+#likes > div {
+  overflow: scroll;
+  height: 40em;
 }
 
 /* Cool Javascript scroll animation */
@@ -181,7 +181,7 @@
 //   }
 // }
 
-#filter{
+#filter {
   position: fixed;
   top: 0;
   right: 0;
@@ -194,77 +194,76 @@
   gap: 2em;
   transform: translateX(100%);
 
-    img{
-        width: 3em;
-    }
+  img {
+    width: 3em;
+  }
 
-    form{
-        font-size: 1.5em;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        font-family: Poppins;
-        font-weight: 300;
-    }
+  form {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-family: Poppins;
+    font-weight: 300;
+  }
 
-    form fieldset{
-        border: none;
-        margin: 0;
-        padding: 0;
-    }
+  form fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
 
-    form fieldset input[type="radio"]{
-        margin-right: 0.2em;
-        width: 1.5em;
-        height: 1.5em;
-        accent-color: var(--primary-font-color);
-    }
+  form fieldset input[type="radio"] {
+    margin-right: 0.2em;
+    width: 1.5em;
+    height: 1.5em;
+    accent-color: var(--primary-font-color);
+  }
 
-    form fieldset input[type="range"] {
-        -webkit-appearance: none;
-        background: var(--input-color);
-        border-radius: 1em;
-    }
-      
-    form fieldset input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        background: var(--primary-font-color);
-    }
+  form fieldset input[type="range"] {
+    -webkit-appearance: none;
+    background: var(--input-color);
+    border-radius: 1em;
+  }
 
-    form fieldset label{
-        color: var(--emphasized-font-color);
-    }
+  form fieldset input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: var(--primary-font-color);
+  }
 
-    form fieldset div label{
-        color: var(--primary-font-color);
-    }
+  form fieldset label {
+    color: var(--emphasized-font-color);
+  }
 
-    form fieldset output{
-        color: var(--primary-font-color);
-    }
+  form fieldset div label {
+    color: var(--primary-font-color);
+  }
 
-    form button{
-        align-self: flex-start;
-        padding: 0.5em 1em;
-        box-shadow: var(--button-shadow);
-        border: none;
-        border-radius: 3em;
-        background-color: var(--button-color);
-        font-size: 1em;
-        color: var(--like-dislike-buttons);
-        font-weight: 300;
-    }
+  form fieldset output {
+    color: var(--primary-font-color);
+  }
 
-    #clear{
-      background-color: var(--like-dislike-buttons);
-      color: var(--button-color);
-    }
+  form button {
+    align-self: flex-start;
+    padding: 0.5em 1em;
+    box-shadow: var(--button-shadow);
+    border: none;
+    border-radius: 3em;
+    background-color: var(--button-color);
+    font-size: 1em;
+    color: var(--like-dislike-buttons);
+    font-weight: 300;
+  }
 
+  #clear {
+    background-color: var(--like-dislike-buttons);
+    color: var(--button-color);
+  }
 }
 
-#filter.show{
+#filter.show {
   transform: translateX(0);
 }
