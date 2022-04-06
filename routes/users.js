@@ -20,14 +20,16 @@ router.use(bodyParser.json());
 
 
 router.post("/createaccount", async (req, res) => {
+ 
 
-  try {
-    User.findOne({ email: req.body.email }).then((user) => {
-        if (user) {
+ 
+   const user = await User.findOne({ email: req.body.email })
+   if (user) {
             // Wanneer er al een gebruiker is met dit emailadres
             return res.status(400).json({ email: 'Er is al een gebruiker met dit emailadres.' });
-        } else {
-            const hashedPassword = bcrypt.hash(req.body.password, saltRounds);
+  } else {
+           
+            const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
             const user = new User({
             fname: req.body.fname,
             lname: req.body.lname,
@@ -37,10 +39,8 @@ router.post("/createaccount", async (req, res) => {
             user.save();
             return res.redirect('/login');
         }
-    });
-} catch (error) {
-    throw new Error(error);
-}
+  
+
 
 
 
