@@ -8,11 +8,14 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const passport = require("passport");
 
+const alert = require("alert");
+// alert("hello");
+
 let session;
 
 const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 
-// const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
@@ -46,20 +49,20 @@ router.post("/createaccount", async (req, res) => {
       console.log(req.body);
 
       // laat dit ff in comments want ik kreeg een melding dat ik spam veroorzaakte HAHAHHAHAH
-      // let transporter = nodemailer.createTransport({
-      //   service: "hotmail",
-      //   auth: {
-      //     user: "dinder.co@hotmail.com",
-      //     pass: "dinder420",
-      //   },
-      // });
+      let transporter = nodemailer.createTransport({
+        service: "hotmail",
+        auth: {
+          user: "dinder.co@hotmail.com",
+          pass: "dinder420",
+        },
+      });
 
-      // transporter.sendMail({
-      //   from: '"Dinder" <dinder.co@hotmail.com>', // sender
-      //   to: user.email, // receiver
-      //   subject: "Welcome to Dinder🍽!", // subject
-      //   text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
-      // });
+      transporter.sendMail({
+        from: '"Dinder" <dinder.co@hotmail.com>', // sender
+        to: user.email, // receiver
+        subject: "Welcome to Dinder🍽!", // subject
+        text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
+      });
 
       /* Log gebruiker in of redirect naar login, maar niet zomaar view renderen
       return res.render("overviewaccount", {
