@@ -12,7 +12,7 @@ const passport = require("passport");
 
 const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
 
-// const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
@@ -33,39 +33,27 @@ router.post("/createaccount", async (req, res) => {
     } else {
       console.log("Account aangemaakt!");
       console.log(req.body);
+      let transporter = nodemailer.createTransport({
+        service: "hotmail",
+        auth: {
+          user: "dinder.co@hotmail.com",
+          pass: "dinder420",
+        },
+      });
+
+      transporter.sendMail({
+        from: '"Dinder" <dinder.co@hotmail.com>', // sender
+        to: user.email, // receiver
+        subject: "Welcome to Dinder🍽!", // subject
+        text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
+      });
+      
       user.save();
       res.redirect('/login');
     }
   } catch(err) {
     console.error("Error creating account: " + err.message);
   }
-
-  //     // laat dit ff in comments want ik kreeg een melding dat ik spam veroorzaakte HAHAHHAHAH
-  //     // let transporter = nodemailer.createTransport({
-  //     //   service: "hotmail",
-  //     //   auth: {
-  //     //     user: "dinder.co@hotmail.com",
-  //     //     pass: "dinder420",
-  //     //   },
-  //     // });
-
-  //     // transporter.sendMail({
-  //     //   from: '"Dinder" <dinder.co@hotmail.com>', // sender
-  //     //   to: user.email, // receiver
-  //     //   subject: "Welcome to Dinder🍽!", // subject
-  //     //   text: "Hi " + user.fname + " " + user.lname + ", welcome to Dinder!", // body
-  //     // });
-
-  //     /* Log gebruiker in of redirect naar login, maar niet zomaar view renderen
-  //     return res.render("overviewaccount", {
-  //       fname: req.body.fname,
-  //       lname: req.body.lname,
-  //       email: req.body.email,
-  //     });
-  //     */
-  //     res.redirect('/login');
-  //   }
-  // });
 });
 
 router.get("/overviewaccount", ensureAuthenticated, (req, res) => {
