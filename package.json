@@ -6,8 +6,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "build": "parcel main.css"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
