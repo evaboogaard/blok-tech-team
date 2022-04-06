@@ -36,6 +36,7 @@ form.addEventListener("submit", (event) => {
 		errorDiv.classList.add("emptyinput");
 		errorDiv.innerHTML = "Match Passwords.";
 		return false;
+	
 	} 
 	
 	else {

@@ -2,9 +2,6 @@ console.log(`epico momento de bruh`);
 
 const allLikes = document.querySelectorAll(`.animate`);
 
-// De Requirements om de class er uiteindelijk op te laten zetten:
-// rootMargin -> vanaf 20px gaat JS checken
-// treshold -> de hoeveelheid van het item dat in beeld moet zijn om getriggerd te worden
 const options = {
     rootMargin: `20px`,
     treshold: 0.5
