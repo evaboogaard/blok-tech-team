@@ -18,7 +18,4 @@ gulp.task("sass", () => {
 
 }); 
 
-gulp.task("javascript", () => )
-
-
 gulp.task('default', gulp.series('sass')); 

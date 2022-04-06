@@ -37,7 +37,7 @@ router.post("/createaccount", async (req, res) => {
             password: hashedPassword,
           });
             user.save();
-            return res.redirect('/login');
+            res.render('/login');
         }
   
 
