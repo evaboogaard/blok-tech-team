@@ -19,6 +19,10 @@
     "url": "https://github.com/evaboogaard/blok-tech-team/issues"
   },
   "homepage": "https://github.com/evaboogaard/blok-tech-team#readme",
+  "engines": {
+    "node": "^15.12.0",
+    "npm": "^7.6.3"
+  },
   "dependencies": {
     "alert": "^5.0.10",
     "bcrypt": "^5.0.1",
