@@ -1,5 +1,3 @@
-console.log(`epico momento de bruh`);
-
 const allLikes = document.querySelectorAll(`.animate`);
 
 const options = {
